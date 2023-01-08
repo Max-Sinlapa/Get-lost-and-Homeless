@@ -39,10 +39,10 @@ TextureImporter:
     wrapU: 0
     wrapV: 0
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,7 +53,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -115,18 +115,305 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Button
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1294
+        width: 709
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 8, z: 3, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ace25022bc69f4983b72417547df30
+      internalID: 679848025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseButton
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 745
+        width: 187
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5336958, y: 0.49999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb6df73999ef9f46a99634b77c7aa9b
+      internalID: -1108296857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 978
+        width: 300
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 0, z: 5, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d09ffe079b3f64f85593a0deb20806
+      internalID: -72744512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chcekpoint
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 944
+        width: 202
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 8, z: 0, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1057c2c6f6184e94185c30eb9e478be2
+      internalID: -1939488298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackButtron
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 753
+        width: 253
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 12}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c480484fc714e374cb627652aa600410
+      internalID: -1742680762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gameover
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1153
+        width: 1469
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 5, y: 23, z: 0, w: 30}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05c26de9c6da0647bf37bfbcd3b25d8
+      internalID: 1048861805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 0
+        width: 924
+        height: 1141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 16, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb65320799b42a14ba1ee00cf5764ca1
+      internalID: -583931987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button2
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 839
+        width: 811
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 19, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc501e2b62085a4ebc978348ac50c6e
+      internalID: -1526497469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button3
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 503
+        width: 602
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 23, y: 8, z: 25, w: 25}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8646a72254e55a84ba9bdc398285f209
+      internalID: 1506862002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Join
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 469
+        width: 396
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 1, w: 23}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3567c74e1c35742825097cf3a8039d
+      internalID: -673116495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadRoom
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 259
+        width: 195
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 8, y: 0, z: 20, w: 14}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d4d45765bf8a043995d8f61c47a07f
+      internalID: -1100939724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Name
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 259
+        width: 648
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfec5263665684847bb69e7cce4863fa
+      internalID: 803741565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 21
+        width: 832
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 15, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0dc4a11c081e534dbc99486d3665790
+      internalID: -787233681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 97a5951aed85cb946b4775aa15e73295
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      heart: -72744512
+      Button4: -787233681
+      HeadRoom: -1100939724
+      BackButtron: -1742680762
+      chcekpoint: -1939488298
+      Name: 803741565
+      Untitled_Artwork (2)_1: -165533040
+      Button3: 1506862002
+      Paper: -583931987
+      PauseButton: -1108296857
+      Join: -673116495
+      Gameover: 1048861805
+      Button: 679848025
+      Button2: -1526497469
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
