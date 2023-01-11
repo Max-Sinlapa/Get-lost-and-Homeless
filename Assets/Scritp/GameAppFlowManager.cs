@@ -8,7 +8,7 @@ using System;
 
 namespace AOIART
     { 
-    public class NewBehaviourScript : MonoBehaviour
+    public class GameAppFlowManager : MonoBehaviour
 {
         protected static bool IsSceneOptionsLoaded;
 
