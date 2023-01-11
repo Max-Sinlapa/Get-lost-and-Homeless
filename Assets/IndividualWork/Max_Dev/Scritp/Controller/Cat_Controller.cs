@@ -59,26 +59,30 @@ namespace Max_DEV.MoveMent
         #region MoveMent
         public override void Move_Forward()
         {
-            Rigidbody cat_rigid = GetComponent<Rigidbody>();
-            cat_rigid.AddForce(0, 0, AcceleRation);
+            Vector3 CatTranform = this.transform.position;
+            CatTranform.z += MaxSpeed * Time.deltaTime;
+            this.transform.position = CatTranform;
         }
 
         public override void Move_Backward()
         {
-            Rigidbody cat_rigid = GetComponent<Rigidbody>();
-            cat_rigid.AddForce(0, 0, -AcceleRation);
+            Vector3 CatTranform = this.transform.position;
+            CatTranform.z -= MaxSpeed * Time.deltaTime;
+            this.transform.position = CatTranform;
         }
 
         public override void Move_Left()
         {
-            Rigidbody cat_rigid = GetComponent<Rigidbody>();
-            cat_rigid.AddForce(-AcceleRation, 0, 0);
+            Vector3 CatTranform = this.transform.position;
+            CatTranform.x -= MaxSpeed * Time.deltaTime;
+            this.transform.position = CatTranform;
         }
 
         public override void Move_Right()
         {
-            Rigidbody cat_rigid = GetComponent<Rigidbody>();
-            cat_rigid.AddForce(AcceleRation, 0, 0);
+            Vector3 CatTranform = this.transform.position;
+            CatTranform.x += MaxSpeed * Time.deltaTime;
+            this.transform.position = CatTranform;
         }
 
         public override void Jump_Up()
@@ -93,7 +97,7 @@ namespace Max_DEV.MoveMent
             if (Can_Climb == true)
             {
                 Rigidbody cat_rigid = GetComponent<Rigidbody>();
-                print("Climb ing");
+                print("Climbing");
                 cat_rigid.AddForce(0, AcceleRation * 2f, 0);
                 ResetJump();
             }
