@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerContoller : MonoBehaviour
 {
-    public CharacterController controller;
+    
     private Vector3 direction;
     public float speed = 8;
+    protected Key ForwardKey = Key.W;
+
     void Start()
     {
         
@@ -15,9 +18,15 @@ public class PlayerContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float HorizonInput = Input.GetAxis("Horizontal");
-        direction.x = HorizonInput * speed;
+        Keyboard keyboard = Keyboard.current;
 
-        controller.Move(direction * Time.deltaTime);
+        if (keyboard[ForwardKey].isPressed)
+        {
+            this.transform.Translate(speed * Time.deltaTime, 0, 0);
+        }
+       
+
+
+
     }
 }
