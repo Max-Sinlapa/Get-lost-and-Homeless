@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerContoller : MonoBehaviour
+namespace IceDEV
 {
-    
-    private Vector3 direction;
-    public float speed = 8;
-    protected Key ForwardKey = Key.W;
-
-    void Start()
+    public class PlayerContoller : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Keyboard keyboard = Keyboard.current;
+        private Vector3 direction;
+        public float speed = 8;
+        protected Key ForwardKey = Key.W;
 
-        if (keyboard[ForwardKey].isPressed)
+        void Start()
         {
-            this.transform.Translate(speed * Time.deltaTime, 0, 0);
+
         }
-       
+
+        // Update is called once per frame
+        void Update()
+        {
+            Keyboard keyboard = Keyboard.current;
+
+            if (keyboard[ForwardKey].isPressed)
+            {
+                this.transform.Translate(speed * Time.deltaTime, 0, 0);
+            }
 
 
 
+
+        }
     }
 }
+
+
