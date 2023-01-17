@@ -11,7 +11,7 @@ namespace IceDEV
         public GameObject player2;
         private GameObject activePlayer;
 
-        [Header("Player")]
+        [Header("Camera")]
         public GameObject cam1;
         public GameObject cam2;
         private GameObject activeCam;
