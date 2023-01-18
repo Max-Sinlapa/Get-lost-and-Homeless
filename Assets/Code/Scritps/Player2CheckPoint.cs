@@ -5,14 +5,13 @@ using UnityEngine.InputSystem;
 
 namespace IceDEV
 {
-    public class PlayerCheckPoint : MonoBehaviour
+    public class Player2CheckPoint : MonoBehaviour
     {
-        // Start is called before the first frame update
         private Vector3 respawnPoint;
-        protected Key RespawnKey = Key.R;
+        protected Key RespawnKey = Key.T;
         void Start()
         {
-            respawnPoint = this.gameObject.transform.position;
+            respawnPoint = transform.position;
         }
 
         private void Update()
@@ -21,7 +20,7 @@ namespace IceDEV
 
             if (keyboard[RespawnKey].isPressed)
             {
-                this.gameObject.transform.position = respawnPoint;
+                transform.position = respawnPoint;
             }
         }
 
@@ -30,11 +29,9 @@ namespace IceDEV
         {
             if (target.gameObject.tag == "CheckPoint")
             {
-                respawnPoint = this.gameObject.transform.position;
+                respawnPoint = transform.position;
                 Debug.Log(respawnPoint);
             }
         }
-
     }
 }
-
