@@ -1,23 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerContoller : MonoBehaviour
+namespace IceDEV
 {
-    public CharacterController controller;
-    private Vector3 direction;
-    public float speed = 8;
-    void Start()
+    public class PlayerContoller : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        float HorizonInput = Input.GetAxis("Horizontal");
-        direction.x = HorizonInput * speed;
+        private Vector3 direction;
+        public float speed = 8;
+        protected Key ForwardKey = Key.W;
 
-        controller.Move(direction * Time.deltaTime);
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            Keyboard keyboard = Keyboard.current;
+
+            if (keyboard[ForwardKey].isPressed)
+            {
+                this.transform.Translate(speed * Time.deltaTime, 0, 0);
+            }
+
+
+
+
+        }
     }
 }
+
+
