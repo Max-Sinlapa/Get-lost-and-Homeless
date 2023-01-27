@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using StarterAssets;
+using Max_DEV.Interac;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -83,6 +84,8 @@ namespace Max_DEV.MoveMent
 
         #region MyOption
 
+        [SerializeField] protected ActorTriggerHandler m_ActorTriggerHandler;
+        
         [Header("My Jump Option")]
         public float JumpPower;
         public int JumpLimit = 1;
@@ -180,6 +183,13 @@ namespace Max_DEV.MoveMent
             Jump_ClimbAndGravity();
             GroundedCheck();
             Move();
+
+            if (_input.interection == true)
+            {
+                PerformInteraction();
+
+                _input.interection = false;
+            }
         }
 
         private void LateUpdate()
@@ -491,20 +501,14 @@ namespace Max_DEV.MoveMent
             }
         }
 
-        public void jump()
+        protected virtual void PerformInteraction()
         {
-            // the square root of H * -2 * G = how much velocity needed to reach desired height
-            _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-            _verticalVelocity = Mathf.Sqrt(JumpPower);
+            var interactable = m_ActorTriggerHandler.GetInteractable();
 
-            // update animator if using character
-            if (_hasAnimator)
+            if (interactable != null)
             {
-                _animator.SetBool(_animIDJump, true);
+                interactable.Interact();
             }
-
-            // incress JumpCount When jump
-            JumpCount += 1;
         }
 
         public void movement_m(Vector2 direction)

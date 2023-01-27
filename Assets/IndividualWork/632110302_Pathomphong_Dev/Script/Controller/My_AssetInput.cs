@@ -14,6 +14,7 @@ namespace Max_DEV.MoveMent
         public bool jump;
         public bool sprint;
         public bool climb;
+        public bool interection;
 
         [Header("Movement Settings")]
         public bool analogMovement;
@@ -39,8 +40,6 @@ namespace Max_DEV.MoveMent
         public void OnJump(InputValue value)
         {
             JumpInput(value.isPressed);
-            Debug.Log("JumpPress-1");
-            
         }
 
         public void OnSprint(InputValue value)
@@ -51,7 +50,11 @@ namespace Max_DEV.MoveMent
         public void OnClimb(InputValue value)
         {
             ClimbInput(value.isPressed);
-            
+        }
+
+        public void OnInteraction(InputValue value)
+        {
+            InteractionInput(value.isPressed);
         }
 #endif
 
@@ -69,7 +72,6 @@ namespace Max_DEV.MoveMent
         public void JumpInput(bool newJumpState)
         {
             jump = newJumpState;
-            Debug.Log("JumpPress-2");
         }
 
         public void SprintInput(bool newSprintState)
@@ -80,6 +82,11 @@ namespace Max_DEV.MoveMent
         public void ClimbInput(bool newClimbState)
         {
             climb = newClimbState;
+        }
+        
+        public void InteractionInput(bool newClimbState)
+        {
+            interection = newClimbState;
         }
 
         private void OnApplicationFocus(bool hasFocus)
