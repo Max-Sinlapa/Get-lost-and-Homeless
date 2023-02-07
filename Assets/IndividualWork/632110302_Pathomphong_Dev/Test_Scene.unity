@@ -423,7 +423,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionTxt: {fileID: 0}
-  m_Power: 1
+  m_Power: 5
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteracEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExiteEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &593039758
 Rigidbody:
   m_ObjectHideFlags: 0

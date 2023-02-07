@@ -83,7 +83,8 @@ namespace Max_DEV.MoveMent
 
 
         #region MyOption
-
+        
+        [Header("My Option")]
         [SerializeField] protected ActorTriggerHandler m_ActorTriggerHandler;
         
         [Header("My Jump Option")]
