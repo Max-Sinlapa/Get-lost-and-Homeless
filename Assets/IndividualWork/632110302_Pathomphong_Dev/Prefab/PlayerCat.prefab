@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 8888598601825832711}
   - component: {fileID: 8605876977821350503}
   - component: {fileID: 2993273000948288078}
+  - component: {fileID: 941509613}
   m_Layer: 8
   m_Name: PlayerCat
   m_TagString: Player
@@ -628,6 +629,19 @@ MonoBehaviour:
   JumpLimit: 1
   JumpCount: 0
   ClimbSpeed: 10
+--- !u!114 &941509613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939391326533130457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484d7d0f752abca4096e7e2bcf142e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceMagnitude: 1
 --- !u!1 &2010340868817814026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1363,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4748211447343102649}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
