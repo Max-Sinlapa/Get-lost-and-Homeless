@@ -88,7 +88,7 @@ namespace Max_DEV.MoveMent
         [SerializeField] protected ActorTriggerHandler m_ActorTriggerHandler;
         
         [Header("My Jump Option")]
-        public float JumpPower;
+        public float JumpPower = 5;
         public int JumpLimit = 1;
         public int JumpCount = 0;
         
@@ -317,7 +317,6 @@ namespace Max_DEV.MoveMent
 
         public void Jump_ClimbAndGravity()
         {
-
             if (Grounded || Can_Climb || JumpCount < JumpLimit)
             {
 
@@ -462,6 +461,12 @@ namespace Max_DEV.MoveMent
                                 break;
                             case ObjectType.Floor:
                                 ResetJump();
+                                Grounded = true;
+                                print("On Ground");
+                                break;
+                            case ObjectType.platform:
+                                var playerTriger = GetComponent<CapsuleCollider>();
+                                playerTriger.isTrigger = true;
                                 break;
                         }
                     }
@@ -477,6 +482,10 @@ namespace Max_DEV.MoveMent
                             case ObjectType.ClimbArea:
                                 Can_Climb = false;
                                 print("No Climb");
+                                break;
+                            case ObjectType.platform:
+                                var playerTriger = GetComponent<CapsuleCollider>();
+                                playerTriger.isTrigger = false;
                                 break;
                         }
                     }
