@@ -5,7 +5,8 @@ namespace Max_DEV
         Cat,
         ClimbArea,
         Floor,
-        Mouse
+        Mouse,
+        platform
     }
 
 }
