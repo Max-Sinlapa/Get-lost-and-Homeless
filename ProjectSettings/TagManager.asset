@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - CheckPoint
+  - CinemachineTarget
+  - box
+  - JumpThrough
   layers:
   - Default
   - TransparentFX
