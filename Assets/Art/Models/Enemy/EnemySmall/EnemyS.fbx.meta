@@ -76,18 +76,10 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips:
-<<<<<<< HEAD:Assets/Art/Models/Enemy/EnemySmall/EnemyS.fbx.meta
   - b8928be07c27c5046a1f32bdaf0d0b6c
   - d4bf7d4492f8f384bb887b974f767b77
   - a569645ed9ad6f84a8734253b4818b61
   - b7da4dc9749258e408256d10b85b139a
-=======
-  - d0db5a2f03e437c40a6c78963c36ecd3
-  - 816e1d07557e5d5469acf1790614788c
-  - 83a52f5d19bc59244a8fcee576e6a0e0
-  - dcfcb361f44b4f74f9cb155aa19237aa
-  - d83270861f83f6c489788259204ceae3
->>>>>>> Aoi_ArtV2:Assets/Enemy/EnemySmall/EnemyS.fbx.meta
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

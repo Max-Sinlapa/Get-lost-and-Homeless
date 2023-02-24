@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Levels/Scenes/SampleScene.unity.meta
 guid: 770165a895053a244ab0902665b84f22
 =======
 guid: 02b782ddd679506419dd6764629d2de2
 >>>>>>> Aoi_ArtV2:Assets/Scenes/SampleScene.unity.meta
+=======
+guid: d4870d9695748cd4cae8a45328cb4d58
+>>>>>>> kongpop
 DefaultImporter:
   externalObjects: {}
   userData: 
