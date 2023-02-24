@@ -27,7 +27,7 @@ namespace Max_DEV.Interac
    
        public void Interact()
        {
-           m_rigidBody.AddForce(Vector3.up*m_Power,ForceMode.Impulse);
+           //m_rigidBody.AddForce(Vector3.up*m_Power,ForceMode.Impulse);
            
            onInteracEvent.Invoke();
        }
