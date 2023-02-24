@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06349329, g: 0.052037783, b: 0.05669036, a: 1}
+  m_IndirectSpecularColor: {r: 0.06349341, g: 0.052037787, b: 0.05669043, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563972738}
+      - m_Target: {fileID: 563972740}
         m_TargetAssemblyTypeName: AOIART.GameAppFlowManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563972739}
-  - component: {fileID: 563972738}
+  - component: {fileID: 563972740}
   m_Layer: 0
   m_Name: SceneMgt
   m_TagString: Untagged
@@ -506,18 +506,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &563972738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563972737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8031159b81895f94e997bd0c9312f5b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &563972739
 Transform:
   m_ObjectHideFlags: 0
@@ -533,6 +521,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563972740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563972737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd68cdbbd1702604696b5dddc842efb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &770589504
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563972738}
+      - m_Target: {fileID: 563972740}
         m_TargetAssemblyTypeName: AOIART.GameAppFlowManager, Assembly-CSharp
         m_MethodName: LoadOptionsScene
         m_Mode: 5
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563972738}
+      - m_Target: {fileID: 563972740}
         m_TargetAssemblyTypeName: AOIART.GameAppFlowManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -1806,7 +1806,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563972738}
+      - m_Target: {fileID: 563972740}
         m_TargetAssemblyTypeName: AOIART.GameAppFlowManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
