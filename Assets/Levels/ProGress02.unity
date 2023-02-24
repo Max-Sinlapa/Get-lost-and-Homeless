@@ -754,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: b984e71b8ecd5d34f9da712b07e1d2bc, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 5f3e34707b329cd4a9a1dcaf0568593c, type: 2}
+      objectReference: {fileID: 9100000, guid: 5f4e6ab2cba1d034eb44374dde8d0009, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b984e71b8ecd5d34f9da712b07e1d2bc, type: 3}
 --- !u!4 &468464378 stripped
@@ -1196,7 +1196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721808192}
-  m_LocalRotation: {x: 0.16245982, y: -0.688191, z: 0.16245985, w: 0.68819094}
+  m_LocalRotation: {x: 0.16245985, y: -0.68819094, z: 0.16245985, w: 0.688191}
   m_LocalPosition: {x: 11.42, y: 4.33, z: -20.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2200,8 +2200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
-  jump: 0
-  sprint: 0
+  jump: 1
+  sprint: 1
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -2294,7 +2294,7 @@ Animator:
   m_GameObject: {fileID: 1178417719}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 135caff148cf9b146aaceb1f65d57689, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18c006c0b5853f944866944fcd034d34, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2674,12 +2674,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a569645ed9ad6f84a8734253b4818b61, type: 3}
       propertyPath: m_Name
-      value: EnemySv1@T-Pose
+      value: EnemyS@T-Pose
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a569645ed9ad6f84a8734253b4818b61, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 5f3e34707b329cd4a9a1dcaf0568593c, type: 2}
+      objectReference: {fileID: 22100000, guid: 77447bea8c610504dbf4d1edeccb4cd0, type: 2}
+    - target: {fileID: 5866666021909216657, guid: a569645ed9ad6f84a8734253b4818b61, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+        'mixamorig:RightHandIndex3'\n\tTransform 'mixamorig:RightFoot'\n\tand more
+        ...\n\tFrom animation clip 'EnemyS@Death'\n\tFrom animation clip 'EnemyS@Attack'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a569645ed9ad6f84a8734253b4818b61, type: 3}
 --- !u!4 &1575651804 stripped
@@ -2749,7 +2759,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621814413}
-  m_LocalRotation: {x: 0.16245985, y: -0.68819094, z: 0.16245984, w: 0.68819106}
+  m_LocalRotation: {x: 0.16245984, y: -0.688191, z: 0.16245985, w: 0.688191}
   m_LocalPosition: {x: 12.200001, y: 4.33, z: -21.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3600,7 +3610,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113397721}
-  m_LocalRotation: {x: 0.16245985, y: -0.68819094, z: 0.16245984, w: 0.68819106}
+  m_LocalRotation: {x: 0.16245984, y: -0.688191, z: 0.16245985, w: 0.688191}
   m_LocalPosition: {x: 12.200001, y: 4.33, z: -21.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4359,7 +4369,7 @@ Animator:
   m_GameObject: {fileID: 4896279562010678376}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 461b7fe81af47cb44805003a5855e159, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7d2bb6447e60754d8a4fadf2ae36dff, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6227,7 +6237,7 @@ MonoBehaviour:
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jump: 0
-  sprint: 0
+  sprint: 1
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
