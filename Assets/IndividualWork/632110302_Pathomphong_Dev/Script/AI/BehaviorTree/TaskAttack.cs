@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorTree;
 using UnityEngine;
-using BehaviorTree;
 
 public class TaskAttack : Node
 {
@@ -11,13 +10,14 @@ public class TaskAttack : Node
     private int _AnimAttack;
 
     private Transform _lastTarget;
-    private EnemyManager _enemyManager;
+    private HealthPoint _enemyHealthPoint;
 
-    private float _attackTime = 1f;
-    private float _attackCounter = 0f;
-    
-    public TaskAttack(Transform transform)
+    private AttackController _thisAttackControll;
+
+    public TaskAttack(Transform transform, AttackController attackController)
     {
+        _thisAttackControll = attackController;
+        
         _animator = transform.GetComponent<Animator>();
         _AnimWalk = Animator.StringToHash("Walk");
         _AnimAttack = Animator.StringToHash("Attack");
@@ -25,35 +25,30 @@ public class TaskAttack : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("TaskAttack");
+        //Debug.Log("TaskAttack");
         
         Transform target = (Transform)GetData("target");
         if (target != _lastTarget)
         {
-            _enemyManager = target.GetComponent<EnemyManager>();
+            _enemyHealthPoint = target.GetComponent<HealthPoint>();
             _lastTarget = target;
         }
 
-
-        _attackCounter += Time.deltaTime;
-        
-        if (_attackCounter >= _attackTime)
+        bool enemyIsDead = _enemyHealthPoint.isDead;
+        if (enemyIsDead)
         {
-            bool enemyIsDead = _enemyManager.TakeHit();
-            if (enemyIsDead)
-            {
-                ClearData("target");
-                _animator.SetBool(_AnimAttack, false);
-                _animator.SetBool(_AnimWalk, true);
-            }
-            else
-            {
-                _animator.SetBool(_AnimAttack, true);
-                _animator.SetBool(_AnimWalk, false);
-                _attackCounter = 0f;
-            }
-                
+            ClearData("target");
+            _animator.SetBool(_AnimAttack, false);
+            _animator.SetBool(_AnimWalk, true);
         }
+        else 
+        {
+            Debug.Log("EnemyPerformAttack");
+            _thisAttackControll.PerformAttack();
+            _animator.SetBool(_AnimAttack, true);
+            _animator.SetBool(_AnimWalk, false);
+        }
+        
         
         state = NodeState.RUNNING;
         return state;

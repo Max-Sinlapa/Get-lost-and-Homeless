@@ -35,7 +35,7 @@ public class TaskGoToTarget : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("TaskGoToTarget");
+        //Debug.Log("TaskGoToTarget");
         
         Transform target = (Transform)GetData("target");
 

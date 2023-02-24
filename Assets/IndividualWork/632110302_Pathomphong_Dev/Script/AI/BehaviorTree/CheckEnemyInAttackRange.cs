@@ -24,7 +24,7 @@ public class CheckEnemyInAttackRange : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("CheckEnemyInAttackRange");
+        //Debug.Log("CheckEnemyInAttackRange");
         
         object t = GetData("target");
         if (t == null)

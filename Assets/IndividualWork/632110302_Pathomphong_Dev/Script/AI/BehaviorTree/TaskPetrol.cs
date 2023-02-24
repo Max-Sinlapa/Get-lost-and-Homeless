@@ -43,7 +43,7 @@ public class TaskPatrol : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("TaskPetrol");
+        //Debug.Log("TaskPetrol");
         
         _animator.SetBool(_AnimAttack, false);
         

@@ -18,6 +18,8 @@ public class GuardBT : Tree
     public float SpeedToTarget = 1f;
     public float AttackRange = 2f;
 
+    public AttackController _AttackController;
+
     protected override Node SetupTree()
     {
 
@@ -26,7 +28,7 @@ public class GuardBT : Tree
             new Sequence(new List<Node>
             {
                 new CheckEnemyInAttackRange(transform, AttackRange),
-                new TaskAttack(transform),
+                new TaskAttack(transform, _AttackController),
             }),
             new Sequence(new List<Node>
             {
