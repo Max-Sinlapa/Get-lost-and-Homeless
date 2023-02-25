@@ -553,7 +553,8 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1218318921897256549, guid: 2282b56995eb173439e204f6850f2a53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2282b56995eb173439e204f6850f2a53, type: 3}
 --- !u!1 &408318128
 GameObject:
@@ -2245,7 +2246,7 @@ MonoBehaviour:
     m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 765cbf7d-9af7-4e15-848a-9c44f2847a4f
+  m_DefaultActionMap: My_Rat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 2113397723}
 --- !u!114 &1178417721
