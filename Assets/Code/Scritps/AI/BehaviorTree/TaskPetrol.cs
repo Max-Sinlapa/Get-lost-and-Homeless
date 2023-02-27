@@ -43,7 +43,7 @@ public class TaskPatrol : Node
 
     public override NodeState Evaluate()
     {
-        //Debug.Log("TaskPetrol");
+        //Debug.Log("TaskPetrol"); 
         
         _animator.SetBool(_AnimAttack, false);
         
@@ -60,7 +60,10 @@ public class TaskPatrol : Node
         else
         {
             Transform wp = _waypoints[_currentWaypointIndex];
-            if (Vector3.Distance(_transform.position, wp.position) < 0.01f)
+            var checkdistan = Vector3.Distance(_transform.position, wp.position);
+            //Debug.Log("Distan = " + checkdistan);    
+
+            if (Vector3.Distance(_transform.position, wp.position) < 0.1f)
             {
                 _transform.position = wp.position;
                 _waitCounter = 0f;
