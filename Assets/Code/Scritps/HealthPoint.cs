@@ -41,6 +41,7 @@ public class HealthPoint : MonoBehaviour
         if (currentHp <= 0)
         {
             isDead = true;
+            Debug.Log("Die");
             Death();
         }
         else
@@ -51,12 +52,14 @@ public class HealthPoint : MonoBehaviour
     
     private void Death()
     {
-        currentHp = MaxHp;
         Respawn();
     }
     
     private void Respawn() 
     {
-         transform.position = spawnPoint.position; 
+        Debug.Log(" :) "+transform.position);
+        Debug.Log(" :( " + spawnPoint.position);
+        transform.position = spawnPoint.position;
+        currentHp = MaxHp;
     }
 }

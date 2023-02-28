@@ -462,7 +462,9 @@ GameObject:
   - component: {fileID: 8605876977821350503}
   - component: {fileID: 2993273000948288078}
   - component: {fileID: 941509613}
-  m_Layer: 8
+  - component: {fileID: 1415073097}
+  - component: {fileID: 1415073098}
+  m_Layer: 3
   m_Name: PlayerCat
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -606,7 +608,7 @@ MonoBehaviour:
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
-  LandingAudioClip: {fileID: 0}
+  LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   FootstepAudioClips: []
   FootstepAudioVolume: 0.5
   JumpHeight: 1.2
@@ -614,18 +616,18 @@ MonoBehaviour:
   JumpTimeout: 0.5
   FallTimeout: 0.15
   Grounded: 1
-  GroundedOffset: -0.14
+  GroundedOffset: -0.02
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   CinemachineCameraTarget: {fileID: 6060720396985885058}
   TopClamp: 70
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
   m_ActorTriggerHandler: {fileID: 7988217334258019738}
-  JumpPower: 0
+  JumpPower: 30
   JumpLimit: 1
   JumpCount: 0
   ClimbSpeed: 10
@@ -642,6 +644,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMagnitude: 1
+--- !u!114 &1415073097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939391326533130457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee907741cb80a164a90a23bb40fc9123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 5
+  isDead: 0
+  playerHP_Text: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  onHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1415073098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939391326533130457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2d46957c80ef64a9d0c20dd1d574b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObjectType: 0
 --- !u!1 &2010340868817814026
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,18 +9,24 @@ public class AttackHitBox : MonoBehaviour
 {
     public AttackController _attackController;
     public ObjectType_Identities _thisObjectType;
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
         
         /// Check Same ObjectType
         if(_thisObjectType.Type == otherObjectType)
+        {
+            Debug.Log("same tybe" );
             return;
+        }
+           
         
         var damage = other.GetComponent<HealthPoint>();
-        
+        Debug.Log("object=" + other);
+
         if (damage != null)
         {
+            Debug.Log("object=" + other + " attackDamage= " + _attackController.attackDamage);
             if (_attackController == null)
                 damage.DecreaseHp(0);
             else

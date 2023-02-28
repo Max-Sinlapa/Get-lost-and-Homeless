@@ -333,7 +333,8 @@ namespace Max_DEV.MoveMent
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
-                    _verticalVelocity = -2f;
+                    _verticalVelocity += Gravity * Time.deltaTime;
+                    //_verticalVelocity = -2f;
                 }
                 
                 
