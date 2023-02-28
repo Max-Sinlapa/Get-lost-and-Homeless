@@ -43,6 +43,7 @@ public class HealthPoint : MonoBehaviour
             isDead = true;
             Debug.Log("Die");
             Death();
+            
         }
         else
         {
@@ -57,9 +58,12 @@ public class HealthPoint : MonoBehaviour
     
     private void Respawn() 
     {
-        Debug.Log(" :) "+transform.position);
-        Debug.Log(" :( " + spawnPoint.position);
+        GetComponent<CharacterController>().enabled = false;
+        //Debug.Log(" :) "+transform.position);
+        //Debug.Log(" :( " + spawnPoint.position);
         transform.position = spawnPoint.position;
         currentHp = MaxHp;
+        GetComponent<CharacterController>().enabled = true;
+
     }
 }
