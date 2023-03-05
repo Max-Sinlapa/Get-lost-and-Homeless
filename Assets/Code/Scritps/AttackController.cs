@@ -10,9 +10,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] private float attackSpeed;
     [SerializeField] private GameObject meleeHitBox;
     public bool isAttacking;
-    
-    
-    
+
     public void PerformAttack()
     {
         if (isAttacking)

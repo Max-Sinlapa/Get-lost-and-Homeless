@@ -15,6 +15,7 @@ namespace Max_DEV.MoveMent
         public bool sprint;
         public bool climb;
         public bool interection;
+        public bool attack;
 
         [Header("Movement Settings")]
         public bool analogMovement;
@@ -56,6 +57,11 @@ namespace Max_DEV.MoveMent
         {
             InteractionInput(value.isPressed);
         }
+
+        public void OnAttack(InputValue value)
+        {
+            AttackInput(value.isPressed);
+        }
 #endif
 
 
@@ -87,6 +93,11 @@ namespace Max_DEV.MoveMent
         public void InteractionInput(bool newClimbState)
         {
             interection = newClimbState;
+        }
+        
+        public void AttackInput(bool newClimbState)
+        {
+            attack = newClimbState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

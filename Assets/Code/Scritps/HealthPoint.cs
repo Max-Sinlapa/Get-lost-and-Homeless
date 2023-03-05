@@ -5,65 +5,97 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
-public class HealthPoint : MonoBehaviour
+namespace Max_DEV
 {
-    [Header("Health")]
-    public const int MaxHp = 5;
-    [SerializeField] private int currentHp = MaxHp;
-    public bool isDead = false;
-    public TextMeshProUGUI playerHP_Text;
-    [SerializeField] private Transform spawnPoint;
-    public UnityEvent<int> onHpChanged;
-
-    private void Start()
+    public class HealthPoint : MonoBehaviour
     {
-        onHpChanged?.Invoke(currentHp);
-    }
-
-    public void HealthText()
-    {
-        if (playerHP_Text)
-        {
-            playerHP_Text.SetText(" "+ currentHp);
-        }
-    }
-    
-    public void Heal(int _value)
-    {
-        currentHp += _value;
-        onHpChanged?.Invoke(currentHp);
-    }
+        public bool CanRespawn;
+        [SerializeField] private Transform spawnPoint;
         
-    public void DecreaseHp(int _value) 
-    {
-        currentHp -= _value;
-        onHpChanged?.Invoke(currentHp);
-        if (currentHp <= 0)
+        [Header("Health")]
+        public const int MaxHp = 5;
+        [SerializeField] private int currentHp;
+        public bool isDead = false;
+        public TextMeshProUGUI playerHP_Text;
+        public UnityEvent<int> onHpChanged;
+    
+        public bool ShereHPinGameManager;
+    
+        private void Start()
         {
-            isDead = true;
-            Debug.Log("Die");
-            Death();
+            onHpChanged?.Invoke(currentHp);
+    
+            if (ShereHPinGameManager)
+            {
+                Debug.Log("AllPlayerHealth = " + max_GameManager.AllPlayerHealth);
+                currentHp = max_GameManager.AllPlayerHealth;
+            }
+        }
+    
+        public void HealthText()
+        {
+            if (playerHP_Text)
+            {
+                playerHP_Text.SetText(" "+ currentHp);
+            }
+        }
+        
+        public void Heal(int _value)
+        {
+            currentHp += _value;
+            onHpChanged?.Invoke(currentHp);
             
+            if (ShereHPinGameManager)
+                max_GameManager.AllPlayerHealth = currentHp;
         }
-        else
+            
+        public void DecreaseHp(int _value) 
         {
-            isDead = false;
-        }
-    }
-    
-    private void Death()
-    {
-        Respawn();
-    }
-    
-    private void Respawn() 
-    {
-        GetComponent<CharacterController>().enabled = false;
-        //Debug.Log(" :) "+transform.position);
-        //Debug.Log(" :( " + spawnPoint.position);
-        transform.position = spawnPoint.position;
-        currentHp = MaxHp;
-        GetComponent<CharacterController>().enabled = true;
+            currentHp -= _value;
 
+            if (ShereHPinGameManager)
+            {
+                max_GameManager.AllPlayerHealth = currentHp;
+                Debug.Log("DecreaseManagerHealth" + max_GameManager.AllPlayerHealth);
+            }
+                
+            
+            
+            onHpChanged?.Invoke(currentHp);
+            
+            if (currentHp <= 0)
+            {
+                isDead = true;
+                Debug.Log("Die");
+                Death();
+                
+            }
+            else
+            {
+                isDead = false;
+            }
+        }
+        
+        private void Death()
+        {
+            if(CanRespawn)
+                Respawn();
+        }
+        
+        private void Respawn() 
+        {
+            GetComponent<CharacterController>().enabled = false;
+            //Debug.Log(" :) "+transform.position);
+            //Debug.Log(" :( " + spawnPoint.position);
+            transform.position = spawnPoint.position;
+            currentHp = MaxHp;
+            
+            if (ShereHPinGameManager)
+                max_GameManager.AllPlayerHealth = currentHp;
+
+            GetComponent<CharacterController>().enabled = true;
+    
+        }
     }
 }
+

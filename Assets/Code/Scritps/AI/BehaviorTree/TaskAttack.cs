@@ -2,55 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorTree;
 using UnityEngine;
+using Max_DEV;
 
-public class TaskAttack : Node
+namespace Max_DEV.Ai
 {
-    private Animator _animator;
-    private int _AnimWalk;
-    private int _AnimAttack;
-
-    private Transform _lastTarget;
-    private HealthPoint _enemyHealthPoint;
-
-    private AttackController _thisAttackControll;
-
-    public TaskAttack(Transform transform, AttackController attackController)
+    public class TaskAttack : Node
     {
-        _thisAttackControll = attackController;
-        
-        _animator = transform.GetComponent<Animator>();
-        _AnimWalk = Animator.StringToHash("Walk");
-        _AnimAttack = Animator.StringToHash("Attack");
-    }
-
-    public override NodeState Evaluate()
-    {
-        //Debug.Log("TaskAttack");
-        
-        Transform target = (Transform)GetData("target");
-        if (target != _lastTarget)
+        private Animator _animator;
+        private int _AnimWalk;
+        private int _AnimAttack;
+    
+        private Transform _lastTarget;
+        private HealthPoint _enemyHealthPoint;
+    
+        private AttackController _thisAttackControll;
+    
+        public TaskAttack(Transform transform, AttackController attackController)
         {
-            _enemyHealthPoint = target.GetComponent<HealthPoint>();
-            _lastTarget = target;
+            _thisAttackControll = attackController;
+            
+            _animator = transform.GetComponent<Animator>();
+            _AnimWalk = Animator.StringToHash("Walk");
+            _AnimAttack = Animator.StringToHash("Attack");
         }
-
-        bool enemyIsDead = _enemyHealthPoint.isDead;
-        if (enemyIsDead)
+    
+        public override NodeState Evaluate()
         {
-            ClearData("target");
-            _animator.SetBool(_AnimAttack, false);
-            _animator.SetBool(_AnimWalk, true);
+            //Debug.Log("TaskAttack");
+            
+            Transform target = (Transform)GetData("target");
+            if (target != _lastTarget)
+            {
+                _enemyHealthPoint = target.GetComponent<HealthPoint>();
+                _lastTarget = target;
+            }
+    
+            bool enemyIsDead = _enemyHealthPoint.isDead;
+            if (enemyIsDead)
+            {
+                ClearData("target");
+                _animator.SetBool(_AnimAttack, false);
+                _animator.SetBool(_AnimWalk, true);
+            }
+            else 
+            {
+                //Debug.Log("EnemyPerformAttack");
+                _thisAttackControll.PerformAttack();
+                _animator.SetBool(_AnimAttack, true);
+                _animator.SetBool(_AnimWalk, false);
+            }
+            
+            
+            state = NodeState.RUNNING;
+            return state;
         }
-        else 
-        {
-            Debug.Log("EnemyPerformAttack");
-            _thisAttackControll.PerformAttack();
-            _animator.SetBool(_AnimAttack, true);
-            _animator.SetBool(_AnimWalk, false);
-        }
-        
-        
-        state = NodeState.RUNNING;
-        return state;
     }
 }
+
+
