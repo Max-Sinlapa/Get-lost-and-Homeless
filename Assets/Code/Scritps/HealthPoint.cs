@@ -27,8 +27,8 @@ namespace Max_DEV
     
             if (ShereHPinGameManager)
             {
-                Debug.Log("AllPlayerHealth = " + max_GameManager.AllPlayerHealth);
-                currentHp = max_GameManager.AllPlayerHealth;
+                Debug.Log("AllPlayerHealth = " + max_GameManager._allPlayerHealth);
+                currentHp = max_GameManager._allPlayerHealth;
             }
         }
     
@@ -46,7 +46,7 @@ namespace Max_DEV
             onHpChanged?.Invoke(currentHp);
             
             if (ShereHPinGameManager)
-                max_GameManager.AllPlayerHealth = currentHp;
+                max_GameManager._allPlayerHealth = currentHp;
         }
             
         public void DecreaseHp(int _value) 
@@ -55,8 +55,8 @@ namespace Max_DEV
 
             if (ShereHPinGameManager)
             {
-                max_GameManager.AllPlayerHealth = currentHp;
-                Debug.Log("DecreaseManagerHealth" + max_GameManager.AllPlayerHealth);
+                max_GameManager._allPlayerHealth = currentHp;
+                Debug.Log("DecreaseManagerHealth" + max_GameManager._allPlayerHealth);
             }
                 
             
@@ -91,7 +91,7 @@ namespace Max_DEV
             currentHp = MaxHp;
             
             if (ShereHPinGameManager)
-                max_GameManager.AllPlayerHealth = currentHp;
+                max_GameManager._allPlayerHealth = currentHp;
 
             GetComponent<CharacterController>().enabled = true;
     

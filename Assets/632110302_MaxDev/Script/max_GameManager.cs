@@ -7,16 +7,16 @@ namespace Max_DEV
 {
     public class max_GameManager : MonoBehaviour
     {
-        public static int AllPlayerHealth;
-        public static int PlayerScore;
+        public static int _allPlayerHealth;
+        public static int _playerScore;
         public int PlayerHealth;
 
         private void Awake()
         {
-            AllPlayerHealth = PlayerHealth;
-            PlayerScore = 0;
+            _allPlayerHealth = PlayerHealth;
+            _playerScore = 0;
             
-            Debug.Log("Player HP = " + AllPlayerHealth);
+            Debug.Log("Player HP = " + _allPlayerHealth);
         }
 
         void Start()
@@ -29,6 +29,12 @@ namespace Max_DEV
         {
             
         }
+
+        public void AddPlayerScore(int _score)
+        {
+            _playerScore += _score;
+        }
+        
         
         
     }
