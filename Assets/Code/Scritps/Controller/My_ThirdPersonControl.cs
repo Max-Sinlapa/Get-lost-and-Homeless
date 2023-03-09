@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using StarterAssets;
 using Max_DEV.Interac;
+
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -18,7 +20,7 @@ namespace Max_DEV.MoveMent
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class My_ThirdPersonControl : MonoBehaviour
+    public class My_ThirdPersonControl : MonoBehaviourPun
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -206,6 +208,10 @@ namespace Max_DEV.MoveMent
         {
             _hasAnimator = TryGetComponent(out _animator);
 
+            if(!photonView.IsMine)
+            {
+                return;
+            }
             Jump_ClimbAndGravity();
             GroundedCheck();
             Move();

@@ -19,7 +19,7 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
     [Header("Spawn Info")]
     [Tooltip("The prefab to use for representing the player")]
     public GameObject GamePlayerPrefab;
-
+    public GameObject _SpawnPlayer;
 
     public enum gamestate
     {
@@ -146,7 +146,7 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
             //PunNetworkManager.singleton.SpawnPlayer();
             // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
             PhotonNetwork.Instantiate(GamePlayerPrefab.name,
-                new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                _SpawnPlayer.transform.position, Quaternion.identity, 0);
 
             //isGameStart = true;
             CurrentGamestate = gamestate.GameStart;
