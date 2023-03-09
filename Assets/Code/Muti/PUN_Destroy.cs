@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-public class PUN_Destroy : MonoBehaviourPun
+
+public class Destroy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
