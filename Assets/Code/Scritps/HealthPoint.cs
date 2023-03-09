@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using Max_DEV.Manager;
 
 namespace Max_DEV
 {
@@ -27,8 +28,8 @@ namespace Max_DEV
     
             if (ShereHPinGameManager)
             {
-                Debug.Log("AllPlayerHealth = " + max_GameManager._allPlayerHealth);
-                currentHp = max_GameManager._allPlayerHealth;
+                Debug.Log("AllPlayerHealth = " + m_GameManager._allPlayerCurrentHealth);
+                currentHp = m_GameManager._allPlayerCurrentHealth;
             }
         }
     
@@ -46,7 +47,7 @@ namespace Max_DEV
             onHpChanged?.Invoke(currentHp);
             
             if (ShereHPinGameManager)
-                max_GameManager._allPlayerHealth = currentHp;
+                m_GameManager._allPlayerCurrentHealth = currentHp;
         }
             
         public void DecreaseHp(int _value) 
@@ -55,8 +56,8 @@ namespace Max_DEV
 
             if (ShereHPinGameManager)
             {
-                max_GameManager._allPlayerHealth = currentHp;
-                Debug.Log("DecreaseManagerHealth" + max_GameManager._allPlayerHealth);
+                m_GameManager._allPlayerCurrentHealth = currentHp;
+                Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
             }
                 
             
@@ -91,7 +92,7 @@ namespace Max_DEV
             currentHp = MaxHp;
             
             if (ShereHPinGameManager)
-                max_GameManager._allPlayerHealth = currentHp;
+                m_GameManager._allPlayerCurrentHealth = currentHp;
 
             GetComponent<CharacterController>().enabled = true;
     
