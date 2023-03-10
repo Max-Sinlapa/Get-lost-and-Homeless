@@ -27,11 +27,11 @@ namespace Photon.Pun.Demo.PunBasics
 
 		[Tooltip("The Ui Panel to let the user enter name, connect and play")]
 		[SerializeField]
-		private GameObject controlPanel;
+		protected GameObject controlPanel;
 
 		[Tooltip("The Ui Text to inform the user about the connection progress")]
 		[SerializeField]
-		private Text feedbackText;
+		protected Text feedbackText;
 
 		[Tooltip("The maximum number of players per room")]
 		[SerializeField]
@@ -39,7 +39,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 		[Tooltip("The UI Loader Anime")]
 		[SerializeField]
-		private LoaderAnime loaderAnime;
+		protected LoaderAnime loaderAnime;
 
 		#endregion
 
@@ -49,12 +49,12 @@ namespace Photon.Pun.Demo.PunBasics
 		/// we need to keep track of this to properly adjust the behavior when we receive call back by Photon.
 		/// Typically this is used for the OnConnectedToMaster() callback.
 		/// </summary>
-		bool isConnecting;
+		protected bool isConnecting;
 
 		/// <summary>
 		/// This client's version number. Users are separated from each other by gameVersion (which allows you to make breaking changes).
 		/// </summary>
-		string gameVersion = "1";
+		protected string gameVersion = "1";
 
 		#endregion
 
@@ -123,7 +123,7 @@ namespace Photon.Pun.Demo.PunBasics
 		/// Logs the feedback in the UI view for the player, as opposed to inside the Unity Editor for the developer.
 		/// </summary>
 		/// <param name="message">Message.</param>
-		void LogFeedback(string message)
+		protected void LogFeedback(string message)
 		{
 			// we do not assume there is a feedbackText defined.
 			if (feedbackText == null) {
