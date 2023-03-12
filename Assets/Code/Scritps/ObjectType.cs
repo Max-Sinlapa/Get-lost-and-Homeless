@@ -3,10 +3,12 @@ namespace Max_DEV
     public enum ObjectType
     {
         Cat,
+        Mouse,
         ClimbArea,
         Floor,
-        Mouse,
-        platform
+        Water,
+        Enemy
+        
     }
 
 }

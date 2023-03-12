@@ -12,6 +12,9 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool fire;
+		public bool heal;
+		public bool changColor;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;

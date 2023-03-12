@@ -6,37 +6,42 @@ using UnityEngine.Events;
 using Tree = BehaviorTree.Tree;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class GuardBT : Tree
+namespace Max_DEV.Ai
 {
-    public NavMeshAgent EnemyAgent;
-    public float waitTime = 1f;
-    public float PetrolSpeed = 2f;
-    public UnityEngine.Transform[] waypoint;
-
-    public float FOV_Range = 6f;
-    public float SpeedToTarget = 1f;
-    public float AttackRange = 2f;
-
-    public AttackController _AttackController;
-
-    protected override Node SetupTree()
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class GuardBT : Tree
     {
-
-        Node root = new Selector(new List<Node>
+        public NavMeshAgent EnemyAgent;
+        public float waitTime = 1f;
+        public float PetrolSpeed = 2f;
+        public UnityEngine.Transform[] waypoint;
+    
+        public float FOV_Range = 6f;
+        public float SpeedToTarget = 1f;
+        public float AttackRange = 2f;
+    
+        public AttackController _AttackController;
+    
+        protected override Node SetupTree()
         {
-            new Sequence(new List<Node>
+    
+            Node root = new Selector(new List<Node>
             {
-                new CheckEnemyInAttackRange(transform, AttackRange),
-                new TaskAttack(transform, _AttackController),
-            }),
-            new Sequence(new List<Node>
-            {
-                new CheckEnemyInFOVRang(transform, FOV_Range),
-                new TaskGoToTarget(transform,SpeedToTarget, EnemyAgent),
-            }),
-            new TaskPatrol(transform, waypoint, PetrolSpeed, waitTime, EnemyAgent),
-        });
-        return root;
+                new Sequence(new List<Node>
+                {
+                    new CheckEnemyInAttackRange(transform, AttackRange),
+                    new TaskAttack(transform, _AttackController),
+                }),
+                new Sequence(new List<Node>
+                {
+                    new CheckEnemyInFOVRang(transform, FOV_Range),
+                    new TaskGoToTarget(transform,SpeedToTarget, EnemyAgent),
+                }),
+                new TaskPatrol(transform, waypoint, PetrolSpeed, waitTime, EnemyAgent),
+            });
+            return root;
+        }
     }
 }
+
+
