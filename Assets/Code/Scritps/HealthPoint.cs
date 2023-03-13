@@ -56,17 +56,8 @@ namespace Max_DEV
             
         public void DecreaseHp(int _value) 
         {
-<<<<<<< HEAD
-            currentHp -= _value;
+   
 
-            if (ShereHPinGameManager)
-            {
-                m_GameManager._allPlayerCurrentHealth = currentHp;
-                currentHp = m_GameManager._allPlayerCurrentHealth;
-                Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
-            }
-                
-=======
             if (ShereHPinGameManager)
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;
@@ -78,7 +69,6 @@ namespace Max_DEV
             {
                 currentHp -= _value;
             }   
->>>>>>> origin/Muti
             
             onHpChanged?.Invoke(currentHp);
             
