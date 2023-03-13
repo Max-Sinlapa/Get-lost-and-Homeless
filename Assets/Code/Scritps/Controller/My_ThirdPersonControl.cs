@@ -116,6 +116,7 @@ namespace Max_DEV.MoveMent
         private bool _canSwim = false;
         
         private ObjectType _thisObjectType;
+        private PhotonView _photonView;
 
         #endregion
         
@@ -200,7 +201,8 @@ namespace Max_DEV.MoveMent
 
             _thisObjectType = GetComponent<ObjectType_Identities>().Type;
             Debug.Log(""+this.gameObject + "ObjectType = " + _thisObjectType);
-            
+            _photonView = GetComponent<PhotonView>();
+
             #endregion
         }
 
@@ -208,10 +210,13 @@ namespace Max_DEV.MoveMent
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            if(!photonView.IsMine)
+            if (_photonView != null)
             {
-                return;
+                if(!photonView.IsMine)
+                    return;
+                
             }
+           
             Jump_ClimbAndGravity();
             GroundedCheck();
             Move();
@@ -232,6 +237,7 @@ namespace Max_DEV.MoveMent
             /////// Attack
             if (_AttackController != null && _input.attack && CanAttack)
             {
+                Debug.Log("PerformAttack");
                 _AttackController.PerformAttack();
                 _input.attack = false;
             }
@@ -532,7 +538,11 @@ namespace Max_DEV.MoveMent
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                if (LandingAudioClip != null)
+                {
+                    AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+
+                }
             }
         }
 

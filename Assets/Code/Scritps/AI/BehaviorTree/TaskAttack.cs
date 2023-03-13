@@ -16,6 +16,7 @@ namespace Max_DEV.Ai
         private HealthPoint _enemyHealthPoint;
     
         private AttackController _thisAttackControll;
+        private bool enemyIsDead;
     
         public TaskAttack(Transform transform, AttackController attackController)
         {
@@ -31,13 +32,16 @@ namespace Max_DEV.Ai
             //Debug.Log("TaskAttack");
             
             Transform target = (Transform)GetData("target");
+            _enemyHealthPoint = target.GetComponent<HealthPoint>();
             if (target != _lastTarget)
             {
-                _enemyHealthPoint = target.GetComponent<HealthPoint>();
                 _lastTarget = target;
             }
     
-            bool enemyIsDead = _enemyHealthPoint.isDead;
+            Debug.Log("isDead = " + _enemyHealthPoint.isDead);
+            //bool enemyIsDead = _enemyHealthPoint.isDead;
+            Debug.Log("isDead = " + _enemyHealthPoint.isDead);
+            
             if (enemyIsDead)
             {
                 ClearData("target");
@@ -46,7 +50,7 @@ namespace Max_DEV.Ai
             }
             else 
             {
-                //Debug.Log("EnemyPerformAttack");
+                Debug.Log("EnemyPerformAttack");
                 _thisAttackControll.PerformAttack();
                 _animator.SetBool(_AnimAttack, true);
                 _animator.SetBool(_AnimWalk, false);

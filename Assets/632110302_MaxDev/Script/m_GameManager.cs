@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 
 namespace Max_DEV.Manager
@@ -15,16 +16,31 @@ namespace Max_DEV.Manager
 
         public static int _startPlayerHealth;
         public static int _startPlayerScore;
-        
+
+        public Slider _HpSlider;
         
         private void Awake()
         {
             Debug.Log("Player HP = " + _allPlayerCurrentHealth);
             Debug.Log("Player Score = " + _playerCurrentScore);
+
+            _HpSlider.maxValue = _allPlayerCurrentHealth;
         }
 
-        public static void SetPlayerHealth(int _hp)
+        private void Update()
         {
+            if (_HpSlider != null)
+            {
+                _HpSlider.value = _allPlayerCurrentHealth;
+            }
+            
+        }
+
+        public void SetPlayerHealth(int _hp)
+        {
+            if (_HpSlider != null)
+                _HpSlider.maxValue = _allPlayerCurrentHealth;
+            
             _allPlayerCurrentHealth = _hp;
             Debug.Log("Player HP = " + _allPlayerCurrentHealth);
         }

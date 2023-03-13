@@ -13,18 +13,18 @@ public class AttackHitBox : MonoBehaviour
     private bool sametype = false;
     private void OnTriggerEnter(Collider other)
     {
-        ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
+        //ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
         ObjectType_Identities OtherType = other.GetComponent<ObjectType_Identities>();
         var damage = other.GetComponent<HealthPoint>();
         Debug.Log("object=" + other);
         
         /// Check Same ObjectType
-        if (otherObjectType != null)
+        if (OtherType != null)
         {
             foreach (ObjectType friendObject in _FriendyObjectTypes)
             {
 
-                if(friendObject == otherObjectType)
+                if(friendObject == OtherType.Type)
                 {
                     sametype = true;
                     Debug.Log("same tybe" );

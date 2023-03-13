@@ -85,6 +85,10 @@ namespace Max_DEV
         {
             if(CanRespawn)
                 Respawn();
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
         
         private void Respawn() 
