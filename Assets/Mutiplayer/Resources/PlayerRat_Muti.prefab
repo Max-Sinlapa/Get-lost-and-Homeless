@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 1782347091402822442}
   - component: {fileID: 8683083371307638848}
   - component: {fileID: 8446610485188288657}
-  - component: {fileID: 707767068290464188}
+  - component: {fileID: -79674524863560949}
   m_Layer: 3
   m_Name: PlayerRat_Muti
   m_TagString: Player
@@ -528,6 +528,9 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 1
   sprint: 1
+  fire: 0
+  heal: 0
+  changColor: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -775,7 +778,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &707767068290464188
+--- !u!114 &-79674524863560949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,10 +787,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782347091402822483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b5381a671fb994ab656bc4a7a7fcc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b7fd9a200b5e3e40a1f866817d1c0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraRoot: {fileID: 0}
+  _teamReander: {fileID: 0}
+  CameraRoot: {fileID: 1782347091958174413}
 --- !u!1 &1782347091423348382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1782347091681807339
 Transform:
   m_ObjectHideFlags: 0

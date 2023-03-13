@@ -881,8 +881,8 @@ GameObject:
   - component: {fileID: 262542207533317228}
   - component: {fileID: 3009466081656086637}
   - component: {fileID: 3664199937625424086}
-  - component: {fileID: 4860390334784332425}
-  m_Layer: 0
+  - component: {fileID: 5980468882437929969}
+  m_Layer: 3
   m_Name: PlayerCat_Muti
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &4860390334784332425
+--- !u!114 &5980468882437929969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823578095743184728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b5381a671fb994ab656bc4a7a7fcc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b7fd9a200b5e3e40a1f866817d1c0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CameraRoot: {fileID: 6321010606732301828}

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using Photon.Pun;
 using Max_DEV.Manager;
 
 namespace Max_DEV
 {
-    public class HealthPoint : MonoBehaviour
+    public class HealthPoint : MonoBehaviour , IPunObservable
     {
         public bool CanRespawn;
         [SerializeField] private Transform spawnPoint;
@@ -28,7 +29,7 @@ namespace Max_DEV
     
             if (ShereHPinGameManager)
             {
-                Debug.Log("AllPlayerHealth = " + m_GameManager._allPlayerCurrentHealth);
+                Debug.Log(""+this.gameObject+" : Health = " + m_GameManager._allPlayerCurrentHealth);
                 currentHp = m_GameManager._allPlayerCurrentHealth;
             }
         }
@@ -45,9 +46,12 @@ namespace Max_DEV
         {
             currentHp += _value;
             onHpChanged?.Invoke(currentHp);
-            
+
             if (ShereHPinGameManager)
+            {
                 m_GameManager._allPlayerCurrentHealth = currentHp;
+                currentHp = m_GameManager._allPlayerCurrentHealth;
+            }
         }
             
         public void DecreaseHp(int _value) 
@@ -57,10 +61,10 @@ namespace Max_DEV
             if (ShereHPinGameManager)
             {
                 m_GameManager._allPlayerCurrentHealth = currentHp;
+                currentHp = m_GameManager._allPlayerCurrentHealth;
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
             }
                 
-            
             
             onHpChanged?.Invoke(currentHp);
             
@@ -95,8 +99,20 @@ namespace Max_DEV
                 m_GameManager._allPlayerCurrentHealth = currentHp;
 
             GetComponent<CharacterController>().enabled = true;
-    
         }
+        
+        public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) 
+        {
+            /*
+            if (stream.IsWriting) {
+                stream.SendNext(currentHp);
+            }
+            else {
+                currentHp = (int)stream.ReceiveNext();
+            }
+            */
+        }
+
     }
 }
 

@@ -9,10 +9,6 @@ using Photon.Realtime;
 [RequireComponent(typeof(PhotonTransformView))]
 public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagicCallback 
 {
-    [Header("My Option")]
-    public MeshRenderer _teamReander;
-    
-    
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
     public Transform CameraRoot;
@@ -47,9 +43,11 @@ public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagi
         //Color
         OnPlayerPropertiesUpdate(info.Sender,info.Sender.CustomProperties);
 
+        /*
         //Setting Mesh Team
         if (_teamReander != null)
             SettingPlayerTeam(info.Sender);
+        */
         
     }
     
@@ -77,7 +75,7 @@ public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagi
         {
             //int colors = (int)TeamExtensions.GetTeam(Sender);
             int colors = (int)_currentTeam.Code;
-            _teamReander.material.color = PunGameSetting.GetColor(colors);
+            //_teamReander.material.color = PunGameSetting.GetColor(colors);
         }
     }
 

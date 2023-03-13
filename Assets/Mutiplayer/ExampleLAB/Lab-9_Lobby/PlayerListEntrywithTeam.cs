@@ -22,7 +22,9 @@ public class PlayerListEntrywithTeam : PlayerListEntry {
             foreach (PhotonTeam team in _listTeam) {
                 PlayerTeamDropdown.options.Add(new Dropdown.OptionData(team.Name));
             }
-            PhotonTeamExtensions.JoinTeam(PhotonNetwork.LocalPlayer, (byte)(PlayerTeamDropdown.value + 1));
+            //PhotonTeamExtensions.JoinTeam(PhotonNetwork.LocalPlayer, (byte)(PlayerTeamDropdown.value + 1));
+            PhotonTeamExtensions.JoinTeam(PhotonNetwork.LocalPlayer, (byte)(PhotonNetwork.CurrentRoom.PlayerCount));
+
         }
         if (PhotonNetwork.LocalPlayer.ActorNumber != ownerId) {
             PlayerTeamDropdown.interactable = false;
