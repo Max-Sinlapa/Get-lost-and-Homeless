@@ -24,7 +24,10 @@ namespace Max_DEV.Manager
             Debug.Log("Player HP = " + _allPlayerCurrentHealth);
             Debug.Log("Player Score = " + _playerCurrentScore);
 
-            _HpSlider.maxValue = _allPlayerCurrentHealth;
+            if (_HpSlider != null)
+            {
+                _HpSlider.maxValue = _allPlayerCurrentHealth;
+            }
         }
 
         private void Update()
