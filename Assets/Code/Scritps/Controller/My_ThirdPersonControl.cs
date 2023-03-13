@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using StarterAssets;
 using Max_DEV.Interac;
+
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -13,12 +16,11 @@ namespace Max_DEV.MoveMent
 {
     //Use Class "my_AssetInput"
     [RequireComponent(typeof(My_AssetInput))]
-    
     [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class My_ThirdPersonControl : MonoBehaviour
+    public class My_ThirdPersonControl : MonoBehaviourPun
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -89,14 +91,33 @@ namespace Max_DEV.MoveMent
         [SerializeField] protected ActorTriggerHandler m_ActorTriggerHandler;
         
         [Header("My Jump Option")]
+        [SerializeField] private bool MultipleJump;
         public float JumpPower = 5;
         public int JumpLimit = 1;
         public int JumpCount = 0;
         
         [Header("My Climb Option")]
+        [SerializeField] private bool Climb;
+        private bool InClimbArea = false;
+        public float ClimbAreaGravity = -5f;
         public int ClimbSpeed = 10;
 
-        private bool Can_Climb;
+        [Header("My Swim Option")] 
+        [SerializeField] private bool SwimWater;
+        private bool InWater = false;
+        public float WaterGravity = -7f;
+        public int SwimSpeed = 10;
+        public float OutOfWaterJumpPower = 10f;
+
+        [Header("My Attack Option")] 
+        [SerializeField] private bool CanAttack;
+        public AttackController _AttackController;
+        
+        private bool _canClimb = false;
+        private bool _canSwim = false;
+        
+        private ObjectType _thisObjectType;
+        private PhotonView _photonView;
 
         #endregion
         
@@ -178,22 +199,52 @@ namespace Max_DEV.MoveMent
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            #region My-Start-Region
+
+            _thisObjectType = GetComponent<ObjectType_Identities>().Type;
+            Debug.Log(""+this.gameObject + "ObjectType = " + _thisObjectType);
+            _photonView = GetComponent<PhotonView>();
+
+            #endregion
         }
 
         public void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
+            if (_photonView != null)
+            {
+                if(!photonView.IsMine)
+                    return;
+                
+            }
+           
             Jump_ClimbAndGravity();
             GroundedCheck();
             Move();
 
             if (_input.interection == true)
             {
-                PerformInteraction();
-
-                _input.interection = false;
+                if (m_ActorTriggerHandler != null)
+                {
+                    PerformInteraction();
+                    _input.interection = false;
+                }
+                else
+                {
+                    Debug.Log("No Interaction Assign");
+                }
             }
+            
+            /////// Attack
+            if (_AttackController != null && _input.attack && CanAttack)
+            {
+                Debug.Log("PerformAttack");
+                _AttackController.PerformAttack();
+                _input.attack = false;
+            }
+            
         }
 
         private void LateUpdate()
@@ -225,7 +276,7 @@ namespace Max_DEV.MoveMent
             }
             
             // reset jump count when on ground
-            if(Grounded || Can_Climb)
+            if(Grounded || _canClimb)
                 ResetJump();
         }
 
@@ -334,7 +385,19 @@ namespace Max_DEV.MoveMent
 
         public void Jump_ClimbAndGravity()
         {
-            if (Grounded || Can_Climb || JumpCount < JumpLimit)
+            if (_canSwim && SwimWater)
+            {
+                if (_input.climb && SwimWater)
+                    Swim(SwimSpeed);
+
+                // update animator if using character
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDFreeFall, true);
+                }
+            }
+            
+            if (Grounded || _canClimb || JumpCount < JumpLimit)
             {
 
                 // reset the fall timeout timer
@@ -351,16 +414,31 @@ namespace Max_DEV.MoveMent
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
                 {
-                    _verticalVelocity += Gravity * Time.deltaTime;
+                    if (InWater)
+                    {
+                        //Debug.Log("Water Gravity");
+                        _verticalVelocity += WaterGravity * Time.deltaTime;
+                    }
+
+                    if (InClimbArea)
+                    {
+                        //Debug.Log("ClimbArea Gravity");
+                        _verticalVelocity += ClimbAreaGravity * Time.deltaTime;
+                    }
+                    if (!InWater && !InClimbArea)
+                    {
+                        //Debug.Log("ground Gravity");
+                        _verticalVelocity += Gravity * Time.deltaTime;
+                    }
                     //_verticalVelocity = -2f;
                 }
                 
                 
                 // Climb
-                if (_input.climb && Can_Climb)
+                if (_input.climb && _canClimb && Climb)
                 {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(ClimbSpeed);
+                    if (_canClimb == true)
+                        Climb_Up(ClimbSpeed);
 
                     // update animator if using character
                     if (_hasAnimator)
@@ -369,7 +447,7 @@ namespace Max_DEV.MoveMent
                     }
                 }
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f && JumpCount < JumpLimit && !Can_Climb)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && JumpCount < JumpLimit && !_canClimb)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     //_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -382,8 +460,11 @@ namespace Max_DEV.MoveMent
                     }
 
                     // incress JumpCount When jump
-                    JumpCount += 1;
-                    Debug.Log("JumpPress-3");
+                    if(MultipleJump)
+                        JumpCount += 1;
+                    else
+                        JumpCount += 999999;
+                    
                     _input.jump = false;
                 }
 
@@ -419,7 +500,22 @@ namespace Max_DEV.MoveMent
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
             if (_verticalVelocity < _terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                if (InWater)
+                {
+                    //Debug.Log("Water Gravity");
+                    _verticalVelocity += WaterGravity * Time.deltaTime;
+                }
+
+                if (InClimbArea)
+                {
+                    //Debug.Log("ClimbArea Gravity");
+                    _verticalVelocity += ClimbAreaGravity * Time.deltaTime;
+                }
+                if (!InWater && !InClimbArea)
+                {
+                    //Debug.Log("ground Gravity");
+                    _verticalVelocity += Gravity * Time.deltaTime;
+                }
             }
         }
 
@@ -460,7 +556,11 @@ namespace Max_DEV.MoveMent
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                if (LandingAudioClip != null)
+                {
+                    AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+
+                }
             }
         }
 
@@ -474,18 +574,23 @@ namespace Max_DEV.MoveMent
                         switch (OtherType.Type)
                         {
                             case ObjectType.ClimbArea:
+                                if (!Climb)
+                                    return;
+                                _canClimb = true;
+                                InClimbArea = true;
                                 ResetJump();
-                                Can_Climb = true;
-                                print("can Climb");
+                                //print("can Climb");
                                 break;
                             case ObjectType.Floor:
                                 ResetJump();
                                 Grounded = true;
-                                print("On Ground");
+                                //print("On Ground");
                                 break;
-                            case ObjectType.platform:
-                                var playerTriger = GetComponent<CapsuleCollider>();
-                                playerTriger.isTrigger = true;
+                            case ObjectType.Water:
+                                InWater = true;
+                                if (!SwimWater)
+                                    return;
+                                _canSwim = true;
                                 break;
                         }
                     }
@@ -499,12 +604,13 @@ namespace Max_DEV.MoveMent
                         switch (OtherType.Type)
                         {
                             case ObjectType.ClimbArea:
-                                Can_Climb = false;
-                                print("No Climb");
+                                InClimbArea = false;
+                                _canClimb = false;
                                 break;
-                            case ObjectType.platform:
-                                var playerTriger = GetComponent<CapsuleCollider>();
-                                playerTriger.isTrigger = false;
+                            case ObjectType.Water:
+                                InWater = false;
+                                _canSwim = false;
+                                _verticalVelocity = Mathf.Sqrt(OutOfWaterJumpPower);
                                 break;
                         }
                     }
@@ -515,19 +621,16 @@ namespace Max_DEV.MoveMent
             JumpCount = 0;
         }
         
-        public void Climb_Up()
+        public void Climb_Up(float _climbSpeed)
         {
-            if (Can_Climb == true)
-            {
-                Rigidbody cat_rigid = GetComponent<Rigidbody>();
-                print("Climbing");
-                //cat_rigid.AddForce(0, AcceleRation * 2f, 0);
-                ResetJump();
-            }
-            else
-            {
-                return;
-            }
+            _verticalVelocity = Mathf.Sqrt(_climbSpeed);
+            //print("Climbing");
+        }
+
+        public void Swim(float _swimSpeed)
+        {
+            _verticalVelocity = Mathf.Sqrt(_swimSpeed);
+            ///print("Swim");
         }
 
         protected virtual void PerformInteraction()
@@ -538,6 +641,11 @@ namespace Max_DEV.MoveMent
             {
                 interactable.Interact();
             }
+        }
+
+        private void Attack()
+        {
+            
         }
 
         public void movement_m(Vector2 direction)

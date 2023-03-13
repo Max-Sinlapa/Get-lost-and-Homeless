@@ -28,6 +28,7 @@ public class ParticleControl : MonoBehaviour
     }
     private void MoveParticleStop()
     {
-        Move_particle.Stop();
+       // Move_particle.Stop();
+       Move_particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 }
