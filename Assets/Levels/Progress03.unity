@@ -1930,6 +1930,10 @@ PrefabInstance:
       value: PlayerCat
       objectReference: {fileID: 0}
     - target: {fileID: 2993273000948288078, guid: 40fcd21ab828c19459b9cd88df28d9b3, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 1415073090}
+    - target: {fileID: 2993273000948288078, guid: 40fcd21ab828c19459b9cd88df28d9b3, type: 3}
       propertyPath: JumpPower
       value: 70
       objectReference: {fileID: 0}
@@ -1941,6 +1945,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2113397723}
+    - target: {fileID: 8888598601825832711, guid: 40fcd21ab828c19459b9cd88df28d9b3, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 1415073090}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40fcd21ab828c19459b9cd88df28d9b3, type: 3}
 --- !u!4 &636852486 stripped
@@ -3120,6 +3128,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2983855688322758334, guid: 1c1a2f9a61fceff4f92651e3b6c0b9c7, type: 3}
   m_PrefabInstance: {fileID: 2983855687286426752}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1178417734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178417719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90aa2713b9631fb4a8ce06cea013f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move_particle: {fileID: 1266507079}
+  particIsPlay: 0
 --- !u!1 &1193302226
 GameObject:
   m_ObjectHideFlags: 0
@@ -8813,6 +8835,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1939391326533130457, guid: 40fcd21ab828c19459b9cd88df28d9b3, type: 3}
   m_PrefabInstance: {fileID: 636852485}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415073090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415073089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90aa2713b9631fb4a8ce06cea013f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move_particle: {fileID: 1474085943}
+  particIsPlay: 0
 --- !u!1 &1422375960
 GameObject:
   m_ObjectHideFlags: 0
@@ -16026,6 +16062,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2113397723}
+    - target: {fileID: 2983855688322758329, guid: 1c1a2f9a61fceff4f92651e3b6c0b9c7, type: 3}
+      propertyPath: jump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983855688322758329, guid: 1c1a2f9a61fceff4f92651e3b6c0b9c7, type: 3}
+      propertyPath: sprint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983855688322758331, guid: 1c1a2f9a61fceff4f92651e3b6c0b9c7, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 1178417734}
     - target: {fileID: 2983855688322758334, guid: 1c1a2f9a61fceff4f92651e3b6c0b9c7, type: 3}
       propertyPath: m_RootOrder
       value: 3
