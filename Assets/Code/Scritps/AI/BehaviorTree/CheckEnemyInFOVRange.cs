@@ -28,11 +28,10 @@ public class CheckEnemyInFOVRang : Node
         object t = GetData("target");
 
         //Debug.Log("Target =" + t);
-        
+
         if (t == null)
         {
             //Debug.Log("NoTarget");
-            
             /// CheckEnemy By Layer
             Collider[] colliders = Physics.OverlapSphere(
                 _transform.position, _fovRange, _enemyLayerMask);
@@ -44,7 +43,7 @@ public class CheckEnemyInFOVRang : Node
                 parent.parent.SetData("target", colliders[0].transform);
                 //_animator.SetBool(_AnimWalk, true);
                 
-               // Debug.Log("Target =" + colliders[0]);
+               Debug.Log("Target =" + colliders[0]);
                 
                 state = NodeState.SUCCESS;
                 return state;
@@ -54,6 +53,7 @@ public class CheckEnemyInFOVRang : Node
 
         if (t != null && Vector3.Distance(_transform.position, target.position) > _fovRange)
         {
+            parent.parent.ClearData("target");
             //Debug.Log("Target Out Of Sight");
             state = NodeState.FAILURE;
             return state;
