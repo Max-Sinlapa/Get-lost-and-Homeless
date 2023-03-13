@@ -80,10 +80,11 @@ namespace Max_DEV.MoveMent
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
-
+        // Particle
+        public ParticleControl particle;
 
         #region MyOption
-        
+
         [Header("My Option")]
         [SerializeField] protected ActorTriggerHandler m_ActorTriggerHandler;
         
@@ -122,6 +123,8 @@ namespace Max_DEV.MoveMent
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+
+        
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
@@ -256,13 +259,19 @@ namespace Max_DEV.MoveMent
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero)
+            {
+                targetSpeed = 0.0f;
+                particle.particIsPlay = false;
+            }
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+
+            
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
@@ -275,10 +284,14 @@ namespace Max_DEV.MoveMent
 
                 // round speed to 3 decimal places
                 _speed = Mathf.Round(_speed * 1000f) / 1000f;
+                particle.particIsPlay = true;
+
             }
             else
             {
                 _speed = targetSpeed;
+
+                
             }
 
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
@@ -298,6 +311,7 @@ namespace Max_DEV.MoveMent
 
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                
             }
 
 
@@ -312,7 +326,10 @@ namespace Max_DEV.MoveMent
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                
             }
+           
+
         }
 
         public void Jump_ClimbAndGravity()
@@ -328,6 +345,7 @@ namespace Max_DEV.MoveMent
                 {
                     _animator.SetBool(_animIDJump, false);
                     _animator.SetBool(_animIDFreeFall, false);
+                    
                 }
 
                 // stop our velocity dropping infinitely when grounded
