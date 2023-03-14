@@ -58,7 +58,7 @@ EditorBuildSettings:
     path: Assets/Levels/UI/Completed.unity
     guid: c627dbd1bc3cd4a49b657912a2f471dc
   - enabled: 1
-    path: Assets/Levels/UI/Create.unity
+    path: Assets/Levels/UI/SceneLobby/Create.unity
     guid: b91b5b3e18f5e614ba8c918943184896
   - enabled: 1
     path: Assets/Levels/UI/Credit.unity
@@ -67,10 +67,10 @@ EditorBuildSettings:
     path: Assets/Levels/UI/GameOver.unity
     guid: 5ebf882f45c8fae4c8343d8aa5a8102b
   - enabled: 1
-    path: Assets/Levels/UI/Join.unity
+    path: Assets/Levels/UI/SceneLobby/Join.unity
     guid: f49d358a7a4cd9b4d95d21955495e030
   - enabled: 1
-    path: Assets/Levels/UI/Lobby.unity
+    path: Assets/Levels/UI/SceneLobby/Lobby-1.unity
     guid: 8f6dae609e4ac0340a4049fffec403e0
   - enabled: 1
     path: Assets/Levels/UI/PauseGame.unity
