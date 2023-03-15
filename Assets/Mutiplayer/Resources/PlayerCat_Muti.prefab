@@ -1047,6 +1047,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  particle: {fileID: 0}
   m_ActorTriggerHandler: {fileID: 7890137121558534683}
   MultipleJump: 0
   JumpPower: 70

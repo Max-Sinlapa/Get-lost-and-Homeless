@@ -559,6 +559,7 @@ MonoBehaviour:
   LeaveGameButton: {fileID: 2130480038}
   StartGameButton: {fileID: 772485672}
   PlayerListEntryPrefab: {fileID: 7854476257563332713, guid: 115c45c94299dfe4b84204af504e6529, type: 3}
+  AllPlayerHealth: 20
   isTeamMode: 0
 --- !u!114 &2130480038 stripped
 MonoBehaviour:
@@ -740,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 1797510796}
     - target: {fileID: 2604164050383356465, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2604164050383356465, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

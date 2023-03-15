@@ -313,7 +313,13 @@ namespace Max_DEV.MoveMent
             if (_input.move == Vector2.zero)
             {
                 targetSpeed = 0.0f;
-                particle.particIsPlay = false;
+                
+                //Check If Have Partical
+                if (particle != null)
+                {
+                    particle.particIsPlay = false;
+                }
+                    
             }
 
             // a reference to the players current horizontal velocity
@@ -335,7 +341,12 @@ namespace Max_DEV.MoveMent
 
                 // round speed to 3 decimal places
                 _speed = Mathf.Round(_speed * 1000f) / 1000f;
-                particle.particIsPlay = true;
+                
+                //Check If Have Partical
+                if (particle != null)
+                {
+                    particle.particIsPlay = true;
+                }
 
             }
             else

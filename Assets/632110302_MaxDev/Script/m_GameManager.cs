@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine.UI;
 
 
 namespace Max_DEV.Manager
 {
-    public class m_GameManager : MonoBehaviour , IPunObservable
+    public class m_GameManager : MonoBehaviour , IPunObservable , IOnEventCallback 
     {
         public static int _allPlayerCurrentHealth;
         public static int _playerCurrentScore;
@@ -39,6 +41,7 @@ namespace Max_DEV.Manager
             
         }
 
+        [PunRPC]
         public void SetPlayerHealth(int _hp)
         {
             if (_HpSlider != null)
@@ -52,7 +55,27 @@ namespace Max_DEV.Manager
         {
             _playerCurrentScore = _score;
         }
+
+
+
+        #region Multiplayer MonoPUN
         
+        /// <Rise Event : Reciver>
+        public void OnEvent(EventData photonEvent)
+        {
+            Debug.Log("OnEvent-photonEventCode = " + photonEvent);
+            
+            if (photonEvent.Code == 10)
+            {
+                object[] data = (object[])photonEvent.CustomData;
+                Debug.Log("HealthFormEventCode = " + (int)data[0]);
+                SetPlayerHealth((int)data[0]);
+            }
+        }
+        /// </Rise Event : Reciver>
+       
+
+        /// <SerializeView>
         public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) {
             if (stream.IsWriting) {
                 stream.SendNext(_allPlayerCurrentHealth);
@@ -61,7 +84,10 @@ namespace Max_DEV.Manager
                 _allPlayerCurrentHealth = (int)stream.ReceiveNext();
             }
         }
-
+        /// </SerializeView>
+        
+        #endregion
+        
     }
 }
 

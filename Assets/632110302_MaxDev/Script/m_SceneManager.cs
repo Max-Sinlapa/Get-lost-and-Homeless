@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Max_DEV;
+using Photon.Pun;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class m_SceneManager : MonoBehaviour
+public class m_SceneManager : MonoBehaviourPun
 {
         public TextMeshProUGUI ScoreText;
         public string previusScene;
@@ -48,9 +49,10 @@ public class m_SceneManager : MonoBehaviour
         }
         
         //-------------------------------------------------------------------------------------
-        
+        [PunRPC]
         public static void Load_NextGamePlay_Scene(string sceneName)
         {
+            Debug.Log("Load_NextGamePlay_Scene");
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
         public static void UNLoad_CurrentGamePlay_Scene(string sceneName)

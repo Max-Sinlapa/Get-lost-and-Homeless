@@ -1,24 +1,39 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InsideRoomPanel : MonoBehaviourPunCallbacks
+public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
 {
     [Header("Inside Room Panel")]
     public Button LeaveGameButton;
     public Button StartGameButton;
     public GameObject PlayerListEntryPrefab;
+    public int AllPlayerHealth;
 
 
     private Dictionary<int, GameObject> playerListEntries;
 
+    // Raise Event
+    // Custom Event 10: Used as "SetPlayerHealthInManager" event
+    private readonly byte SetPlayerHealthInManager = 10;
+    
     public override void OnEnable()
     {
         base.OnEnable();
         AwakeJoinedRoom();
+        PhotonNetwork.AddCallbackTarget(this);
+        ///PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
+    
+    public override void OnDisable()
+    {
+        base.OnEnable();
+        PhotonNetwork.RemoveCallbackTarget(this);
+        ///PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
     }
 
     public void AwakeJoinedRoom()
@@ -151,10 +166,13 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
 
     public void OnStartGameButtonClicked()
     {
+        
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
-
+        Debug.Log("InsideRoomPanel-OnStartGameButtonClicked CALL");
+        CallSetPlayerHealthEvent();
         PhotonNetwork.LoadLevel(LobbyPanelManager.instance.GamePlayScene);
+        
     }
 
     // Call form PlayerListEntry.cs
@@ -189,5 +207,32 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         }
 
         return true;
+    }
+
+    private void CallSetPlayerHealthEvent()
+    {
+        Debug.Log("CallSetPlayerHealthEvent");
+        
+        object[] data = new object[]
+        {
+            AllPlayerHealth
+        };
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.Others ,
+            CachingOption = EventCaching.AddToRoomCache
+        };
+        SendOptions sendOptions = new SendOptions
+        {
+            Reliability = true
+        };
+
+        Debug.Log("HealthForm CallSetPlayerHealthEvent = " + (int)data[0]);
+        PhotonNetwork.RaiseEvent(SetPlayerHealthInManager, data, raiseEventOptions, sendOptions);
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        //throw new System.NotImplementedException();
     }
 }

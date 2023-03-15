@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Max_DEV;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class AttackHitBox : MonoBehaviour
+public class AttackHitBox : MonoBehaviourPun
 {
     public AttackController _attackController;
     public List<ObjectType> _FriendyObjectTypes;
@@ -17,6 +18,9 @@ public class AttackHitBox : MonoBehaviour
         ObjectType_Identities OtherType = other.GetComponent<ObjectType_Identities>();
         var damage = other.GetComponent<HealthPoint>();
         Debug.Log("object=" + other);
+        
+        PhotonView photonView = PhotonView.Get(other);
+        
         
         /// Check Same ObjectType
         if (OtherType != null)
@@ -35,10 +39,23 @@ public class AttackHitBox : MonoBehaviour
             if (damage != null && !sametype)
             {
                 Debug.Log("object=" + other + " attackDamage= " + _attackController.attackDamage);
-                if (_attackController == null) 
-                    damage.DecreaseHp(0);
+                
+                if (photonView != null)
+                {
+                    if (_attackController == null) 
+                        photonView.RPC("DecreaseHp", RpcTarget.All , 0);
+                    else
+                        photonView.RPC("DecreaseHp", RpcTarget.All , _attackController.attackDamage);
+                    
+                    Debug.Log("RPC ChangScene");
+                }
                 else
-                    damage.DecreaseHp(_attackController.attackDamage);
+                {
+                    if (_attackController == null) 
+                        damage.DecreaseHp(0);
+                    else
+                        damage.DecreaseHp(_attackController.attackDamage);
+                }
 
                 sametype = false;
             }

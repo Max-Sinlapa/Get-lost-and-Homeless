@@ -9,7 +9,7 @@ using Max_DEV.Manager;
 
 namespace Max_DEV
 {
-    public class HealthPoint : MonoBehaviour , IPunObservable
+    public class HealthPoint : MonoBehaviourPun , IPunObservable
     {
         public bool CanRespawn;
         [SerializeField] private Transform spawnPoint;
@@ -54,10 +54,10 @@ namespace Max_DEV
             }
         }
             
+        [PunRPC]
         public void DecreaseHp(int _value) 
         {
-   
-
+            
             if (ShereHPinGameManager)
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;
@@ -109,16 +109,13 @@ namespace Max_DEV
             GetComponent<CharacterController>().enabled = true;
         }
         
-        public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) 
-        {
-            /*
+        public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) {
             if (stream.IsWriting) {
-                stream.SendNext(currentHp);
+                stream.SendNext(m_GameManager._allPlayerCurrentHealth);
             }
             else {
-                currentHp = (int)stream.ReceiveNext();
+                m_GameManager._allPlayerCurrentHealth = (int)stream.ReceiveNext();
             }
-            */
         }
 
     }
