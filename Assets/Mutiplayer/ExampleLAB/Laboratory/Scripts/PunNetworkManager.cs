@@ -8,11 +8,15 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
-public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback 
+public class PunNetworkManager : ConnectAndJoinRandom
 {
 
+    /// <summary>
+    /// Implement Class "IOnEventCallback" To Use Rise Event
+    /// </summary>
     public enum gamestate {
         None = 0,
         GameStart = 1,
@@ -45,8 +49,12 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
     
     [Header("Spawn Info")]
     [Tooltip("The prefab to use for representing the player")]
-    public GameObject GamePlayerPrefab;
-    public GameObject RocketPrefab;
+    public GameObject CatPlayerPrefab;
+    public GameObject RatPlayerPrefab;
+    public GameObject CatSpawnPosition;
+    public GameObject RatSpawnPosition;
+    //public GameObject RocketPrefab;
+    
 
     public List<GameObjectData> gameObjectList = new List<GameObjectData>();
     public class GameObjectData
@@ -59,38 +67,32 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
     // Custom Event 10: Used as "RandomCallAirDropEvent" event
     private readonly byte RandomCallAirDropEvent = 10;
 
+    /*
     #region RiseEvent
 
     ///IOnEventCallback class implement
-        public void OnEvent(EventData photonEvent) {
-        
-            //Debug.Log(photonEvent.ToStringFull());
+    
+        public void OnEvent(EventData photonEvent) 
+        {
             byte eventCode = photonEvent.Code;
-            //GameObject player = GameObject.FindGameObjectWithTag("Player");
-           // Vector3 playertranforme = player.transform.position;
-            if (eventCode == RandomCallAirDropEvent)
-            {
-                Debug.Log("Call Resise Event is : " + eventCode.ToString());
-                Debug.Log("Data : " + photonEvent.CustomData.ToString());
-                object[] data = (object[])photonEvent.CustomData; 
-                Debug.Log("Data : " + data.ToString());
-                Debug.Log("Data : " + data.Length);
-                
-                Vector3[] position = (Vector3[])data[0]; 
-                //int color = (int)data[1];
-                //Debug.Log("Position : " + position); Debug.Log("Color : " + color);
-                // Instance Local Object
-                GameObject localRocket = Instantiate(RocketPrefab); 
-                
-                // Random
-                //position.Length
-                //PhotonNetwork.PlayerList
-                
-               // Color currentColor = PunGameSetting.GetColor(color);
-                localRocket.transform.position = position[0]; 
-                //localRocket.GetComponent<RocketBoom>().Damage *= color;
-                //localRocket.GetComponent<MeshRenderer>().material.color = currentColor;
-            }
+                if (eventCode == RandomCallAirDropEvent)
+                {
+                    Debug.Log("Call Resise Event is : " + eventCode.ToString());
+                    Debug.Log("Data : " + photonEvent.CustomData.ToString());
+                    object[] data = (object[])photonEvent.CustomData; 
+                    Debug.Log("Data : " + data.ToString());
+                    Debug.Log("Data : " + data.Length);
+                    
+                    Vector3[] position = (Vector3[])data[0];
+                    GameObject localRocket = Instantiate(RocketPrefab); 
+                    
+                    // Random
+                    //position.Length
+                    //PhotonNetwork.PlayerList
+                    
+                    localRocket.transform.position = position[0]; 
+                    
+                }
         }
         public override void OnEnable() {
             base.OnEnable();
@@ -106,44 +108,26 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
         // RaiseEvent with Local GameObject.
         private void CallRaiseEvent()
         {
-        // Array contains the target position and the IDs of the selected units
-        /*
-        GameObject[] ListPlayer = GameObject.FindGameObjectsWithTag("Player");
-        object[] content = new object[ListPlayer.Length];
-        
-         for (int i = 0; i < ListPlayer.Length; i++)
-        {
-            content[i] = new object[] { ListPlayer[i].GetComponent<Transform>().position , i};
-            content[i] = new object[] { ListPlayer[i].GetComponent<PhotonView>().ViewID , i};
-            
-            Debug.Log("content["+i+"] = " + content[i]);
-        }
-        */
-        GameObject[] ListPlayer = GameObject.FindGameObjectsWithTag("Player");
-        Vector3[] positions = new Vector3[ListPlayer.Length];
-        int[] viewIDs = new int[ListPlayer.Length];
-        GameObjectData gameObjectData = new GameObjectData();
-        for (int i = 0; i < ListPlayer.Length; i++)
-        {
-            positions[i] = ListPlayer[i].GetComponent<Transform>().position;
-            viewIDs[i] = ListPlayer[i].GetComponent<PhotonView>().ViewID;
-            Debug.Log("View ID: " + viewIDs[i] + " Position: " + positions[i]);
 
-            gameObjectData.viewID = viewIDs[i];
-            gameObjectData.position = positions[i];
-            
-            
-        }
-        Debug.Log(" gameObjectData: " + gameObjectData.viewID + gameObjectData.position);
-        
-        /*      
-         { AirDrop.RandomPosition(80f),
-                    UnityEngine.Random.Range(0, 7) };
-        */
+            GameObject[] ListPlayer = GameObject.FindGameObjectsWithTag("Player");
+            Vector3[] positions = new Vector3[ListPlayer.Length];
+            int[] viewIDs = new int[ListPlayer.Length];
+            GameObjectData gameObjectData = new GameObjectData();
+            for (int i = 0; i < ListPlayer.Length; i++)
+            {
+                positions[i] = ListPlayer[i].GetComponent<Transform>().position;
+                viewIDs[i] = ListPlayer[i].GetComponent<PhotonView>().ViewID;
+                Debug.Log("View ID: " + viewIDs[i] + " Position: " + positions[i]);
 
-        object[] content = new object[] { positions };
-                // You would have to set the Receivers to All
-        // in order to receive this event on the local client as well
+                gameObjectData.viewID = viewIDs[i];
+                gameObjectData.position = positions[i];
+            }
+            Debug.Log(" gameObjectData: " + gameObjectData.viewID + gameObjectData.position);
+            
+
+            object[] content = new object[] { positions };
+             // You would have to set the Receivers to All
+            // in order to receive this event on the local client as well
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions {
                 Receivers = ReceiverGroup.All };
             SendOptions sendOptions = new SendOptions {
@@ -154,8 +138,9 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
             Debug.Log("Call Raise Event.");
         }
 
+    
     #endregion
-
+    */
     private void GameStartSetting() {
         CurrentGamestate = gamestate.GamePlay;
     }
@@ -193,10 +178,38 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
     }
     public void SpawnPlayer()
     {
+        if (SettingPlayerTeam(PhotonNetwork.LocalPlayer) == null)
+        {
+            Debug.Log("Can't Spawn No Selected Role");
+            return;
+        }
+
+        int CatOrRat = SettingPlayerTeam(PhotonNetwork.LocalPlayer);
+
+        if (CatOrRat == 1)
+            PhotonNetwork.Instantiate(CatPlayerPrefab.name, CatSpawnPosition.transform.position, Quaternion.identity, 0);
+        if (CatOrRat == 2)
+            PhotonNetwork.Instantiate(RatPlayerPrefab.name, RatSpawnPosition.transform.position, Quaternion.identity, 0);
+        
+        
         // we're in a room. spawn a character for the local player.
         // it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(GamePlayerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
         
+        
+    }
+
+    private int SettingPlayerTeam(Player Sender)
+    {
+        Photon.Pun.UtilityScripts.PhotonTeam _currentTeam =
+            Photon.Pun.UtilityScripts.PhotonTeamExtensions.GetPhotonTeam(Sender);
+
+        if (_currentTeam != null)
+        {
+            int color = _currentTeam.Code;
+
+            return color;
+        }
+        return 0;
     }
     
     public void gameStateUpdate(Hashtable propertiesThatChanged) {
@@ -229,10 +242,12 @@ public class PunNetworkManager : ConnectAndJoinRandom, IOnEventCallback
                 break;
 
             case gamestate.GamePlay:
+                /*
                 Keyboard kboard = Keyboard.current;
                 if (kboard.rKey.wasPressedThisFrame)
                     if (kboard.rKey.keyCode == Key.R)
                         CallRaiseEvent();
+                */
                 break;
         }
     }

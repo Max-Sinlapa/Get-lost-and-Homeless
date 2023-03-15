@@ -13,13 +13,11 @@ public class AttackController : MonoBehaviour
 
     public void PerformAttack()
     {
-        /*
         if (isAttacking)
         {
             return;
         }
         StartCoroutine(IEAttack());
-        */
     }
 
     private IEnumerator IEAttack()

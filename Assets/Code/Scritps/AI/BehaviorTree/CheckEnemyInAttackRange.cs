@@ -36,6 +36,14 @@ public class CheckEnemyInAttackRange : Node
         }
 
         Transform target = (Transform)t;
+        if (target == null)
+        {
+            //ClearData("target");
+            _animator.SetBool(_AnimAttack, false);
+            _animator.SetBool(_AnimWalk, true);
+            state = NodeState.SUCCESS;
+            return state;
+        }
         if (Vector3.Distance(_transform.position, target.position) <= _attackrange)
         {
             _animator.SetBool(_AnimAttack, true);
@@ -43,7 +51,7 @@ public class CheckEnemyInAttackRange : Node
             state = NodeState.SUCCESS;
             return state;
         }
-
+        
         _animator.SetBool(_AnimAttack, false);
         //_animator.SetBool(_AnimWalk, true);
         state = NodeState.FAILURE;

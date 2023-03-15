@@ -13,6 +13,42 @@ public class AttackHitBox : MonoBehaviour
     private bool sametype = false;
     private void OnTriggerEnter(Collider other)
     {
+        //ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
+        ObjectType_Identities OtherType = other.GetComponent<ObjectType_Identities>();
+        var damage = other.GetComponent<HealthPoint>();
+        Debug.Log("object=" + other);
+        
+        /// Check Same ObjectType
+        if (OtherType != null)
+        {
+            foreach (ObjectType friendObject in _FriendyObjectTypes)
+            {
+
+                if(friendObject == OtherType.Type)
+                {
+                    sametype = true;
+                    Debug.Log("same tybe" );
+                    return;
+                }
+            }
+            
+            if (damage != null && !sametype)
+            {
+                Debug.Log("object=" + other + " attackDamage= " + _attackController.attackDamage);
+                if (_attackController == null) 
+                    damage.DecreaseHp(0);
+                else
+                    damage.DecreaseHp(_attackController.attackDamage);
+
+                sametype = false;
+            }
+        }
+        sametype = false;
+    }
+
+    /*
+    private void Attack()
+    {
         ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
         ObjectType_Identities OtherType = other.GetComponent<ObjectType_Identities>();
         var damage = other.GetComponent<HealthPoint>();
@@ -45,4 +81,5 @@ public class AttackHitBox : MonoBehaviour
         }
         sametype = false;
     }
+    */
 }

@@ -51,7 +51,7 @@ public class m_SceneManager : MonoBehaviour
         
         public static void Load_NextGamePlay_Scene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
         public static void UNLoad_CurrentGamePlay_Scene(string sceneName)
         {
