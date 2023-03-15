@@ -56,6 +56,8 @@ namespace Max_DEV
             
         public void DecreaseHp(int _value) 
         {
+   
+
             if (ShereHPinGameManager)
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;

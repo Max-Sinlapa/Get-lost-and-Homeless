@@ -1,0 +1,15 @@
+(Particle)
+Dust Smoke
+-run
+-push
+-jump / land
+
+
+
+(Music)
+
+m1 = timeline //story
+m2 = ด่านแรกๆ
+m3= รองท้าย
+m4 = menu
+m5 = ด่านท้ายๆ
