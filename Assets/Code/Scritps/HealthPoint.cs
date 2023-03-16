@@ -6,10 +6,11 @@ using UnityEngine.Events;
 using TMPro;
 using Photon.Pun;
 using Max_DEV.Manager;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace Max_DEV
 {
-    public class HealthPoint : MonoBehaviourPun , IPunObservable
+    public class HealthPoint : MonoBehaviourPunCallbacks , IPunObservable
     {
         public bool CanRespawn;
         [SerializeField] private Transform spawnPoint;
@@ -22,6 +23,7 @@ namespace Max_DEV
         public UnityEvent<int> onHpChanged;
     
         public bool ShereHPinGameManager;
+        public bool ShereHP_Multiplayer;
     
         private void Start()
         {
@@ -31,6 +33,12 @@ namespace Max_DEV
             {
                 Debug.Log(""+this.gameObject+" : Health = " + m_GameManager._allPlayerCurrentHealth);
                 currentHp = m_GameManager._allPlayerCurrentHealth;
+            }
+            
+            
+            if (this.GetComponent<PhotonView>())
+            {
+                HealthChangeProperties(100);
             }
         }
     
@@ -53,8 +61,7 @@ namespace Max_DEV
                 currentHp = m_GameManager._allPlayerCurrentHealth;
             }
         }
-            
-        [PunRPC]
+        
         public void DecreaseHp(int _value) 
         {
             
@@ -64,6 +71,15 @@ namespace Max_DEV
                 currentHp -= _value;
                 m_GameManager._allPlayerCurrentHealth = currentHp;
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
+            }
+
+            if (ShereHP_Multiplayer)
+            {
+                currentHp -= _value;
+                if (this.GetComponent<PhotonView>())
+                {
+                    HealthChangeProperties(currentHp);
+                }
             }
             else
             {
@@ -108,8 +124,11 @@ namespace Max_DEV
 
             GetComponent<CharacterController>().enabled = true;
         }
-        
-        public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) {
+
+        #region MonoPUN
+
+        public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) 
+        {
             if (stream.IsWriting) {
                 stream.SendNext(m_GameManager._allPlayerCurrentHealth);
             }
@@ -117,6 +136,37 @@ namespace Max_DEV
                 m_GameManager._allPlayerCurrentHealth = (int)stream.ReceiveNext();
             }
         }
+
+        public void HealthChangeProperties(int _amountHPchange)
+        {
+            Hashtable props = new Hashtable
+            {
+                {PunGameSetting.PLAYER_Current_LIVES, _amountHPchange }
+            };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+            Debug.Log("Send-HealthUpdate : " + props);
+        }
+        
+        
+        public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+        {
+            base.OnRoomPropertiesUpdate(propertiesThatChanged);
+            GetHealthUpdate(propertiesThatChanged);
+            Debug.Log("OnRoomPropertiesUpdate");
+
+        }
+        public void GetHealthUpdate(Hashtable propertiesThatChanged) 
+        {
+            object HealthFromProps;
+            if (propertiesThatChanged.TryGetValue(PunGameSetting.PLAYER_Current_LIVES, out HealthFromProps)) {
+                Debug.Log("Get-HealthUpdate : " + (int)HealthFromProps);
+                currentHp = PunGameSetting.GetPlayerHealth((int)HealthFromProps);
+            }
+        }
+
+        #endregion
+        
+        
 
     }
 }

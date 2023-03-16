@@ -724,7 +724,8 @@ MonoBehaviour:
   onHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  ShereHPinGameManager: 1
+  ShereHPinGameManager: 0
+  ShereHP_Multiplayer: 1
 --- !u!114 &1782347091402822442
 MonoBehaviour:
   m_ObjectHideFlags: 0

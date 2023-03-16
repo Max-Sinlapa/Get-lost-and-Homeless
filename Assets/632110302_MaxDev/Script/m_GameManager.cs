@@ -38,7 +38,6 @@ namespace Max_DEV.Manager
             {
                 _HpSlider.value = _allPlayerCurrentHealth;
             }
-            
         }
 
         [PunRPC]
@@ -72,6 +71,20 @@ namespace Max_DEV.Manager
                 SetPlayerHealth((int)data[0]);
             }
         }
+        
+        public void OnEnable()
+        {
+            
+            PhotonNetwork.AddCallbackTarget(this);
+            ///PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+        }
+    
+        public  void OnDisable()
+        {
+            PhotonNetwork.RemoveCallbackTarget(this);
+            ///PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+        }
+        
         /// </Rise Event : Reciver>
        
 

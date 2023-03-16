@@ -19,7 +19,7 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
 
     // Raise Event
     // Custom Event 10: Used as "SetPlayerHealthInManager" event
-    private readonly byte SetPlayerHealthInManager = 10;
+    public readonly byte SetPlayerHealthInManager = 10;
     
     public override void OnEnable()
     {
