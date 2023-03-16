@@ -74,7 +74,6 @@ namespace Max_DEV.Manager
         
         public void OnEnable()
         {
-            
             PhotonNetwork.AddCallbackTarget(this);
             ///PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
         }

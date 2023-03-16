@@ -9,7 +9,7 @@ public class PunGameSetting
     public const float PLAYER_RESPAWN_TIME = 4.0f;
     public const string PLAYER_LIVES = "PlayerLives";
     public const int PLAYER_MAX_LIVES = 100;
-    public const string PLAYER_Current_LIVES = "PlayerCurrentLIVES" ;
+    public const string PLAYER_Current_LIVES = "PlayerCurrentLIVES";
     public const string PLAYER_READY = "IsPlayerReady";
     public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
     public const string PLAYER_COLOR = "PlayerColor";

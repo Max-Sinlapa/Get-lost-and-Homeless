@@ -27,7 +27,6 @@ public class AttackHitBox : MonoBehaviourPun
         {
             foreach (ObjectType friendObject in _FriendyObjectTypes)
             {
-
                 if(friendObject == OtherType.Type)
                 {
                     sametype = true;
@@ -42,12 +41,20 @@ public class AttackHitBox : MonoBehaviourPun
                 
                 if (photonView != null)
                 {
-                    if (_attackController == null) 
-                        photonView.RPC("DecreaseHp", RpcTarget.All , 0);
+                    if (_attackController == null)
+                    {
+                       // photonView.RPC("DecreaseHp", RpcTarget.All , 0);
+                       damage.DecreaseHp(0);
+                    }
+                       
                     else
-                        photonView.RPC("DecreaseHp", RpcTarget.All , _attackController.attackDamage);
+                    {
+                       // photonView.RPC("DecreaseHp", RpcTarget.All , _attackController.attackDamage);
+                       damage.DecreaseHp(_attackController.attackDamage);
+                    }
+                        
                     
-                    Debug.Log("RPC ChangScene");
+                    Debug.Log("RPC DecreaseHp");
                 }
                 else
                 {
@@ -99,4 +106,6 @@ public class AttackHitBox : MonoBehaviourPun
         sametype = false;
     }
     */
+    
+    
 }

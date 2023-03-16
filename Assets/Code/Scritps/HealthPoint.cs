@@ -38,7 +38,7 @@ namespace Max_DEV
             
             if (this.GetComponent<PhotonView>())
             {
-                HealthChangeProperties(100);
+                HealthChangeProperties(101);
             }
         }
     
@@ -62,6 +62,7 @@ namespace Max_DEV
             }
         }
         
+        [PunRPC]
         public void DecreaseHp(int _value) 
         {
             
@@ -151,7 +152,8 @@ namespace Max_DEV
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
         {
             base.OnRoomPropertiesUpdate(propertiesThatChanged);
-            GetHealthUpdate(propertiesThatChanged);
+            if (this.GetComponent<PhotonView>())
+                GetHealthUpdate(propertiesThatChanged);
             Debug.Log("OnRoomPropertiesUpdate");
 
         }
@@ -165,9 +167,6 @@ namespace Max_DEV
         }
 
         #endregion
-        
-        
-
     }
 }
 
