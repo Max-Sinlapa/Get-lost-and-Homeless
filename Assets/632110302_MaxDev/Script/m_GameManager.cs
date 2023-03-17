@@ -62,7 +62,7 @@ namespace Max_DEV.Manager
         /// <Rise Event : Reciver>
         public void OnEvent(EventData photonEvent)
         {
-            Debug.Log("OnEvent-photonEventCode = " + photonEvent);
+            //Debug.Log("OnEvent-photonEventCode = " + photonEvent);
             
             if (photonEvent.Code == 10)
             {

@@ -43,7 +43,7 @@ public class CheckEnemyInFOVRang : Node
                 parent.parent.SetData("target", colliders[0].transform);
                 //_animator.SetBool(_AnimWalk, true);
                 
-               Debug.Log("Target =" + colliders[0]);
+               //Debug.Log("Target =" + colliders[0]);
                 
                 state = NodeState.SUCCESS;
                 return state;

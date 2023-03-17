@@ -3,6 +3,7 @@ using StarterAssets;
 using Photon.Pun;
 using UnityEngine.InputSystem;
 using ExitGames.Client.Photon;
+using Max_DEV.MoveMent;
 using Photon.Realtime;
 
 [RequireComponent(typeof(PhotonView))]
@@ -33,12 +34,15 @@ public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagi
             
         }
         else {
-            GetComponent<ThirdPersonController>().enabled = false;
+            GetComponent<My_ThirdPersonControl>().enabled = false;
             OnPlayerPropertiesUpdate(photonView.Owner, photonView.Owner.CustomProperties);
         }
         
         //Setting Nickname
-        GetComponentInChildren<UIPlayerInfoManager>().SetNickName(info.Sender.NickName);
+        if (GetComponentInChildren<UIPlayerInfoManager>())
+        {
+            GetComponentInChildren<UIPlayerInfoManager>().SetNickName(info.Sender.NickName);
+        }
 
         //Color
         OnPlayerPropertiesUpdate(info.Sender,info.Sender.CustomProperties);

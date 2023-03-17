@@ -17,7 +17,7 @@ public class AttackHitBox : MonoBehaviourPun
         //ObjectType otherObjectType = other.GetComponent<ObjectType_Identities>().Type;
         ObjectType_Identities OtherType = other.GetComponent<ObjectType_Identities>();
         var damage = other.GetComponent<HealthPoint>();
-        Debug.Log("object=" + other);
+        //Debug.Log("object=" + other);
         
         PhotonView photonView = PhotonView.Get(other);
         
@@ -30,14 +30,14 @@ public class AttackHitBox : MonoBehaviourPun
                 if(friendObject == OtherType.Type)
                 {
                     sametype = true;
-                    Debug.Log("same tybe" );
+                    //Debug.Log("same tybe" );
                     return;
                 }
             }
             
             if (damage != null && !sametype)
             {
-                Debug.Log("object=" + other + " attackDamage= " + _attackController.attackDamage);
+                //Debug.Log("object=" + other + " attackDamage= " + _attackController.attackDamage);
                 
                 if (photonView != null)
                 {
@@ -52,8 +52,6 @@ public class AttackHitBox : MonoBehaviourPun
                        // photonView.RPC("DecreaseHp", RpcTarget.All , _attackController.attackDamage);
                        damage.DecreaseHp(_attackController.attackDamage);
                     }
-                        
-                    
                     Debug.Log("RPC DecreaseHp");
                 }
                 else
@@ -106,6 +104,4 @@ public class AttackHitBox : MonoBehaviourPun
         sametype = false;
     }
     */
-    
-    
 }

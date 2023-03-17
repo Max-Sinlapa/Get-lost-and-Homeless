@@ -17,6 +17,10 @@ public class PunGameSetting
     public const string GAMESTATE = "GameState";
     public const string TEAMMODE = "TeamMode";
     
+    
+    /// //////////////////////////////////////
+    public const string EnemyHealth = "EnemyHealth";
+    
     public static Color GetColor(int colorChoice)
     {
         switch (colorChoice)
@@ -36,6 +40,11 @@ public class PunGameSetting
     }
 
     public static int GetPlayerHealth(int healthChange)
+    {
+        return healthChange;
+    }
+    
+    public static int GetHealth(int healthChange)
     {
         return healthChange;
     }
