@@ -16448,7 +16448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7c3e80a0f792a144098ba7cda7929e0f, type: 2}
   - {fileID: 2100000, guid: 7c3e80a0f792a144098ba7cda7929e0f, type: 2}
   - {fileID: 2100000, guid: e4e7431b85858c448b10ca190ba1f70e, type: 2}
   m_StaticBatchInfo:
@@ -36797,7 +36797,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e4e7431b85858c448b10ca190ba1f70e, type: 2}
   - {fileID: 2100000, guid: e4e7431b85858c448b10ca190ba1f70e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -45083,6 +45083,10 @@ PrefabInstance:
     - target: {fileID: 127743093584811795, guid: 5b262a62175c04047abdf0c2301eb35d, type: 3}
       propertyPath: m_Name
       value: pipe
+      objectReference: {fileID: 0}
+    - target: {fileID: 127743093584811795, guid: 5b262a62175c04047abdf0c2301eb35d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2448876058706073550, guid: 5b262a62175c04047abdf0c2301eb35d, type: 3}
       propertyPath: m_RootOrder
