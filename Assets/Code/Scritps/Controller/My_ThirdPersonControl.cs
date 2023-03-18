@@ -20,7 +20,7 @@ namespace Max_DEV.MoveMent
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class My_ThirdPersonControl : MonoBehaviourPun
+    public class My_ThirdPersonControl : MonoBehaviourPun 
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -218,31 +218,61 @@ namespace Max_DEV.MoveMent
                 if(!photonView.IsMine)
                     return;
                 
+                Jump_ClimbAndGravity();
+                GroundedCheck();
+                Move();
+
+                if (_input.interection == true)
+                {
+                    if (m_ActorTriggerHandler != null)
+                    {
+                        PerformInteraction();
+                        _input.interection = false;
+                    }
+                    else
+                    {
+                        Debug.Log("No Interaction Assign");
+                    }
+                }
+            
+                /////// Attack
+                if (_AttackController != null && _input.attack && CanAttack)
+                {
+                    Debug.Log("player PerformAttackRPC");
+                    _AttackController.PerformAttack();
+                    _AttackController.PerformAttackRPC(_photonView.ViewID);
+                    _input.attack = false;
+                }
             }
            
-            Jump_ClimbAndGravity();
-            GroundedCheck();
-            Move();
-
-            if (_input.interection == true)
-            {
-                if (m_ActorTriggerHandler != null)
-                {
-                    PerformInteraction();
-                    _input.interection = false;
-                }
-                else
-                {
-                    Debug.Log("No Interaction Assign");
-                }
-            }
+            //////////////////////////////////////////////////////////////////////////////////////////
             
-            /////// Attack
-            if (_AttackController != null && _input.attack && CanAttack)
+            if (_photonView == null)
             {
-                Debug.Log("PerformAttack");
-                _AttackController.PerformAttack();
-                _input.attack = false;
+                Jump_ClimbAndGravity();
+                GroundedCheck();
+                Move();
+                
+                if (_input.interection == true)
+                {
+                    if (m_ActorTriggerHandler != null)
+                    {
+                        PerformInteraction(); 
+                        _input.interection = false;
+                    }
+                    else
+                    {
+                        Debug.Log("No Interaction Assign");
+                    }
+                }
+                            
+                /////// Attack
+                if (_AttackController != null && _input.attack && CanAttack)
+                {
+                    Debug.Log("PerformAttack Nomal");
+                    _AttackController.PerformAttack();
+                    _input.attack = false;
+                }
             }
             
         }
@@ -313,7 +343,13 @@ namespace Max_DEV.MoveMent
             if (_input.move == Vector2.zero)
             {
                 targetSpeed = 0.0f;
-                particle.particIsPlay = false;
+                
+                //Check If Have Partical
+                if (particle != null)
+                {
+                    particle.particIsPlay = false;
+                }
+                    
             }
 
             // a reference to the players current horizontal velocity
@@ -335,7 +371,12 @@ namespace Max_DEV.MoveMent
 
                 // round speed to 3 decimal places
                 _speed = Mathf.Round(_speed * 1000f) / 1000f;
-                particle.particIsPlay = true;
+                
+                //Check If Have Partical
+                if (particle != null)
+                {
+                    particle.particIsPlay = true;
+                }
 
             }
             else
@@ -654,6 +695,5 @@ namespace Max_DEV.MoveMent
         }
 
         #endregion
-        
     }
 }

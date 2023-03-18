@@ -9,12 +9,18 @@ public class PunGameSetting
     public const float PLAYER_RESPAWN_TIME = 4.0f;
     public const string PLAYER_LIVES = "PlayerLives";
     public const int PLAYER_MAX_LIVES = 100;
+    public const string PLAYER_Current_LIVES = "PlayerCurrentLIVES";
     public const string PLAYER_READY = "IsPlayerReady";
     public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
     public const string PLAYER_COLOR = "PlayerColor";
     public const string START_GAMETIME = "GameTime";
     public const string GAMESTATE = "GameState";
     public const string TEAMMODE = "TeamMode";
+    
+    
+    /// //////////////////////////////////////
+    public const string EnemyHealth = "EnemyHealth";
+    
     public static Color GetColor(int colorChoice)
     {
         switch (colorChoice)
@@ -31,5 +37,15 @@ public class PunGameSetting
             case 7: return Color.white;
         }
         return Color.black;
+    }
+
+    public static int GetPlayerHealth(int healthChange)
+    {
+        return healthChange;
+    }
+    
+    public static int GetHealth(int healthChange)
+    {
+        return healthChange;
     }
 }

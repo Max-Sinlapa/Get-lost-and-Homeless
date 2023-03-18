@@ -6,10 +6,12 @@ using UnityEngine.Events;
 using TMPro;
 using Photon.Pun;
 using Max_DEV.Manager;
+using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace Max_DEV
 {
-    public class HealthPoint : MonoBehaviour , IPunObservable
+    public class HealthPoint : MonoBehaviourPunCallbacks , IPunObservable
     {
         public bool CanRespawn;
         [SerializeField] private Transform spawnPoint;
@@ -22,7 +24,21 @@ namespace Max_DEV
         public UnityEvent<int> onHpChanged;
     
         public bool ShereHPinGameManager;
-    
+        
+        [Header("Multiplayer")]
+        public bool ShereHP_Multiplayer;
+        public bool Enemy_Health;
+        
+        [Header("Multiplayer-Serialization")]
+        public bool Enemy_Hp_Serialization;
+        public float _currentEnemy_HP;
+        public int Enemy_Hp;
+        /*
+        {
+            get { return (int)_currentEnemy_HP; }
+            set { _currentEnemy_HP = value; }
+        }
+        */
         private void Start()
         {
             onHpChanged?.Invoke(currentHp);
@@ -31,6 +47,17 @@ namespace Max_DEV
             {
                 Debug.Log(""+this.gameObject+" : Health = " + m_GameManager._allPlayerCurrentHealth);
                 currentHp = m_GameManager._allPlayerCurrentHealth;
+            }
+            
+            
+            if (this.GetComponent<PhotonView>())
+            {
+                Room_HealthChangeProperties(101);
+            }
+
+            if (Enemy_Hp_Serialization)
+            {
+                Enemy_Hp = currentHp;
             }
         }
     
@@ -53,11 +80,10 @@ namespace Max_DEV
                 currentHp = m_GameManager._allPlayerCurrentHealth;
             }
         }
-            
+        
+        [PunRPC]
         public void DecreaseHp(int _value) 
         {
-   
-
             if (ShereHPinGameManager)
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;
@@ -65,9 +91,41 @@ namespace Max_DEV
                 m_GameManager._allPlayerCurrentHealth = currentHp;
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
             }
-            else
+            if (ShereHP_Multiplayer)
             {
+                Debug.Log("-------ShereHP_Multiplayer-------");
+                Debug.Log("11-currentHp = " + currentHp + " Damage = " + _value);
                 currentHp -= _value;
+                if (this.GetComponent<PhotonView>())
+                {
+                    Room_HealthChangeProperties(currentHp);
+                }
+                HealthText();
+                Debug.Log("22-currentHp = " + currentHp + " Damage = " + _value);
+                Debug.Log("-------ShereHP_Multiplayer-------");
+            }
+            if (Enemy_Health)
+            {
+                Debug.Log("-------Enemy_Health-------");
+                Debug.Log("11-currentHp = " + currentHp + " Damage = " + _value);
+                currentHp -= _value;
+                Local_HealthChangeProperties(currentHp);
+                HealthText();
+                Debug.Log("22-currentHp = " + currentHp + " Damage = " + _value);
+                Debug.Log("-------Enemy_Health-------");
+            }
+            else if(!ShereHPinGameManager && !ShereHP_Multiplayer && !Enemy_Health)
+            {
+                if (Enemy_Hp_Serialization)
+                {
+                    Debug.Log("-------DecreaseHP ELSE-------");
+                    Debug.Log("currentHp = " + currentHp + " Damage = " + _value);
+                    HealthText();
+                    currentHp -= _value;
+                    Enemy_Hp = currentHp;
+                    Debug.Log("-------DecreaseHP ELSE-------");
+                }
+                
             }   
             
             onHpChanged?.Invoke(currentHp);
@@ -108,19 +166,77 @@ namespace Max_DEV
 
             GetComponent<CharacterController>().enabled = true;
         }
-        
+
+        #region MonoPUN
+
         public void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info) 
         {
-            /*
-            if (stream.IsWriting) {
-                stream.SendNext(currentHp);
+            if (Enemy_Hp_Serialization)
+            {
+                if (stream.IsWriting) 
+                {
+                    stream.SendNext(Enemy_Hp);
+                }
+                else 
+                {
+                    Enemy_Hp = (int)stream.ReceiveNext();
+                }
             }
-            else {
-                currentHp = (int)stream.ReceiveNext();
-            }
-            */
+            
         }
 
+        public void Room_HealthChangeProperties(int _amountHPchange)
+        {
+            Hashtable props = new Hashtable
+            {
+                {PunGameSetting.PLAYER_Current_LIVES, _amountHPchange }
+            };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+            Debug.Log("Send-Room-HealthUpdate : " + props);
+        }
+        public void Local_HealthChangeProperties(int _amountHPchange)
+        {
+            Hashtable props = new Hashtable
+            {
+                {PunGameSetting.EnemyHealth, _amountHPchange }
+            };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+            Debug.Log("Send-LocalPlayer-HealthUpdate : " + props);
+        }
+        public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+        {
+            base.OnRoomPropertiesUpdate(propertiesThatChanged);
+            if (this.GetComponent<PhotonView>())
+                GetPlayerHealthUpdate(propertiesThatChanged);
+            Debug.Log("OnRoomPropertiesUpdate");
+
+        }
+        public override void OnPlayerPropertiesUpdate(Player target, Hashtable propertiesThatChanged)
+        {
+            base.OnRoomPropertiesUpdate(propertiesThatChanged);
+            if (!this.GetComponent<PhotonView>())
+                GetHealthUpdate(propertiesThatChanged);
+            Debug.Log("OnPlayerPropertiesUpdate");
+
+        }
+        public void GetPlayerHealthUpdate(Hashtable propertiesThatChanged) 
+        {
+            object HealthFromProps;
+            if (propertiesThatChanged.TryGetValue(PunGameSetting.PLAYER_Current_LIVES, out HealthFromProps)) {
+                Debug.Log("Get-Room-HealthUpdate : " + (int)HealthFromProps);
+                currentHp = PunGameSetting.GetPlayerHealth((int)HealthFromProps);
+            }
+        }
+        public void GetHealthUpdate(Hashtable propertiesThatChanged) 
+        {
+            object HealthFromProps;
+            if (propertiesThatChanged.TryGetValue(PunGameSetting.EnemyHealth, out HealthFromProps)) {
+                Debug.Log("Get-LocalPlayer-HealthUpdate : " + (int)HealthFromProps);
+                currentHp = PunGameSetting.GetHealth((int)HealthFromProps);
+            }
+        }
+
+        #endregion
     }
 }
 

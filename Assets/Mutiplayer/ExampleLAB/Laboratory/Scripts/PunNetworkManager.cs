@@ -8,6 +8,7 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using Max_DEV;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
@@ -191,11 +192,8 @@ public class PunNetworkManager : ConnectAndJoinRandom
         if (CatOrRat == 2)
             PhotonNetwork.Instantiate(RatPlayerPrefab.name, RatSpawnPosition.transform.position, Quaternion.identity, 0);
         
-        
-        // we're in a room. spawn a character for the local player.
+        // we're in a room. spawn a character for the local player
         // it gets synced by using PhotonNetwork.Instantiate
-        
-        
     }
 
     private int SettingPlayerTeam(Player Sender)

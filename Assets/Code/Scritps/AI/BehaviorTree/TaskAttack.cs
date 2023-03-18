@@ -50,7 +50,7 @@ namespace Max_DEV.Ai
             }
             else 
             {
-                Debug.Log("EnemyPerformAttack");
+                //Debug.Log("EnemyPerformAttack");
                 _thisAttackControll.PerformAttack();
                 _animator.SetBool(_AnimAttack, true);
                 _animator.SetBool(_AnimWalk, false);

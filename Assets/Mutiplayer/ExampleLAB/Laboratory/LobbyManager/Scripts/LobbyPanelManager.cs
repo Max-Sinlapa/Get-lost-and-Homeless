@@ -86,6 +86,8 @@ public class LobbyPanelManager : MonoBehaviourPunCallbacks
             
             PhotonNetwork.CurrentRoom.IsOpen = AutoConnect;
             PhotonNetwork.CurrentRoom.IsVisible = AutoConnect;
+            
+            Debug.Log("LobbyPanelManager-OnJoinedRoom CALL ");
 
             PlayerListEntry.SettingPlayerProperties();
             PhotonNetwork.LoadLevel(GamePlayScene);

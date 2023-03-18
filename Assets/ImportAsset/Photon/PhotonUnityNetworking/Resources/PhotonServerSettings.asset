@@ -43,6 +43,12 @@ MonoBehaviour:
   - PunRPCApplyHealth
   - PunUpdateHealth
   - UpdatePosition
+  - Load_NextGamePlay_Scene
+  - InwokeChangeScene
+  - InWokeChangeScene
+  - DecreaseHp
+  - SetPlayerHealth
+  - AttackingByRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

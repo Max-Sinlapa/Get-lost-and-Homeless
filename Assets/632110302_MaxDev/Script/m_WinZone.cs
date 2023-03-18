@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Max_DEV;
 using Max_DEV.Interac;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Max_DEV
 {
-    public class m_WinZone : MonoBehaviour , IActorEnterExitHandler , IInteractable
+    public class m_WinZone : MonoBehaviourPun , IActorEnterExitHandler , IInteractable
     {
+        public string _NextScene;
         public UnityEvent allPlayerInZone;
 
         private List<ObjectType> _listObjectType;
@@ -64,9 +66,30 @@ namespace Max_DEV
             
             if (_CatIn && _RatIn)
             {
-                allPlayerInZone.Invoke();
+                PhotonView photonView = PhotonView.Get(other);
+                if (photonView != null)
+                {
+                    photonView.RPC("Load_NextGamePlay_Scene", RpcTarget.All , _NextScene);
+                    Debug.Log("RPC ChangScene");
+                }
+                else
+                {
+                    Debug.Log("ChangScene NO RPC");
+                    allPlayerInZone.Invoke();
+                }
+                
             }
         }
+
+        /*
+        [PunRPC]
+        public void InWokeChangeScene()
+        {
+            //PhotonNetwork.LoadLevel(GamePlayScene);
+            Debug.Log("InWokeChangeScene WAKE");
+            allPlayerInZone.Invoke();
+        }
+        */
 
         private void OnTriggerExit(Collider other)
         {
