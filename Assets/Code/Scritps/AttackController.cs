@@ -39,11 +39,6 @@ public class AttackController : MonoBehaviourPun
         {
             photonView.RPC("AttackingByRPC", RpcTarget.All, OwnerNetID);
         }
-        else
-        {
-            
-        }
-        
     }
     
     [PunRPC]

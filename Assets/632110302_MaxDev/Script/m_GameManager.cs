@@ -10,51 +10,72 @@ using UnityEngine.UI;
 
 namespace Max_DEV.Manager
 {
-    public class m_GameManager : MonoBehaviour , IPunObservable , IOnEventCallback 
+    public class m_GameManager : MonoBehaviourPun , IPunObservable , IOnEventCallback 
     {
-        public static int _allPlayerCurrentHealth;
-        public static int _playerCurrentScore;
         public static string _currentScene;
 
         public static int _startPlayerHealth;
         public static int _startPlayerScore;
+        
+        public static int _allPlayerCurrentHealth = _startPlayerHealth;
+        public static int _playerCurrentScore = _startPlayerScore;
 
         public Slider _HpSlider;
         
+
         private void Awake()
         {
-            Debug.Log("Player HP = " + _allPlayerCurrentHealth);
-            Debug.Log("Player Score = " + _playerCurrentScore);
+            //Debug.Log("Player HP = " + _allPlayerCurrentHealth);
+            //Debug.Log("Player Score = " + _playerCurrentScore);
 
+            
             if (_HpSlider != null)
             {
                 _HpSlider.maxValue = _allPlayerCurrentHealth;
             }
+
+            _playerCurrentScore = _startPlayerScore;
+            _allPlayerCurrentHealth = _startPlayerHealth;
+            
+            Debug.Log("manager Awake " + _startPlayerHealth);
+            
         }
+        
 
         private void Update()
         {
             if (_HpSlider != null)
             {
+                if (_allPlayerCurrentHealth > _HpSlider.maxValue)
+                {
+                    _HpSlider.maxValue = _allPlayerCurrentHealth;
+                }
                 _HpSlider.value = _allPlayerCurrentHealth;
             }
         }
 
         [PunRPC]
-        public void SetPlayerHealth(int _hp)
+        public static void Set_Start_PlayerHealth(int _hp)
         {
-            if (_HpSlider != null)
-                _HpSlider.maxValue = _allPlayerCurrentHealth;
-            
+            _startPlayerHealth = _hp;
+            Debug.Log("Player Start HP = " + _startPlayerHealth);
+
+        }
+        public static void SetPlayerHealth(int _hp)
+        {
             _allPlayerCurrentHealth = _hp;
             Debug.Log("Player HP = " + _allPlayerCurrentHealth);
         }
         
+        public static void Set_Start_PlayerScore(int _score)
+        {
+            _startPlayerScore = _score;
+        }
         public static void SetPlayerScore(int _score)
         {
             _playerCurrentScore = _score;
         }
-
+        
 
 
         #region Multiplayer MonoPUN
@@ -63,13 +84,6 @@ namespace Max_DEV.Manager
         public void OnEvent(EventData photonEvent)
         {
             //Debug.Log("OnEvent-photonEventCode = " + photonEvent);
-            
-            if (photonEvent.Code == 10)
-            {
-                object[] data = (object[])photonEvent.CustomData;
-                Debug.Log("HealthFormEventCode = " + (int)data[0]);
-                SetPlayerHealth((int)data[0]);
-            }
         }
         
         public void OnEnable()

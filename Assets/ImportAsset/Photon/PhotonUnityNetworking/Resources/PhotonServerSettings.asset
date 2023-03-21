@@ -49,6 +49,8 @@ MonoBehaviour:
   - DecreaseHp
   - SetPlayerHealth
   - AttackingByRPC
+  - RPC_SetPlayerHealth
+  - Set_Start_PlayerHealth
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

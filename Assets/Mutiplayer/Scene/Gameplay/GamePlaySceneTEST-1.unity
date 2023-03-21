@@ -7396,34 +7396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312229c4a5f9b464a8f46972328f7063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NextScene: 
   allPlayerInZone:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2000609024}
-        m_TargetAssemblyTypeName: m_SceneManager, Assembly-CSharp
-        m_MethodName: LoadSingleScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: GamePlaySceneTEST-2
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1857838967}
-        m_TargetAssemblyTypeName: Max_DEV.Manager.m_GameManager, Assembly-CSharp
-        m_MethodName: SetPlayerHealth
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 110
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  _NextScene: GamePlaySceneTEST-222
 --- !u!65 &1497858454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7520,7 +7496,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1497858453}
   sceneViewId: 985
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -8283,6 +8260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+      propertyPath: _NextScene
+      value: GamePlaySceneTEST-2
+      objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: allPlayerInZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
