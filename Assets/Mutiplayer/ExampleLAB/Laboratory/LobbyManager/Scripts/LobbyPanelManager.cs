@@ -12,6 +12,7 @@ public class LobbyPanelManager : MonoBehaviourPunCallbacks
 
     /// <summary>Connect automatically? If false you can set this to true later on or call ConnectUsingSettings in your own scripts.</summary>
     public bool AutoConnect = false;
+    public int _playerHealth;
 
 
     public enum panelName

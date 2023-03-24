@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 public class m_SceneManager : MonoBehaviourPun
 {
         public TextMeshProUGUI ScoreText;
-        public string previusScene;
+        public static string _currentScene;
 
         private void Start()
         {
-            previusScene = SceneManager.GetActiveScene().name;
+            _currentScene = SceneManager.GetActiveScene().name;
         }
 
         private void Update()
@@ -105,5 +105,21 @@ public class m_SceneManager : MonoBehaviourPun
         private void SceneLoadedEventHandler(Scene scene, LoadSceneMode mode)
         {
         }
+        #endregion
+
+        #region Multiplayer
+
+        public static void Multiplayer_ChangeScene(string _scene)
+        {
+            PhotonNetwork.LoadLevel(_scene);
+            Debug.Log("Multiplayer_ChangeScene");
+        }
+        
+        public static void Multiplayer_LoadCurrentScene()
+        {
+            PhotonNetwork.LoadLevel(_currentScene);
+            Debug.Log("Multiplayer_LoadCurrentScene");
+        }
+
         #endregion
 }

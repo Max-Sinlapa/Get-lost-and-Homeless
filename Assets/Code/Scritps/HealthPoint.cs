@@ -52,7 +52,7 @@ namespace Max_DEV
             
             if (this.GetComponent<PhotonView>())
             {
-                HealthPoint.Room_HealthChangeProperties(m_GameManager._startPlayerHealth);
+                Room_HealthChangeProperties(m_GameManager._allPlayerCurrentHealth);
             }
 
             if (Enemy_Hp_Serialization)

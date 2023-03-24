@@ -13,8 +13,6 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
     public Button LeaveGameButton;
     public Button StartGameButton;
     public GameObject PlayerListEntryPrefab;
-    public int AllPlayerHealth;
-
 
     private Dictionary<int, GameObject> playerListEntries;
 
@@ -172,10 +170,10 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
         PhotonNetwork.CurrentRoom.IsVisible = false;
         Debug.Log("InsideRoomPanel-OnStartGameButtonClicked CALL");
         //CallSetPlayerHealthEvent();
-        m_GameManager.Set_Start_PlayerHealth(AllPlayerHealth);
-        m_GameManager.SetPlayerHealth(AllPlayerHealth);
-
-        Debug.Log("panel HP = " + AllPlayerHealth);
+        m_GameManager.Set_Start_PlayerHealth(LobbyPanelManager.instance._playerHealth);
+        m_GameManager.SetPlayerHealth(LobbyPanelManager.instance._playerHealth);
+        
+        Debug.Log("panel HP = " + LobbyPanelManager.instance._playerHealth);
         PhotonNetwork.LoadLevel(LobbyPanelManager.instance.GamePlayScene);
     }
 
@@ -219,7 +217,7 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
         
         object[] data = new object[]
         {
-            AllPlayerHealth
+            LobbyPanelManager.instance._playerHealth
         };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions
         {
