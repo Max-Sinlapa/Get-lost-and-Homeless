@@ -53,16 +53,16 @@ public class PlayerListEntrywithTeam : PlayerListEntry {
             if (this.ownerId == target.ActorNumber)
             {
                int currentTeam = (int)_currentTeam.Code;
-                           Debug.Log("Player" + PhotonNetwork.LocalPlayer);
-                           Debug.Log("Player=target" + target);
-                           print("Current Team: " + currentTeam);
+                           //Debug.Log("Player" + PhotonNetwork.LocalPlayer);
+                           //Debug.Log("Player=target" + target);
+                           //print("Current Team: " + currentTeam);
                            PlayerTeamDropdown.value = currentTeam - 1;
                            return; 
             }
         }
         else
         {
-            Debug.Log("_currentTeam = null");
+            //Debug.Log("_currentTeam = null");
         }
     }
 }

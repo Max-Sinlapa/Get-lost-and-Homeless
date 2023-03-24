@@ -9,14 +9,20 @@ using UnityEngine.Events;
 
 namespace Max_DEV
 {
-    public class m_WinZone : MonoBehaviourPun , IActorEnterExitHandler , IInteractable
+    public class m_WinZone : MonoBehaviourPun , IActorEnterExitHandler , IInteractable , IPunObservable
     {
-        public string _NextScene;
+        [Header("Next-Scenes_Singleplayer")]
         public UnityEvent allPlayerInZone;
 
+        [Header("Next-Scenes_Multiplayer")]
+        public string _NextScene;
+        
+        
         private List<ObjectType> _listObjectType;
         private bool _CatIn = false;
         private bool _RatIn = false;
+
+        private bool _AllPlayerIn = false;
 
         private void Update()
         {
@@ -66,11 +72,15 @@ namespace Max_DEV
             
             if (_CatIn && _RatIn)
             {
-                PhotonView photonView = PhotonView.Get(other);
-                if (photonView != null)
+                _AllPlayerIn = true;
+                
+                PhotonView other_photonView = PhotonView.Get(other);
+                if (other_photonView != null && _AllPlayerIn)
                 {
-                    photonView.RPC("Load_NextGamePlay_Scene", RpcTarget.All , _NextScene);
+                    //other_photonView.RPC("InWokeChangeScene", RpcTarget.All, _NextScene);
+                    InWokeChangeScene();
                     Debug.Log("RPC ChangScene");
+                    _AllPlayerIn = false;
                 }
                 else
                 {
@@ -81,15 +91,14 @@ namespace Max_DEV
             }
         }
 
-        /*
+        
         [PunRPC]
         public void InWokeChangeScene()
         {
-            //PhotonNetwork.LoadLevel(GamePlayScene);
-            Debug.Log("InWokeChangeScene WAKE");
-            allPlayerInZone.Invoke();
+            PhotonNetwork.LoadLevel(_NextScene);
+            Debug.Log("InWokeChangeScene WAKE"); 
         }
-        */
+        
 
         private void OnTriggerExit(Collider other)
         {
@@ -114,6 +123,19 @@ namespace Max_DEV
         {
             Debug.Log("TEST DEBUG");
         }
-        
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            
+            if (stream.IsWriting) 
+            {
+                stream.SendNext(_AllPlayerIn);
+            }
+            else 
+            {
+                _AllPlayerIn = (bool)stream.ReceiveNext();
+            }
+            
+        }
     }
 }

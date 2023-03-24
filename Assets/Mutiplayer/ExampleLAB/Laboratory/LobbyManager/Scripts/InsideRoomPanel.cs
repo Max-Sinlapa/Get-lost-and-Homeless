@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
+using Max_DEV.Manager;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using UnityEngine;
 using UnityEngine.UI;
@@ -170,9 +171,12 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
         Debug.Log("InsideRoomPanel-OnStartGameButtonClicked CALL");
-        CallSetPlayerHealthEvent();
+        //CallSetPlayerHealthEvent();
+        m_GameManager.Set_Start_PlayerHealth(AllPlayerHealth);
+        m_GameManager.SetPlayerHealth(AllPlayerHealth);
+
+        Debug.Log("panel HP = " + AllPlayerHealth);
         PhotonNetwork.LoadLevel(LobbyPanelManager.instance.GamePlayScene);
-        
     }
 
     // Call form PlayerListEntry.cs

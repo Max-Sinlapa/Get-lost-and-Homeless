@@ -729,7 +729,6 @@ MonoBehaviour:
   ShereHP_Multiplayer: 1
   Enemy_Health: 0
   Enemy_Hp_Serialization: 0
-  _currentEnemy_HP: 0
   Enemy_Hp: 0
 --- !u!114 &1782347091402822442
 MonoBehaviour:

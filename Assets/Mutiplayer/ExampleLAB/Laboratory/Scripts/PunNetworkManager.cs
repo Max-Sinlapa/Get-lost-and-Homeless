@@ -9,11 +9,18 @@ using UnityEngine.InputSystem;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Max_DEV;
+using Max_DEV.Manager;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class PunNetworkManager : ConnectAndJoinRandom
 {
+
+    #region MyValue
+
+    public static int _playerHealth;
+
+    #endregion
 
     /// <summary>
     /// Implement Class "IOnEventCallback" To Use Rise Event
@@ -142,13 +149,13 @@ public class PunNetworkManager : ConnectAndJoinRandom
     
     #endregion
     */
+    
     private void GameStartSetting() {
         CurrentGamestate = gamestate.GamePlay;
     }
     private void Awake()
     {
         singleton = this;
-        
         //Add Reference Method to Delegate Method
         OnGameStart += GameStartSetting;
         //When Connected from Launcher Scene
@@ -158,6 +165,9 @@ public class PunNetworkManager : ConnectAndJoinRandom
             OnJoinedRoom();
         }
     }
+    
+    
+    
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
@@ -186,11 +196,19 @@ public class PunNetworkManager : ConnectAndJoinRandom
         }
 
         int CatOrRat = SettingPlayerTeam(PhotonNetwork.LocalPlayer);
-
+        
+        
+        
         if (CatOrRat == 1)
             PhotonNetwork.Instantiate(CatPlayerPrefab.name, CatSpawnPosition.transform.position, Quaternion.identity, 0);
         if (CatOrRat == 2)
             PhotonNetwork.Instantiate(RatPlayerPrefab.name, RatSpawnPosition.transform.position, Quaternion.identity, 0);
+        
+        //Debug.Log("PunNetworkManager playerHP = " + _playerHealth);
+        //HealthPoint.Room_HealthChangeProperties(_playerHealth);
+        
+        
+        //Debug.Log("This = " + photonView.ViewID + " Team = " + CatOrRat);
         
         // we're in a room. spawn a character for the local player
         // it gets synced by using PhotonNetwork.Instantiate
