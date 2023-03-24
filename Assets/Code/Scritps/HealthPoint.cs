@@ -28,7 +28,6 @@ namespace Max_DEV
         
         [Header("Multiplayer")]
         public bool ShereHP_Multiplayer;
-        public bool Enemy_Health;
         
         [Header("Multiplayer-Serialization")]
         public bool Enemy_Hp_Serialization;
@@ -89,7 +88,7 @@ namespace Max_DEV
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;
                 currentHp -= _value;
-                m_GameManager._allPlayerCurrentHealth = currentHp;
+                m_GameManager.SetPlayerHealth(currentHp);
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
             }
             if (ShereHP_Multiplayer)

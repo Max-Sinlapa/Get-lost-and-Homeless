@@ -20,7 +20,8 @@ namespace Max_DEV.Manager
         public static int _playerCurrentScore = _startPlayerScore;
 
         public Slider _HpSlider;
-
+        public int playerHP;
+        
         private string _currentScene;
         
 
@@ -53,6 +54,8 @@ namespace Max_DEV.Manager
                 }
                 _HpSlider.value = _allPlayerCurrentHealth;
             }
+
+            playerHP = _allPlayerCurrentHealth;
         }
 
         
@@ -66,6 +69,7 @@ namespace Max_DEV.Manager
         {
             _allPlayerCurrentHealth = _hp;
             Debug.Log("Player HP = " + _allPlayerCurrentHealth);
+
         }
         
         public static void Set_Start_PlayerScore(int _score)

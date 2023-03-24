@@ -65,7 +65,7 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
             entry.transform.SetParent(_roomListContent.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
-
+        
             roomListEntries.Add(info.Name, entry);
         }
     }
@@ -90,7 +90,6 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         ClearRoomListView();
-
         UpdateCachedRoomList(roomList);
         UpdateRoomListView();
     }
@@ -98,7 +97,6 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
     public override void OnLeftLobby()
     {
         cachedRoomList.Clear();
-
         ClearRoomListView();
     }
 
