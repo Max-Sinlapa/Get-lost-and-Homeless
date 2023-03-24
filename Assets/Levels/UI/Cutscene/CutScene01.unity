@@ -2396,8 +2396,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227416340}
-  m_LocalRotation: {x: -0, y: 0.06642045, z: -0, w: 0.99779177}
-  m_LocalPosition: {x: -0.028112411, y: 0.2411083, z: -3.2630148}
+  m_LocalRotation: {x: -0, y: -0.0037305255, z: -0, w: 0.9999931}
+  m_LocalPosition: {x: 0.61747694, y: 0.077748656, z: 14.206785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3402,8 +3402,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991892008}
-  m_LocalRotation: {x: -0, y: 0.06642045, z: -0, w: 0.99779177}
-  m_LocalPosition: {x: 0.3458476, y: 0.2511083, z: -0.013914108}
+  m_LocalRotation: {x: -0, y: -0.0037305255, z: -0, w: 0.9999931}
+  m_LocalPosition: {x: 0.53308105, y: 0.08774865, z: 17.476246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3745,7 +3745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e45470e4fefd70f4c85093207b6f8905, type: 2}
   m_sharedMaterial: {fileID: -2958430574856343231, guid: e45470e4fefd70f4c85093207b6f8905, type: 2}
