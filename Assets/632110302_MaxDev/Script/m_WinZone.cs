@@ -95,7 +95,8 @@ namespace Max_DEV
         [PunRPC]
         public void InWokeChangeScene()
         {
-            PhotonNetwork.LoadLevel(_NextScene);
+            //PhotonNetwork.LoadLevel(_NextScene);
+            m_SceneManager.Multiplayer_ChangeScene(_NextScene);
             Debug.Log("InWokeChangeScene WAKE"); 
         }
         

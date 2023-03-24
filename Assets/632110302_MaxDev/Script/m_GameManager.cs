@@ -12,7 +12,6 @@ namespace Max_DEV.Manager
 {
     public class m_GameManager : MonoBehaviourPun , IPunObservable , IOnEventCallback 
     {
-        public static string _currentScene;
 
         public static int _startPlayerHealth;
         public static int _startPlayerScore;
@@ -21,13 +20,15 @@ namespace Max_DEV.Manager
         public static int _playerCurrentScore = _startPlayerScore;
 
         public Slider _HpSlider;
+
+        private string _currentScene;
         
 
         private void Awake()
         {
             //Debug.Log("Player HP = " + _allPlayerCurrentHealth);
             //Debug.Log("Player Score = " + _playerCurrentScore);
-
+            
             
             if (_HpSlider != null)
             {
@@ -54,7 +55,7 @@ namespace Max_DEV.Manager
             }
         }
 
-        [PunRPC]
+        
         public static void Set_Start_PlayerHealth(int _hp)
         {
             _startPlayerHealth = _hp;

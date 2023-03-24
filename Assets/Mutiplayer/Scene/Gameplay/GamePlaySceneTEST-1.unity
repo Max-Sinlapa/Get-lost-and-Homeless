@@ -5772,7 +5772,6 @@ MonoBehaviour:
   ShereHP_Multiplayer: 0
   Enemy_Health: 0
   Enemy_Hp_Serialization: 1
-  _currentEnemy_HP: 0
   Enemy_Hp: 0
 --- !u!114 &1281484146
 MonoBehaviour:
@@ -6751,7 +6750,6 @@ MonoBehaviour:
   ShereHP_Multiplayer: 0
   Enemy_Health: 0
   Enemy_Hp_Serialization: 1
-  _currentEnemy_HP: 0
   Enemy_Hp: 0
 --- !u!136 &1395684187
 CapsuleCollider:
@@ -8262,7 +8260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: _NextScene
-      value: GamePlaySceneTEST-2
+      value: GamePlaySceneTEST-222
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: allPlayerInZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target

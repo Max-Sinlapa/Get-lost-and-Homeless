@@ -559,7 +559,6 @@ MonoBehaviour:
   LeaveGameButton: {fileID: 2130480038}
   StartGameButton: {fileID: 772485672}
   PlayerListEntryPrefab: {fileID: 7854476257563332713, guid: 115c45c94299dfe4b84204af504e6529, type: 3}
-  AllPlayerHealth: 20
   isTeamMode: 0
 --- !u!114 &2130480038 stripped
 MonoBehaviour:
@@ -810,6 +809,10 @@ PrefabInstance:
     - target: {fileID: 1394863843520963058, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: GamePlayScene
       value: GamePlaySceneTEST-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394863843520963058, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
+      propertyPath: _playerHealth
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1394863843520963058, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: _panelList.Array.data[5]
