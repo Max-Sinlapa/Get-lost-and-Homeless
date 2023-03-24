@@ -269,7 +269,7 @@ namespace Max_DEV.MoveMent
                 /////// Attack
                 if (_AttackController != null && _input.attack && CanAttack)
                 {
-                    Debug.Log("PerformAttack Nomal");
+                    //Debug.Log("PerformAttack Nomal");
                     _AttackController.PerformAttack();
                     _input.attack = false;
                 }

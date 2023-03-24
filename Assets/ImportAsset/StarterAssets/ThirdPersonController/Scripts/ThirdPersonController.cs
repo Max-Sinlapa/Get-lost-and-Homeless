@@ -226,7 +226,11 @@ namespace StarterAssets
             if (_input.move == Vector2.zero)
             {
                 targetSpeed = 0.0f;
-                particle.particIsPlay = false;
+                if (particle != null)
+                {
+                    particle.particIsPlay = false;
+
+                } 
             }
 
             // a reference to the players current horizontal velocity

@@ -22,6 +22,11 @@ public class CreateRoomPanel : MonoBehaviour
 
         if (_maxPlayersInputField != null)
             _maxPlayersInputField.text = "";
+        if (_maxPlayersInputField == null)
+        {
+            _maxPlayersInputField.text = "2";
+            Debug.Log("_maxPlayersInputField NULL");
+        }
         else
             Debug.LogError("Missing  max player Input.");
 
@@ -55,15 +60,31 @@ public class CreateRoomPanel : MonoBehaviour
         byte.TryParse(_maxPlayersInputField.text, out maxPlayers);
         maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 8);
 
-        RoomOptions options = new RoomOptions {
-            MaxPlayers = maxPlayers ,
-            CustomRoomProperties = new Hashtable() {
-                { PunGameSetting.TEAMMODE , _teamModeToggle.isOn }
-            }
-        };
+        if (_teamModeToggle == null)
+        {
+            RoomOptions options = new RoomOptions {
+                MaxPlayers = maxPlayers ,
+                CustomRoomProperties = new Hashtable() {
+                    { PunGameSetting.TEAMMODE , true }
+                }
+            };
+            PhotonNetwork.CreateRoom(roomName, options, null);
+
+        }
+        else
+        {
+            RoomOptions options = new RoomOptions {
+                       MaxPlayers = maxPlayers ,
+                       CustomRoomProperties = new Hashtable() {
+                           { PunGameSetting.TEAMMODE , _teamModeToggle.isOn }
+                       }
+                   }; 
+            
+            PhotonNetwork.CreateRoom(roomName, options, null);
+
+        }
+       
 
         //options.CustomRoomPropertiesForLobby = { "map", "ai" };
-
-        PhotonNetwork.CreateRoom(roomName, options, null);
     }
 }

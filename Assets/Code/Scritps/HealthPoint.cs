@@ -24,7 +24,7 @@ namespace Max_DEV
         public TextMeshProUGUI playerHP_Text;
         public UnityEvent<int> onHpChanged;
     
-        public bool ShereHPinGameManager;
+        public bool ShereHP_inGameManager;
         
         [Header("Multiplayer")]
         public bool ShereHP_Multiplayer;
@@ -43,7 +43,7 @@ namespace Max_DEV
         {
             onHpChanged?.Invoke(currentHp);
     
-            if (ShereHPinGameManager)
+            if (ShereHP_inGameManager)
             {
                 Debug.Log(""+this.gameObject+" : Health = " + m_GameManager._allPlayerCurrentHealth);
                 currentHp = m_GameManager._allPlayerCurrentHealth;
@@ -75,7 +75,7 @@ namespace Max_DEV
             currentHp += _value;
             onHpChanged?.Invoke(currentHp);
 
-            if (ShereHPinGameManager)
+            if (ShereHP_inGameManager)
             {
                 m_GameManager._allPlayerCurrentHealth = currentHp;
                 currentHp = m_GameManager._allPlayerCurrentHealth;
@@ -85,7 +85,7 @@ namespace Max_DEV
         [PunRPC]
         public void DecreaseHp(int _value) 
         {
-            if (ShereHPinGameManager)
+            if (ShereHP_inGameManager)
             {
                 currentHp = m_GameManager._allPlayerCurrentHealth;
                 currentHp -= _value;
@@ -118,19 +118,21 @@ namespace Max_DEV
                 Debug.Log("-------Enemy_Health-------");
             }
             */
-            else if(!ShereHPinGameManager && !ShereHP_Multiplayer && !Enemy_Health)
+            if (Enemy_Hp_Serialization)
+            { 
+                Debug.Log("-------DecreaseHP ELSE-------"); 
+                Debug.Log("currentHp = " + currentHp + " Damage = " + _value);
+                HealthText(); 
+                currentHp -= _value; 
+                Enemy_Hp = currentHp; 
+                Debug.Log("-------DecreaseHP ELSE-------");
+            }
+            else
             {
-                if (Enemy_Hp_Serialization)
-                {
-                    Debug.Log("-------DecreaseHP ELSE-------");
-                    Debug.Log("currentHp = " + currentHp + " Damage = " + _value);
-                    HealthText();
-                    currentHp -= _value;
-                    Enemy_Hp = currentHp;
-                    Debug.Log("-------DecreaseHP ELSE-------");
-                }
+                currentHp -= _value; 
+            }
                 
-            }   
+               
             
             onHpChanged?.Invoke(currentHp);
             
@@ -165,7 +167,7 @@ namespace Max_DEV
             transform.position = spawnPoint.position;
             currentHp = MaxHp;
             
-            if (ShereHPinGameManager)
+            if (ShereHP_inGameManager)
                 m_GameManager._allPlayerCurrentHealth = currentHp;
 
             GetComponent<CharacterController>().enabled = true;

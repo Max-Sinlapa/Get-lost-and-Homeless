@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using static LobbyPanelManager;
 
 public class LoginPanel : MonoBehaviour
@@ -10,7 +11,7 @@ public class LoginPanel : MonoBehaviour
     public Button _loginButton;
     public Button _quickLoginButton;
 
-
+    //public TMP_InputField _playerName
 
     public void Awake()
     {

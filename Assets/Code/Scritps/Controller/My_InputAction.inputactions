@@ -254,6 +254,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Interaction",
+                    "type": "Button",
+                    "id": "97457da1-681a-4369-8804-80d8b8f419ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Climb",
                     "type": "PassThrough",
                     "id": "b8fb98b6-02c2-4d20-b543-29bddc0bb7f1",
@@ -384,7 +393,7 @@
                 {
                     "name": "",
                     "id": "3ed44d9c-1084-4ac4-8187-52f56bac4fb6",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -400,6 +409,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca1a1612-970c-4a11-85b6-0b6f89aa2a5a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
