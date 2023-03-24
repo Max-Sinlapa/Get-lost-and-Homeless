@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 6b9344651da0eaf4e985d2fb2e4c7a85
+=======
+<<<<<<<< HEAD:Assets/Levels/Map1.unity.meta
+guid: 84f11b7c74969974a8cbb5edc593cc64
+========
+guid: d8df019c736d58c4fa662bd2968ac5f0
+>>>>>>>> origin/Muti:Assets/Levels/UI/SceneLobby/Lobby.unity.meta
+>>>>>>> origin/Muti
 DefaultImporter:
   externalObjects: {}
   userData: 
