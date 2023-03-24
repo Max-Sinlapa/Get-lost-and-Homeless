@@ -1247,7 +1247,7 @@ MonoBehaviour:
   canvasBackground: {fileID: 1683099797}
   titleBar: {fileID: 2032524143}
   titleText: {fileID: 268967610}
-  Play: {fileID: 553024707}
+  Paper: {fileID: 553024707}
   buttons:
   - {fileID: 572486316}
   - {fileID: 602797466}
