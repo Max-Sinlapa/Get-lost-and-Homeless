@@ -1083,9 +1083,8 @@ MonoBehaviour:
   onHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  ShereHPinGameManager: 0
+  ShereHP_inGameManager: 0
   ShereHP_Multiplayer: 1
-  Enemy_Health: 0
   Enemy_Hp_Serialization: 0
   Enemy_Hp: 0
 --- !u!114 &262542208482304975
