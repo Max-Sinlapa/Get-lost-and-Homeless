@@ -441,6 +441,7 @@ namespace Max_DEV.MoveMent
             if (Grounded || _canClimb || JumpCount < JumpLimit)
             {
 
+
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
@@ -499,6 +500,7 @@ namespace Max_DEV.MoveMent
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
+                    
 
                     // incress JumpCount When jump
                     if(MultipleJump)
@@ -506,6 +508,8 @@ namespace Max_DEV.MoveMent
                     else
                         JumpCount += 999999;
                     
+                    //Debug.Log("jump = "  + JumpCount);
+
                     _input.jump = false;
                 }
 
@@ -630,7 +634,13 @@ namespace Max_DEV.MoveMent
                             case ObjectType.Water:
                                 InWater = true;
                                 if (!SwimWater)
+                                {
+                                    var hp = this.GetComponent<HealthPoint>();
+                                    hp.DecreaseHp(1);
+                                    hp.Respawn();
+                                    Debug.Log("InWater");
                                     return;
+                                }
                                 _canSwim = true;
                                 break;
                         }

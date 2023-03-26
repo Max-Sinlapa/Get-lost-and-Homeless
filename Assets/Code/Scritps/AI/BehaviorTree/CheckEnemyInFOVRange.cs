@@ -44,7 +44,8 @@ public class CheckEnemyInFOVRang : Node
                 //_animator.SetBool(_AnimWalk, true);
                 
                //Debug.Log("Target =" + colliders[0]);
-                
+               
+               _transform.LookAt(colliders[0].transform.position);
                 state = NodeState.SUCCESS;
                 return state;
             }

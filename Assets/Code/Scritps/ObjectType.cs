@@ -7,7 +7,8 @@ namespace Max_DEV
         ClimbArea,
         Floor,
         Water,
-        Enemy
+        Enemy,
+        FloadBox
         
     }
 

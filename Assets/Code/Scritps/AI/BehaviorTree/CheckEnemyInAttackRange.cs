@@ -40,7 +40,7 @@ public class CheckEnemyInAttackRange : Node
         {
             //ClearData("target");
             _animator.SetBool(_AnimAttack, false);
-            _animator.SetBool(_AnimWalk, true);
+            //_animator.SetBool(_AnimWalk, true);
             state = NodeState.SUCCESS;
             return state;
         }

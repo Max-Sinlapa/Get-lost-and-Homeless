@@ -20,6 +20,7 @@ namespace Max_DEV.Manager
         public static int _playerCurrentScore = _startPlayerScore;
 
         public Slider _HpSlider;
+        public UI_HP _uiPlayerHP;
         public int playerHP;
         
         private string _currentScene;
@@ -113,6 +114,11 @@ namespace Max_DEV.Manager
             }
             else {
                 _allPlayerCurrentHealth = (int)stream.ReceiveNext();
+            }
+
+            if (_uiPlayerHP != null)
+            {
+                _uiPlayerHP.UpdateUIhp();
             }
         }
         /// </SerializeView>

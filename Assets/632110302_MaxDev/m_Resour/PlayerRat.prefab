@@ -1312,7 +1312,7 @@ Transform:
   m_GameObject: {fileID: 8608599459102005201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.42, y: 0.33, z: -20.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8608599459657356879}
@@ -1568,6 +1568,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  particle: {fileID: 0}
   m_ActorTriggerHandler: {fileID: 8608599460694934493}
   MultipleJump: 0
   JumpPower: 30
@@ -1602,7 +1603,10 @@ MonoBehaviour:
   onHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  ShereHPinGameManager: 1
+  ShereHP_inGameManager: 0
+  ShereHP_Multiplayer: 0
+  Enemy_Hp_Serialization: 0
+  Enemy_Hp: 0
 --- !u!114 &8608599459102005160
 MonoBehaviour:
   m_ObjectHideFlags: 0

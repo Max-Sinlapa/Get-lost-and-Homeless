@@ -9,17 +9,12 @@ public class UI_HP : MonoBehaviour
     public RectTransform _hpListContent;
     public GameObject _HpPrefab;
     
-    private Dictionary<string, int> cachedHp_List;
-    private Dictionary<string, GameObject> hpListEntries;
-
     public List<GameObject> childObject;
 
     public bool multiplayer;
     
     private void Awake()
     {
-        cachedHp_List = new Dictionary<string, int>();
-        hpListEntries = new Dictionary<string, GameObject>();
 
         if (_hpListContent == null)
             Debug.LogError("Missing room list Content.");
@@ -32,15 +27,9 @@ public class UI_HP : MonoBehaviour
         
     }
 
-    private void ClearHP_ListView()
+    public void ClearHP_ListView()
     {
-        foreach (GameObject entry in hpListEntries.Values)
-        {
-            Destroy(entry.gameObject);
-        }
-        
-        hpListEntries.Clear();
-
+        /*
         if (childObject.Count > 1 )
         {
             foreach (GameObject hpChild in childObject)
@@ -48,12 +37,17 @@ public class UI_HP : MonoBehaviour
                 Destroy(hpChild);
             }
         }
+        */
         
+        foreach (GameObject hpChild in childObject)
+        {
+            Destroy(hpChild);
+        }
         
     }
     
     
-    private void UpdateHP_ListView()
+    public void UpdateHP_ListView()
     {
         //print(cachedRoomList.Count);
         for (int i = 0; i < m_GameManager._allPlayerCurrentHealth; i++)

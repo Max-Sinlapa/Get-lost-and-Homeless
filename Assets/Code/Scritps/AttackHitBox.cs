@@ -65,6 +65,11 @@ public class AttackHitBox : MonoBehaviourPun
                 sametype = false;
             }
         }
+        else if (damage != null)
+        {
+            damage.DecreaseHp(_attackController.attackDamage);
+        }
+       
         sametype = false;
     }
 

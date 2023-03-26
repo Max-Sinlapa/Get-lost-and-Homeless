@@ -40,7 +40,6 @@ namespace Max_DEV
         */
         private void Start()
         {
-            onHpChanged?.Invoke(currentHp);
     
             if (ShereHP_inGameManager)
             {
@@ -59,6 +58,8 @@ namespace Max_DEV
                 Enemy_Hp = currentHp;
             }
             
+            onHpChanged?.Invoke(currentHp);
+
         }
     
         public void HealthText()
@@ -90,6 +91,7 @@ namespace Max_DEV
                 currentHp -= _value;
                 m_GameManager.SetPlayerHealth(currentHp);
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
+                //onHpChanged?.Invoke(currentHp);
             }
             if (ShereHP_Multiplayer)
             {
@@ -105,6 +107,7 @@ namespace Max_DEV
                 Debug.Log("22-currentHp = " + currentHp + " Damage = " + _value);
                 Debug.Log("-------ShereHP_Multiplayer-------");
             }
+            
             /*
             if (Enemy_Health)
             {
@@ -117,6 +120,7 @@ namespace Max_DEV
                 Debug.Log("-------Enemy_Health-------");
             }
             */
+            
             if (Enemy_Hp_Serialization)
             { 
                 Debug.Log("-------DecreaseHP ELSE-------"); 
@@ -128,12 +132,13 @@ namespace Max_DEV
             }
             else
             {
+                Debug.Log("-------DecreaseHP BOX ELSE-------");
                 currentHp -= _value; 
             }
                 
                
-            
             onHpChanged?.Invoke(currentHp);
+
             
             if (currentHp <= 0)
             {
@@ -158,8 +163,10 @@ namespace Max_DEV
             }
         }
         
-        private void Respawn() 
+        public void Respawn() 
         {
+            Debug.Log("gameObject = " + this.gameObject + " RESPAWN");
+            
             GetComponent<CharacterController>().enabled = false;
             //Debug.Log(" :) "+transform.position);
             //Debug.Log(" :( " + spawnPoint.position);

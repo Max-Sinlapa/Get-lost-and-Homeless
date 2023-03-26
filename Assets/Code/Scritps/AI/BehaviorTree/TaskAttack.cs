@@ -46,7 +46,7 @@ namespace Max_DEV.Ai
             {
                 ClearData("target");
                 _animator.SetBool(_AnimAttack, false);
-                _animator.SetBool(_AnimWalk, true);
+                //_animator.SetBool(_AnimWalk, true);
             }
             else 
             {

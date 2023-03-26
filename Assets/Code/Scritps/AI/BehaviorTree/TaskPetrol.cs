@@ -22,23 +22,30 @@ public class TaskPatrol : Node
     private float _waitCounter = 0f;
     private bool _waiting = false;
 
-    public TaskPatrol(Transform transform, Transform[] waypoints, float petrolSpeed, float waiteTime, NavMeshAgent agent)
+    private float distanst;
+
+    public TaskPatrol(Transform transform, Transform[] waypoints, float distantTargetBetweenObject , float petrolSpeed, float waiteTime, NavMeshAgent agent)
     {
         _transform = transform;
         _waypoints = waypoints;
         _waitTime = waiteTime;
         _petrolSpeed = petrolSpeed;
+
+        distanst = distantTargetBetweenObject;
         
         _animator = transform.GetComponent<Animator>();
         _AnimWalk = Animator.StringToHash("Walk");
         _AnimAttack = Animator.StringToHash("Attack");
         
         /// Setup NavMesh
-        _thisAgent = agent;
-        _thisAgent.updateRotation = true;
-        _thisAgent.updatePosition = true;
-        _thisAgent.speed = _petrolSpeed;
-        
+        if (_thisAgent != null)
+        {
+            _thisAgent = agent;
+            _thisAgent.updateRotation = true;
+            _thisAgent.updatePosition = true;
+            _thisAgent.speed = _petrolSpeed;
+        }
+
     }
 
     public override NodeState Evaluate()
@@ -63,7 +70,7 @@ public class TaskPatrol : Node
             var checkdistan = Vector3.Distance(_transform.position, wp.position);
             //Debug.Log("Distan = " + checkdistan);    
 
-            if (Vector3.Distance(_transform.position, wp.position) < 0.1f)
+            if (Vector3.Distance(_transform.position, wp.position) < distanst)
             {
                 _transform.position = wp.position;
                 _waitCounter = 0f;
@@ -74,11 +81,17 @@ public class TaskPatrol : Node
             }
             else
             {
-                _thisAgent.SetDestination(wp.position);
-                /*
-                _transform.position = Vector3.MoveTowards(_transform.position, wp.position, _petrolSpeed * Time.deltaTime);
-                _transform.LookAt(wp.position);
-                */
+                if (_thisAgent != null)
+                {
+                    _thisAgent.SetDestination(wp.position);
+                }
+                else
+                {
+                   _transform.position = Vector3.MoveTowards(_transform.position, wp.position, _petrolSpeed * Time.deltaTime);
+                   _transform.LookAt(wp.position);
+                   
+                   //Debug.Log("No Agent");
+                }
             }
         }
 
