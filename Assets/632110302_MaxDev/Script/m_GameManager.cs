@@ -22,6 +22,8 @@ namespace Max_DEV.Manager
         public Slider _HpSlider;
         public UI_HP _uiPlayerHP;
         public int playerHP;
+        public GameObject _gameOverUI;
+        public GameObject _barUI;
         
         private string _currentScene;
         
@@ -45,7 +47,7 @@ namespace Max_DEV.Manager
         }
         
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_HpSlider != null)
             {
@@ -57,6 +59,19 @@ namespace Max_DEV.Manager
             }
 
             playerHP = _allPlayerCurrentHealth;
+            if (playerHP <= 0)
+            {
+                GameOver();
+            }
+        }
+
+        public void GameOver()
+        {
+            if (_gameOverUI != null)
+                _gameOverUI.SetActive(true);
+            
+            if (_barUI != null)
+                _barUI.SetActive(false);
         }
 
         

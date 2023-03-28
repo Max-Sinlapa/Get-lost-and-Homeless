@@ -159,7 +159,9 @@ namespace Max_DEV
                 Respawn();
             else
             {
-                Destroy(this.gameObject);
+                
+                //this.gameObject.SetActive(false);
+                Destroy(this.gameObject ,0.5f);
             }
         }
         
@@ -171,7 +173,7 @@ namespace Max_DEV
             //Debug.Log(" :) "+transform.position);
             //Debug.Log(" :( " + spawnPoint.position);
             transform.position = spawnPoint.position;
-            currentHp = MaxHp;
+            //currentHp = MaxHp;
             
             if (ShereHP_inGameManager)
                 m_GameManager._allPlayerCurrentHealth = currentHp;

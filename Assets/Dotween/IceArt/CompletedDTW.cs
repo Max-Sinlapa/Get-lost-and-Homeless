@@ -22,7 +22,7 @@ public class CompletedDTW : MonoBehaviour
     [SerializeField] private Image Stamp = default;
 
     [Header("Star")]
-    [SerializeField] private Image[] star = default;
+    [SerializeField] public Image[] star = default;
 
      [Header("Button")]
     [SerializeField] private Button[]  buttons= default;
@@ -94,7 +94,7 @@ public class CompletedDTW : MonoBehaviour
 
             //-------------------------------------------------------------
             // STAR
-           .Insert(1.75f, star[0].transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.InSine))
+            .Insert(1.75f, star[0].transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.InSine))
             .Join(star[0].transform.DOScale(Vector3.one * 1, 0.25f).SetEase(Ease.InSine)
                  .OnStart(() =>
                  {

@@ -6,31 +6,52 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mutiplayer/Scene/MenuUI/m_Lobby-PunExt.unity
-    guid: c6de829f1b5b64f4ea4505bdd1751dd9
+    path: Assets/Levels/Main/1_MainMenu.unity
+    guid: 77e63ebae9a24b6489a245099e8df0cd
+  - enabled: 1
+    path: Assets/Levels/Main/2_Credit.unity
+    guid: 25773792bbe629f44bea783a049dcfe9
+  - enabled: 1
+    path: Assets/Levels/Main/2_GamePlaySelec.unity
+    guid: e2425073206e3aa4a97cf073b1e4bb46
+  - enabled: 1
+    path: Assets/Levels/Main/2_Option.unity
+    guid: 754406b6f5414da4a977f305a43e40be
+  - enabled: 1
+    path: Assets/Levels/Main/_Completed.unity
+    guid: 22a3e63508bc8254f9a88f6a2d686874
+  - enabled: 1
+    path: Assets/Levels/Main/_GameOver.unity
+    guid: d64fd07572c58b7499acfce12bab6725
+  - enabled: 1
+    path: Assets/Levels/Main/_PauseGame.unity
+    guid: 5f92ec7bf1eb33b43ae5932f915ad416
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/CutScene/G_CutScene01.unity
+    guid: 08a155c7ee53b00468d1f28f7b0c53fb
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/CutScene/G_CutScene02.unity
+    guid: 515986d4d9d9f7246bb5dfcedc1162b2
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/CutScene/G_Cutscene03.unity
+    guid: 89ffe9b4952c27540ab34644374f5b4b
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/G_Tutorial.unity
+    guid: 46d0d3c9db64ec744aa55c22ebdf3c21
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/G_GameplaySingle-1.unity
+    guid: d4ac95d2178ad884694dca7e2a31d2be
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/G_GameplaySingle-2.unity
+    guid: 1f2ca4d2a1133aa48a894f96c7c9f72f
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Single/G_GameplaySingle-3.unity
+    guid: 2e98df387550b274c8a7b4d99f9e1d54
   - enabled: 1
     path: Assets/Mutiplayer/Scene/Gameplay/GamePlaySceneTEST-1.unity
     guid: 7c1e578b029257f4299507cff604bb87
   - enabled: 1
-    path: Assets/632110302_MaxDev/mTEST_MainMenu.unity
-    guid: ba62914821adae0469f96d30eea45483
-  - enabled: 1
-    path: Assets/632110302_MaxDev/m_Test_Progress03-1.unity
-    guid: 0ea05f90303dd1d43bdf2a12140e89b0
-  - enabled: 1
-    path: Assets/632110302_MaxDev/m_Test_Progress03-2.unity
-    guid: 598c5d0aa8e62ef4e9f74f2247e56523
-  - enabled: 1
-    path: Assets/Levels/UI/Option.unity
-    guid: 1d25fc51afdedbe45b1e8f50621bd502
-  - enabled: 1
-    path: Assets/Levels/UI/PauseGame.unity
-    guid: 6ceac01b549be3040b6266d33009e082
-  - enabled: 1
-    path: Assets/Levels/UI/LevelSelect.unity
-    guid: 55b26678213f5c84fbb705503241286d
-  - enabled: 1
-    path: Assets/Levels/Progress03.unity
-    guid: f025cf463256ea945a9b3cf31af49f6a
+    path: Assets/Mutiplayer/Scene/MenuUI/S-Lobby.unity
+    guid: e7da05e5b4976a44094c6a9773b2255f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
