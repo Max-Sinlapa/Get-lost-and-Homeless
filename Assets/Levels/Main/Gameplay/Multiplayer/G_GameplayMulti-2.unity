@@ -632,6 +632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp_Serialization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS (3)
@@ -4026,6 +4030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp_Serialization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS (1)
@@ -6554,7 +6562,7 @@ MonoBehaviour:
   _hpListContent: {fileID: 1073398601}
   _HpPrefab: {fileID: 2310980095007575687, guid: 0cabf72e42c15c940bef3d1f014fc6bd, type: 3}
   childObject: []
-  multiplayer: 0
+  multiplayer: 1
 --- !u!43 &1091990772
 Mesh:
   m_ObjectHideFlags: 0
@@ -9019,6 +9027,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp_Serialization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS (2)
@@ -9591,6 +9603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp_Serialization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS (4)
@@ -58467,7 +58483,7 @@ MonoBehaviour:
       m_Calls: []
   ShereHP_inGameManager: 0
   ShereHP_Multiplayer: 0
-  Enemy_Hp_Serialization: 0
+  Enemy_Hp_Serialization: 1
   Enemy_Hp: 3
 --- !u!136 &5792573861781898969
 CapsuleCollider:
@@ -61078,6 +61094,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp_Serialization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS

@@ -22,9 +22,12 @@ public class UI_HP : MonoBehaviour
         UpdateUIhp();
     }
 
-    private void Update()
+     void FixedUpdate()
     {
-        
+        if (multiplayer)
+        {
+            UpdateUIhp();
+        }
     }
 
     public void ClearHP_ListView()

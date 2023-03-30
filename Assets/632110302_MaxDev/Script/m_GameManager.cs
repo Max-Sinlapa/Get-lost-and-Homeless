@@ -34,8 +34,8 @@ namespace Max_DEV.Manager
             //Debug.Log("Player Score = " + _playerCurrentScore);
             if (_startPlayerHealth <= 0)
             {
-                _startPlayerHealth = 1;
-                Debug.Log("Set Player HP = 1 , Becasue StartHP is 0");
+                //_startPlayerHealth = 1;
+                Debug.Log("StartHP is 0");
             }
             
             if (_HpSlider != null)

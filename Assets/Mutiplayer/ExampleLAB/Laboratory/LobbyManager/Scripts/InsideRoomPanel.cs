@@ -37,6 +37,9 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
 
     public void AwakeJoinedRoom()
     {
+        m_GameManager.Set_Start_PlayerHealth(LobbyPanelManager.instance._playerHealth);
+        m_GameManager.SetPlayerHealth(LobbyPanelManager.instance._playerHealth);
+        
         if (playerListEntries == null)
         {
             playerListEntries = new Dictionary<int, GameObject>();
@@ -169,9 +172,12 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
         Debug.Log("InsideRoomPanel-OnStartGameButtonClicked CALL");
+        
+        //this.photonView.RPC("CallSetPlayerHealthEvent", RpcTarget.All, photonView.ViewID);
         //CallSetPlayerHealthEvent();
-        m_GameManager.Set_Start_PlayerHealth(LobbyPanelManager.instance._playerHealth);
-        m_GameManager.SetPlayerHealth(LobbyPanelManager.instance._playerHealth);
+        
+        //m_GameManager.Set_Start_PlayerHealth(LobbyPanelManager.instance._playerHealth);
+        //m_GameManager.SetPlayerHealth(LobbyPanelManager.instance._playerHealth);
         
         Debug.Log("panel HP = " + LobbyPanelManager.instance._playerHealth);
         PhotonNetwork.LoadLevel(LobbyPanelManager.instance.GamePlayScene);
@@ -211,10 +217,12 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
         return true;
     }
 
-    private void CallSetPlayerHealthEvent()
+    [PunRPC]
+    public void CallSetPlayerHealthEvent()
     {
         Debug.Log("CallSetPlayerHealthEvent");
         
+        /*
         object[] data = new object[]
         {
             LobbyPanelManager.instance._playerHealth
@@ -231,6 +239,9 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks , IOnEventCallback
 
         Debug.Log("HealthForm CallSetPlayerHealthEvent = " + (int)data[0]);
         PhotonNetwork.RaiseEvent(SetPlayerHealthInManager, data, raiseEventOptions, sendOptions);
+        */
+        m_GameManager.Set_Start_PlayerHealth(LobbyPanelManager.instance._playerHealth);
+        m_GameManager.SetPlayerHealth(LobbyPanelManager.instance._playerHealth);
     }
 
     public void OnEvent(EventData photonEvent)
