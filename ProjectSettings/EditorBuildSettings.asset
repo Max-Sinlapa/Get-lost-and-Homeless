@@ -48,10 +48,31 @@ EditorBuildSettings:
     path: Assets/Levels/Main/Gameplay/Single/G_GameplaySingle-3.unity
     guid: 2e98df387550b274c8a7b4d99f9e1d54
   - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/CutScene/G_Mult_CutScene01.unity
+    guid: fcf8a20e242703944be3ecf0e7c1693a
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/CutScene/G_Mult_CutScene02.unity
+    guid: 65ba75bbed526ee43b56a940d2fb7007
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/CutScene/G_Mult_Cutscene03.unity
+    guid: 463372c3b28640c4a884ffbf3331dbaf
+  - enabled: 1
+    path: Assets/Levels/Main/3_Lobby.unity
+    guid: b199e55f3de1f744480fb3f730e14f61
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/G_TutorialMulti.unity
+    guid: e794e470a7cadac49be45a5a976605cc
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/G_GameplayMulti-1.unity
+    guid: 9927eea5dae8b2246b720689bdad0732
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/G_GameplayMulti-2.unity
+    guid: 85b074daef8af26439d36adc7a11056e
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/G_GameplayMulti-3.unity
+    guid: a23dcb3dfdbc19149ab9ae603a529421
+  - enabled: 1
     path: Assets/Mutiplayer/Scene/Gameplay/GamePlaySceneTEST-1.unity
     guid: 7c1e578b029257f4299507cff604bb87
-  - enabled: 1
-    path: Assets/Mutiplayer/Scene/MenuUI/S-Lobby.unity
-    guid: e7da05e5b4976a44094c6a9773b2255f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
