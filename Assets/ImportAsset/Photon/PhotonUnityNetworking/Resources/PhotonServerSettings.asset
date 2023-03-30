@@ -49,6 +49,7 @@ MonoBehaviour:
   - DecreaseHp
   - SetPlayerHealth
   - AttackingByRPC
+  - Multiplayer_ChangeScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

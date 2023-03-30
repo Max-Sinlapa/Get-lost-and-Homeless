@@ -367,7 +367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1075982387926702469
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   particle: {fileID: 0}
   m_ActorTriggerHandler: {fileID: 8608599460694934493}
   MultipleJump: 0
-  JumpPower: 30
+  JumpPower: 10
   JumpLimit: 1
   JumpCount: 0
   Climb: 0

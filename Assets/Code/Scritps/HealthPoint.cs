@@ -130,15 +130,15 @@ namespace Max_DEV
                 Enemy_Hp = currentHp; 
                 Debug.Log("-------DecreaseHP ELSE-------");
             }
-            else
+            if (!Enemy_Hp_Serialization && !ShereHP_Multiplayer && !ShereHP_inGameManager)
             {
-                Debug.Log("-------DecreaseHP BOX ELSE-------");
+                Debug.Log("-------DecreaseHP BOX ELSE-------" + "form = " + this.gameObject);
                 currentHp -= _value; 
             }
-                
-               
+
             onHpChanged?.Invoke(currentHp);
 
+            
             
             if (currentHp <= 0)
             {

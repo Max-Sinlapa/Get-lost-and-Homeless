@@ -109,6 +109,7 @@ public class m_SceneManager : MonoBehaviourPun
 
         #region Multiplayer
 
+        [PunRPC]
         public static void Multiplayer_ChangeScene(string _scene)
         {
             PhotonNetwork.LoadLevel(_scene);
