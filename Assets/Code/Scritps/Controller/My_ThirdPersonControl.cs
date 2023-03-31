@@ -278,11 +278,10 @@ namespace Max_DEV.MoveMent
                 {
                     Debug.Log("PerformAttack Nomal");
                     _AttackController.PerformAttack();
-                    
                     _input.attack = false;
                 }
 
-                if (_input.attack)
+                if (_input.attack || _input.interection)
                 {
                     //this.gameObject.GetComponent<Animator>().SetTrigger("AttackTrigger");
                     //animator.SetTrigger("AttackTrigger");

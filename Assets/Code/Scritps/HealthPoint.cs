@@ -38,6 +38,10 @@ namespace Max_DEV
             set { _currentEnemy_HP = value; }
         }
         */
+
+        //animator
+        Animator animator;
+
         private void Start()
         {
     
@@ -59,6 +63,8 @@ namespace Max_DEV
             }
             
             onHpChanged?.Invoke(currentHp);
+
+            animator = GetComponent<Animator>();
 
         }
     
@@ -87,11 +93,13 @@ namespace Max_DEV
         {
             if (ShereHP_inGameManager)
             {
+                
                 currentHp = m_GameManager._allPlayerCurrentHealth;
                 currentHp -= _value;
                 m_GameManager.SetPlayerHealth(currentHp);
                 Debug.Log("DecreaseManagerHealth = " + m_GameManager._allPlayerCurrentHealth);
                 //onHpChanged?.Invoke(currentHp);
+                
             }
             if (ShereHP_Multiplayer)
             {
@@ -142,7 +150,7 @@ namespace Max_DEV
                 Debug.Log("-------DecreaseHP BOX ELSE-------" + "form = " + this.gameObject);
                 currentHp -= _value; 
             }
-
+            animator.SetTrigger("HitReactionTrigger");
             onHpChanged?.Invoke(currentHp);
 
             
