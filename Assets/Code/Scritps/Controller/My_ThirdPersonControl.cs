@@ -448,6 +448,7 @@ namespace Max_DEV.MoveMent
             {
                 if (_input.climb && SwimWater)
                     Swim(SwimSpeed);
+                    animator.SetBool("swimming", true);
 
                 // update animator if using character
                 if (_hasAnimator)
@@ -476,6 +477,7 @@ namespace Max_DEV.MoveMent
                 {
                     if (InWater)
                     {
+                        animator.SetBool("InWater", true);
                         //Debug.Log("Water Gravity");
                         _verticalVelocity += WaterGravity * Time.deltaTime;
                     }
@@ -566,6 +568,7 @@ namespace Max_DEV.MoveMent
                 if (InWater)
                 {
                     //Debug.Log("Water Gravity");
+                    animator.SetBool("InWater", true);
                     _verticalVelocity += WaterGravity * Time.deltaTime;
                 }
 
@@ -651,6 +654,7 @@ namespace Max_DEV.MoveMent
                                 break;
                             case ObjectType.Water:
                                 InWater = true;
+                                animator.SetBool("InWater", true);
                                 if (!SwimWater)
                                 {
                                     var hp = this.GetComponent<HealthPoint>();
@@ -680,6 +684,7 @@ namespace Max_DEV.MoveMent
                                 InWater = false;
                                 _canSwim = false;
                                 _verticalVelocity = Mathf.Sqrt(OutOfWaterJumpPower);
+                                animator.SetBool("InWater", false);
                                 break;
                         }
                     }
@@ -699,6 +704,11 @@ namespace Max_DEV.MoveMent
         public void Swim(float _swimSpeed)
         {
             _verticalVelocity = Mathf.Sqrt(_swimSpeed);
+            if(_swimSpeed <= 0)
+            {
+                animator.SetBool("swimming", false);
+            }
+            
             ///print("Swim");
         }
 
