@@ -46,8 +46,10 @@ namespace Max_DEV.Manager
             _playerCurrentScore = _startPlayerScore;
             _allPlayerCurrentHealth = _startPlayerHealth;
             
-            //Debug.Log("manager Awake " + _startPlayerHealth);
+            Debug.Log("manager Awake " + _startPlayerHealth);
+
             
+
         }
         
 
@@ -72,7 +74,13 @@ namespace Max_DEV.Manager
         public void GameOver()
         {
             if (_gameOverUI != null)
+            {
                 _gameOverUI.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+                
+                
             
             if (_barUI != null)
                 _barUI.SetActive(false);
