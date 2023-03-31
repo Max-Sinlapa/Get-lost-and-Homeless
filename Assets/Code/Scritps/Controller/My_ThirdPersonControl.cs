@@ -278,6 +278,7 @@ namespace Max_DEV.MoveMent
                 {
                     Debug.Log("PerformAttack Nomal");
                     _AttackController.PerformAttack();
+                    _animator.SetTrigger(_animIDAttack);
                     _input.attack = false;
                 }
 
