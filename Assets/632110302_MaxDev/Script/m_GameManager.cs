@@ -46,7 +46,7 @@ namespace Max_DEV.Manager
             _playerCurrentScore = _startPlayerScore;
             _allPlayerCurrentHealth = _startPlayerHealth;
             
-            Debug.Log("manager Awake " + _startPlayerHealth);
+            //Debug.Log("manager Awake " + _startPlayerHealth);
             
         }
         

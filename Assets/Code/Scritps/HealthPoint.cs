@@ -150,7 +150,12 @@ namespace Max_DEV
                 Debug.Log("-------DecreaseHP BOX ELSE-------" + "form = " + this.gameObject);
                 currentHp -= _value; 
             }
-            animator.SetTrigger("HitReactionTrigger");
+
+            
+            /////////
+            if (animator != null)
+                animator.SetTrigger("HitReactionTrigger");
+            
             onHpChanged?.Invoke(currentHp);
 
             

@@ -26,8 +26,8 @@ public class PunGameTimer : MonoBehaviourPunCallbacks
             Text.text = "Wait to Start.";
         }
         //Add Delegate Function
-        PunNetworkManager.OnGameStart += StartTime;
-        PunNetworkManager.OnGameOver += OverTime;
+        PunNetworkManager_m.OnGameStart += StartTime;
+        PunNetworkManager_m.OnGameOver += OverTime;
     }
     
     public void Update(){
@@ -82,7 +82,7 @@ public class PunGameTimer : MonoBehaviourPunCallbacks
     {
         Debug.Log("Game is Over? or TimeOut : " + currentCountDown);
         if(PhotonNetwork.IsMasterClient)
-            PunNetworkManager.singleton.CurrentGamestate = PunNetworkManager.gamestate.GameOver;
+            PunNetworkManager_m.singleton.CurrentGamestate = PunNetworkManager_m.gamestate.GameOver;
     }
     
     public override void OnEnable()

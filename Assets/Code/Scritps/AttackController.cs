@@ -56,7 +56,10 @@ public class AttackController : MonoBehaviourPun
 
     private IEnumerator IEAttack()
     {
-        _animator.SetTrigger("AttackCat");
+        if (_animator != null)
+        {
+            _animator.SetTrigger("AttackCat");
+        }
         isAttacking = true;
         meleeHitBox.SetActive(true);
         yield return new WaitForSeconds(attackSpeed);

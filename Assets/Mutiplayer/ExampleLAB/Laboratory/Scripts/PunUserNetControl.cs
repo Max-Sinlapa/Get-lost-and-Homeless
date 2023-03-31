@@ -25,12 +25,12 @@ public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagi
             GetComponentInChildren<MeshRenderer>().material.color = Color.blue;
 
             // Reference Camera on run-time
-            PunNetworkManager.singleton._vCam.Follow = CameraRoot;
+            PunNetworkManager_m.singleton._vCam.Follow = CameraRoot;
             
             
             // Reference Input on run-time
             PlayerInput _pInput = GetComponent<PlayerInput>(); 
-            _pInput.actions = PunNetworkManager.singleton._inputActions;
+            _pInput.actions = PunNetworkManager_m.singleton._inputActions;
             
         }
         else {

@@ -184,7 +184,7 @@ public class PunNetworkManager_GameNetworkStateManagement : ConnectAndJoinRandom
         if (PunUserNetControl.LocalPlayerInstance == null)
         {
             Debug.Log("We are Instantiating LocalPlayer from " + SceneManagerHelper.ActiveSceneName);
-            PunNetworkManager.singleton.SpawnPlayer();
+            PunNetworkManager_m.singleton.SpawnPlayer();
         }
         else
         {
