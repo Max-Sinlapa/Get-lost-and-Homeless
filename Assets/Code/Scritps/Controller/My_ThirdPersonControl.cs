@@ -144,8 +144,11 @@ namespace Max_DEV.MoveMent
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDAttack;
 
-        
+        Animator animator;
+
+
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
@@ -199,6 +202,10 @@ namespace Max_DEV.MoveMent
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            CanAttack = true;
+
+            animator = GetComponent<Animator>();
 
             #region My-Start-Region
 
@@ -269,10 +276,21 @@ namespace Max_DEV.MoveMent
                 /////// Attack
                 if (_AttackController != null && _input.attack && CanAttack)
                 {
-                    //Debug.Log("PerformAttack Nomal");
+                    Debug.Log("PerformAttack Nomal");
                     _AttackController.PerformAttack();
+                    
                     _input.attack = false;
                 }
+
+                if (_input.attack)
+                {
+                    //this.gameObject.GetComponent<Animator>().SetTrigger("AttackTrigger");
+                    //animator.SetTrigger("AttackTrigger");
+                    _animator.SetTrigger(_animIDAttack);
+                    _input.attack = false;
+                }
+
+               
             }
             
         }
@@ -289,6 +307,7 @@ namespace Max_DEV.MoveMent
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDAttack = Animator.StringToHash("AttackTrigger");
         }
 
         private void GroundedCheck()
