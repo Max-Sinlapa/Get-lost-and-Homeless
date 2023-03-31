@@ -147,7 +147,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262542208248682056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -921,7 +921,7 @@ Animator:
   m_GameObject: {fileID: 1823578095743184728}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 461b7fe81af47cb44805003a5855e159, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7d2bb6447e60754d8a4fadf2ae36dff, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1201,6 +1201,27 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: MotionSpeed
+  - Type: 3
+    SynchronizeType: 0
+    Name: JumpCount
+  - Type: 4
+    SynchronizeType: 0
+    Name: Attack
+  - Type: 4
+    SynchronizeType: 0
+    Name: HitReaction
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsClim
+  - Type: 9
+    SynchronizeType: 0
+    Name: AttackTrigger
+  - Type: 9
+    SynchronizeType: 0
+    Name: HitReactionTrigger
+  - Type: 9
+    SynchronizeType: 0
+    Name: AttackCat
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

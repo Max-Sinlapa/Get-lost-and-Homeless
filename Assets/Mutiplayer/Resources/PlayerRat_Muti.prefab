@@ -841,6 +841,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: InWater
+  - Type: 9
+    SynchronizeType: 0
+    Name: HitReactionTrigger
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -3518,7 +3521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6690607776754647718
 RectTransform:
   m_ObjectHideFlags: 0

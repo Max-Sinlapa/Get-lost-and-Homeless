@@ -13,13 +13,16 @@ public class AttackController : MonoBehaviourPun
     public bool isAttacking;
     private int PhotonViewID;
 
+    private Animator _animator;
+
     private void Start()
     {
         if (GetComponent<PhotonView>())
         {
             PhotonViewID = GetComponent<PhotonView>().ViewID;
         }
-        
+
+        _animator = GetComponent<Animator>();
     }
 
     public void PerformAttack()
@@ -53,6 +56,7 @@ public class AttackController : MonoBehaviourPun
 
     private IEnumerator IEAttack()
     {
+        _animator.SetTrigger("AttackCat");
         isAttacking = true;
         meleeHitBox.SetActive(true);
         yield return new WaitForSeconds(attackSpeed);
