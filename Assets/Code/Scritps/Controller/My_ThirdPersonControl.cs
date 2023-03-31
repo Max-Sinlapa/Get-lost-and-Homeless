@@ -281,7 +281,7 @@ namespace Max_DEV.MoveMent
                     _animator.SetTrigger(_animIDAttack);
                     _input.attack = false;
                 }
-
+                /*
                 if (_input.attack || _input.interection)
                 {
                     //this.gameObject.GetComponent<Animator>().SetTrigger("AttackTrigger");
@@ -289,7 +289,7 @@ namespace Max_DEV.MoveMent
                     _animator.SetTrigger(_animIDAttack);
                     _input.attack = false;
                 }
-
+                */
                
             }
             
