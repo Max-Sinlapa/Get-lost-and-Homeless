@@ -45,10 +45,6 @@ namespace Max_DEV.Manager
 
             _playerCurrentScore = _startPlayerScore;
             _allPlayerCurrentHealth = _startPlayerHealth;
-            
-           
-
-            
 
         }
         

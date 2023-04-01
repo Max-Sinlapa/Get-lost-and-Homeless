@@ -7,6 +7,7 @@ using Photon.Realtime;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using ExitGames.Client.Photon;
+using Max_DEV.MoveMent;
 using UnityEngine.SceneManagement;
 
     public class PunNetworkManager_m : ConnectAndJoinRandom
@@ -142,23 +143,97 @@ using UnityEngine.SceneManagement;
         
         private void GameStartSetting() {
             CurrentGamestate = gamestate.GamePlay;
-        }
-        private void Awake()
-        {
-            singleton = this;
-            //Add Reference Method to Delegate Method
-            OnGameStart += GameStartSetting;
+
+
+            if (CatSpawnPosition == null || RatSpawnPosition == null)
+            {
+                Debug.Log("Player POS");
+                
+                CatSpawnPosition = GameObject.FindGameObjectWithTag("CatSpawnPoint");
+                RatSpawnPosition = GameObject.FindGameObjectWithTag("RatSpawnPoint");
+                
+                int CatOrRat = SettingPlayerTeam(PhotonNetwork.LocalPlayer);
+            
+                if (CatOrRat == 1)
+                {
+                    //PunUserNetControl.LocalPlayerInstance.transform.position = CatSpawnPosition.transform.position;
+                    Debug.Log("Player CAT POS-1 = " + PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position);
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                    Debug.Log("Player CAT POS-2 = " + PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position);
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position =
+                        CatSpawnPosition.transform.position;
+                    Debug.Log("Player CAT POS-3 = " + PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position);
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                    Debug.Log("Player CAT POS-4 = " + PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position);
+                }
+                if (CatOrRat == 2)
+                {
+                    
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<CharacterController>().enabled = false;
+                    //PunUserNetControl.LocalPlayerInstance.transform.position = RatSpawnPosition.transform.position;
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<Transform>().position =
+                        RatSpawnPosition.transform.position;
+                    PunUserNetControl.LocalPlayerInstance.GetComponent<CharacterController>().enabled = true;
+                }
+            }
+            
+            int CatOrRat_2 = SettingPlayerTeam(PhotonNetwork.LocalPlayer);
+            if (_vCam == null)
+            {
+                Debug.Log("Player CAMERA");
+                _vCam = GameObject.FindGameObjectWithTag("V_Cam").GetComponent<CinemachineVirtualCamera>();
+                
+                GameObject _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                
+                if (PunUserNetControl.LocalPlayerInstance != null)
+                {
+                    _vCam.m_Follow = PunUserNetControl.LocalPlayerInstance.GetComponent<PunUserNetControl>().CameraRoot;
+                    //PunUserNetControl.LocalPlayerInstance.GetComponent<My_ThirdPersonControl>()._mainCamera =_mainCamera;
+                    Debug.Log("Player SET------ CAMERA");
+                }
+                Debug.Log("CAMERA _vCam--1 = " + _vCam.m_Follow + "Form = " + CatOrRat_2);
+            }
+            else
+            {
+                Debug.Log("Player CAMERA ELSE---");
+                
+                _vCam.m_Follow = PunUserNetControl.LocalPlayerInstance.GetComponent<PunUserNetControl>().CameraRoot;
+                Debug.Log("CAMERA _vCam--2 = " + _vCam.m_Follow + "Form = " + CatOrRat_2);
+            }
+
+            
+            
+            
             //When Connected from Launcher Scene
+            Debug.Log("Check connect = " + PhotonNetwork.IsConnected);
             if (PhotonNetwork.IsConnected)
             {
                 this.AutoConnect = false;
                 OnJoinedRoom();
                 Debug.Log("PhotonNetwork.IsConnected = true");
             }
+            
         }
-        
-        
-        
+        private void Awake()
+        {
+            singleton = this;
+            //Add Reference Method to Delegate Method
+            OnGameStart += GameStartSetting;
+            
+            
+            //When Connected from Launcher Scene
+            Debug.Log("Check connect = " + PhotonNetwork.IsConnected);
+            if (PhotonNetwork.IsConnected)
+            {
+                this.AutoConnect = false;
+                OnJoinedRoom();
+                Debug.Log("PhotonNetwork.IsConnected = true");
+            }
+            
+        }
+
+
+
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             base.OnPlayerEnteredRoom(newPlayer);
@@ -174,6 +249,7 @@ using UnityEngine.SceneManagement;
             }
             else
             {
+                //PunNetworkManager_m.singleton.SpawnPlayer();
                 Debug.Log("Ignoring scene load for " + SceneManagerHelper.ActiveSceneName);
             }
     
@@ -186,11 +262,37 @@ using UnityEngine.SceneManagement;
                 Debug.Log("Can't Spawn No Selected Role");
                 return;
             }
-    
+            
+            
+            //////////////////////////////////////////////
             if (CatOrRat == 1)
-                PhotonNetwork.Instantiate(CatPlayerPrefab.name, CatSpawnPosition.transform.position, Quaternion.identity);
+            {
+                if (CatSpawnPosition == null)
+                {
+                    GameObject _CatspawnPoint = GameObject.FindGameObjectWithTag("CatSpawnPoint");
+                    PhotonNetwork.Instantiate(CatPlayerPrefab.name, _CatspawnPoint.transform.position,
+                        Quaternion.identity);
+                }
+                else
+                {
+                    PhotonNetwork.Instantiate(CatPlayerPrefab.name, CatSpawnPosition.transform.position,
+                        Quaternion.identity);
+                }
+            }
             if (CatOrRat == 2)
-                PhotonNetwork.Instantiate(RatPlayerPrefab.name, RatSpawnPosition.transform.position, Quaternion.identity);
+            {
+                if (RatSpawnPosition == null)
+                {
+                    GameObject _RatspawnPoint = GameObject.FindGameObjectWithTag("RatSpawnPoint");
+                    PhotonNetwork.Instantiate(RatPlayerPrefab.name, _RatspawnPoint.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    PhotonNetwork.Instantiate(RatPlayerPrefab.name, RatSpawnPosition.transform.position, Quaternion.identity);
+                }
+            }
+            ///////////////////////////////////////////////
+            
             /*
             if (CatOrRat == 1)
                 PhotonNetwork.Instantiate(CatPlayerPrefab.name, CatSpawnPosition.transform.position, Quaternion.identity, 0);
@@ -226,7 +328,7 @@ using UnityEngine.SceneManagement;
             object gameStateFromProps;
             if (propertiesThatChanged.TryGetValue(PunGameSetting.GAMESTATE, out gameStateFromProps)) 
             {
-                Debug.Log("GetStartTime Prop is : " + gameStateFromProps);
+                //Debug.Log("GetStartTime Prop is : " + gameStateFromProps);
                 _currentGamestate = (gamestate)Enum.Parse(typeof(gamestate), (string)gameStateFromProps);
             }
             if(_currentGamestate == gamestate.GameOver)
@@ -249,6 +351,7 @@ using UnityEngine.SceneManagement;
             {
                 case gamestate.GameStart:
                     OnGameStart();
+                    
                     break;
     
                 case gamestate.GamePlay:

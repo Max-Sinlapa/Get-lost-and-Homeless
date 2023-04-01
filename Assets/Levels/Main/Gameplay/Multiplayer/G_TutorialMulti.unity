@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 222285043}
   m_Layer: 0
   m_Name: SpawPointRat
-  m_TagString: Untagged
+  m_TagString: RatSpawnPoint
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1882,7 +1882,7 @@ GameObject:
   - component: {fileID: 536736976}
   m_Layer: 0
   m_Name: SpawPointCat
-  m_TagString: Untagged
+  m_TagString: CatSpawnPoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2221,7 +2221,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: _NextScene
-      value: G_GameplayMulti-1
+      value: GamePlaySceneTEST-333
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: allPlayerInZone.m_PersistentCalls.m_Calls.Array.size
@@ -2245,7 +2245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612502, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612504, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: m_RootOrder
@@ -2273,7 +2273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612504, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35
+      value: -7.16
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612504, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2303,8 +2303,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7390990210813849010, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+      propertyPath: sceneViewId
+      value: 568
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+--- !u!1 &650027081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7264195573557612501, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+  m_PrefabInstance: {fileID: 650027080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &650027082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+  m_PrefabInstance: {fileID: 650027080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650027081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312229c4a5f9b464a8f46972328f7063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &650027083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650027081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 650027082}
+  sceneViewId: 111
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &685046317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,13 +4499,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyAgent: {fileID: 1395684184}
   waitTime: 3
-  PetrolSpeed: 2
+  PetrolSpeed: 1.5
   waypoint:
   - {fileID: 1286822269}
   - {fileID: 1471861873}
   - {fileID: 524008277}
   - {fileID: 376276186}
-  _CheckDistant: 0
+  _CheckDistant: 0.2
   FOV_Range: 6
   SpeedToTarget: 2
   AttackRange: 1.5
@@ -5636,7 +5679,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736651009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5943,6 +5986,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700687675, guid: a847b07cd02bcdc44a81d2bef25543b3, type: 3}
+      propertyPath: DontDestroy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5492896697095742905, guid: a847b07cd02bcdc44a81d2bef25543b3, type: 3}
       propertyPath: m_Name
       value: --PunNetworkManager_Project--

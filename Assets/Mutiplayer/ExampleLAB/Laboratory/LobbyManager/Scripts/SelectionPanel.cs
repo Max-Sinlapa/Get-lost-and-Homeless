@@ -9,6 +9,8 @@ public class SelectionPanel : MonoBehaviour
     public Button _joinRandomRoomButton;
     public Button _findMatchButton;
     public Button _RoomListButton;
+    //public Button _cancelButton;
+
 
     private void Awake()
     {

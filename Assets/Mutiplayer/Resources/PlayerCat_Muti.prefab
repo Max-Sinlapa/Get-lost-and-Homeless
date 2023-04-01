@@ -1057,12 +1057,13 @@ MonoBehaviour:
   Climb: 1
   ClimbAreaGravity: -1
   ClimbSpeed: 10
-  SwimWater: 1
+  SwimWater: 0
   WaterGravity: -0.01
   SwimSpeed: 10
   OutOfWaterJumpPower: 50
   CanAttack: 1
   _AttackController: {fileID: 262542208482304975}
+  _mainCamera: {fileID: 0}
 --- !u!114 &262542208007666376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,7 +1139,6 @@ MonoBehaviour:
   - {fileID: 262542208007666376}
   - {fileID: 3664199937625424086}
   - {fileID: 1691201246310586777}
-  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

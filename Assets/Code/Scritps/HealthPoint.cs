@@ -176,7 +176,7 @@ namespace Max_DEV
         private void Death()
         {
             if(CanRespawn)
-                Respawn();
+                Respawn(spawnPoint.position);
             else
             {
                 
@@ -185,14 +185,21 @@ namespace Max_DEV
             }
         }
         
-        public void Respawn() 
+        public void Respawn(Vector3 _spawnPoint) 
         {
             Debug.Log("gameObject = " + this.gameObject + " RESPAWN");
             
             GetComponent<CharacterController>().enabled = false;
             //Debug.Log(" :) "+transform.position);
             //Debug.Log(" :( " + spawnPoint.position);
-            transform.position = spawnPoint.position;
+            if (spawnPoint != null)
+            {
+                transform.position = spawnPoint.position;
+            }
+            else
+            {
+                transform.position = _spawnPoint;
+            }
             //currentHp = MaxHp;
             
             if (ShereHP_inGameManager)
@@ -257,7 +264,7 @@ namespace Max_DEV
             base.OnRoomPropertiesUpdate(propertiesThatChanged);
             if (this.GetComponent<PhotonView>())
                 GetPlayerHealthUpdate(propertiesThatChanged);
-            Debug.Log("OnRoomPropertiesUpdate");
+            //Debug.Log("OnRoomPropertiesUpdate");
 
         }
         
@@ -266,7 +273,7 @@ namespace Max_DEV
              object HealthFromProps;
              if (propertiesThatChanged.TryGetValue(PunGameSetting.PLAYER_Current_LIVES, out HealthFromProps)) 
              { 
-                 Debug.Log("Get-Room-HealthUpdate : " + (int)HealthFromProps + " Form = " + this.photonView.ViewID ); 
+                 //Debug.Log("Get-Room-HealthUpdate : " + (int)HealthFromProps + " Form = " + this.photonView.ViewID ); 
                  currentHp = PunGameSetting.GetPlayerHealth((int)HealthFromProps);
              }
              HealthText();

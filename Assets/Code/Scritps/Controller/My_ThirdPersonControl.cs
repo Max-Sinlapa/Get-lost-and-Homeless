@@ -119,6 +119,8 @@ namespace Max_DEV.MoveMent
         private ObjectType _thisObjectType;
         private PhotonView _photonView;
 
+        private GameObject _spawnPoint;
+
         #endregion
         
 
@@ -156,7 +158,7 @@ namespace Max_DEV.MoveMent
         private Animator _animator;
         private CharacterController _controller;
         private My_AssetInput _input;  //config to use my_assetinput
-        private GameObject _mainCamera;
+        public GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
 
@@ -175,17 +177,64 @@ namespace Max_DEV.MoveMent
         }
 
 
-        private void Awake()
+        private void start0000()
         {
             // get a reference to our main camera
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+
+            if (_spawnPoint == null)
+            {
+                ObjectType_Identities objectType = GetComponent<ObjectType_Identities>();
+                if (objectType != null)
+                {
+                    switch (objectType.Type)
+                    {
+                        case ObjectType.Cat:
+                            _spawnPoint = GameObject.FindGameObjectWithTag("CatSpawnPoint");
+                            break;
+                        case ObjectType.Mouse:
+                            _spawnPoint = GameObject.FindGameObjectWithTag("RatSpawnPoint");
+                            break;
+                    }
+                }
+            }
         }
 
         private void Start()
         {
+            #region MyRegion
+
+            // get a reference to our main camera
+            if (_mainCamera == null)
+            {
+                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
+
+            if (_spawnPoint == null)
+            {
+                ObjectType_Identities objectType = GetComponent<ObjectType_Identities>();
+                if (objectType != null)
+                {
+                    switch (objectType.Type)
+                    {
+                        case ObjectType.Cat:
+                            _spawnPoint = GameObject.FindGameObjectWithTag("CatSpawnPoint");
+                            break;
+                        case ObjectType.Mouse:
+                            _spawnPoint = GameObject.FindGameObjectWithTag("RatSpawnPoint");
+                            break;
+                    }
+                }
+            }
+
+                #endregion
+            
+            
+            
+            
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _hasAnimator = TryGetComponent(out _animator);
@@ -401,12 +450,15 @@ namespace Max_DEV.MoveMent
             else
             {
                 _speed = targetSpeed;
-
-                
             }
 
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
+
+            if (_mainCamera == null)
+            {
+                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            }
 
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -625,8 +677,8 @@ namespace Max_DEV.MoveMent
             {
                 if (LandingAudioClip != null)
                 {
-                    AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
-
+                    if(LandingAudioClip != null)
+                        AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
         }
@@ -660,7 +712,7 @@ namespace Max_DEV.MoveMent
                                 {
                                     var hp = this.GetComponent<HealthPoint>();
                                     hp.DecreaseHp(1);
-                                    hp.Respawn();
+                                    hp.Respawn(_spawnPoint.transform.position);
                                     Debug.Log("InWater");
                                     return;
                                 }

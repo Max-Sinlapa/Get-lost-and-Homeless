@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using StarterAssets;
 using Photon.Pun;
@@ -13,7 +14,11 @@ public class PunUserNetControl : MonoBehaviourPunCallbacks , IPunInstantiateMagi
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
     public Transform CameraRoot;
+
     public void OnPhotonInstantiate(PhotonMessageInfo info) {
+        
+        DontDestroyOnLoad(this.gameObject);
+        
         Debug.Log(info.photonView.Owner.ToString());
         Debug.Log(info.photonView.ViewID.ToString());
         // #Important

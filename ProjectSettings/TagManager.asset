@@ -8,6 +8,9 @@ TagManager:
   - CinemachineTarget
   - box
   - JumpThrough
+  - CatSpawnPoint
+  - RatSpawnPoint
+  - V_Cam
   layers:
   - Default
   - TransparentFX
