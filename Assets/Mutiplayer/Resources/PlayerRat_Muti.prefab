@@ -705,6 +705,7 @@ MonoBehaviour:
   OutOfWaterJumpPower: 10
   CanAttack: 0
   _AttackController: {fileID: 1782347091402822442}
+  _mainCamera: {fileID: 0}
 --- !u!114 &1782347091402822491
 MonoBehaviour:
   m_ObjectHideFlags: 0

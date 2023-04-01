@@ -112,7 +112,14 @@ public class m_SceneManager : MonoBehaviourPun
         [PunRPC]
         public static void Multiplayer_ChangeScene(string _scene)
         {
+            //Debug.Log("STAT-1 = " + PunNetworkManager_m.singleton._currentGamestate);
+            //PunUserNetControl.LocalPlayerInstance = null;
+            PunNetworkManager_m.singleton._currentGamestate = PunNetworkManager_m.gamestate.GameStart;
+           // Debug.Log("STAT-2 = " + PunNetworkManager_m.singleton._currentGamestate);
+
             PhotonNetwork.LoadLevel(_scene);
+            //Debug.Log("STAT-3 = " + PunNetworkManager_m.singleton._currentGamestate);
+
             Debug.Log("Multiplayer_ChangeScene");
         }
         

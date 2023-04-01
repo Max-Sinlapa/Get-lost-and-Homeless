@@ -5768,9 +5768,8 @@ MonoBehaviour:
   onHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  ShereHPinGameManager: 0
+  ShereHP_inGameManager: 0
   ShereHP_Multiplayer: 0
-  Enemy_Health: 0
   Enemy_Hp_Serialization: 1
   Enemy_Hp: 0
 --- !u!114 &1281484146
@@ -5808,6 +5807,7 @@ MonoBehaviour:
   - {fileID: 1499566156}
   - {fileID: 230504046}
   - {fileID: 1751239670}
+  _CheckDistant: 0
   FOV_Range: 6
   SpeedToTarget: 2
   AttackRange: 1.5
@@ -6680,6 +6680,7 @@ MonoBehaviour:
   - {fileID: 376276186}
   - {fileID: 1413080431}
   - {fileID: 1549964647}
+  _CheckDistant: 0
   FOV_Range: 6
   SpeedToTarget: 2
   AttackRange: 1.5
@@ -6746,9 +6747,8 @@ MonoBehaviour:
   onHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  ShereHPinGameManager: 0
+  ShereHP_inGameManager: 0
   ShereHP_Multiplayer: 0
-  Enemy_Health: 0
   Enemy_Hp_Serialization: 1
   Enemy_Hp: 0
 --- !u!136 &1395684187
@@ -8261,6 +8261,10 @@ PrefabInstance:
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: _NextScene
       value: GamePlaySceneTEST-222
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
+      propertyPath: allPlayerInZone.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7264195573557612500, guid: 53779b126d6de1d4a9c1523135dfbc9f, type: 3}
       propertyPath: allPlayerInZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10504,7 +10508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 0}
-  previusScene: 
 --- !u!4 &2000609025
 Transform:
   m_ObjectHideFlags: 0
