@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Levels/Main/1_MainMenu.unity
     guid: 77e63ebae9a24b6489a245099e8df0cd
   - enabled: 1
-    path: Assets/Levels/UI/LevelSelect.unity
-    guid: 55b26678213f5c84fbb705503241286d
-  - enabled: 1
     path: Assets/Levels/Main/2_Credit.unity
     guid: 25773792bbe629f44bea783a049dcfe9
   - enabled: 1
     path: Assets/Levels/Main/2_GamePlaySelec.unity
     guid: e2425073206e3aa4a97cf073b1e4bb46
+  - enabled: 1
+    path: Assets/Levels/UI/LevelSelect.unity
+    guid: 55b26678213f5c84fbb705503241286d
   - enabled: 1
     path: Assets/Levels/Main/2_Option.unity
     guid: 754406b6f5414da4a977f305a43e40be

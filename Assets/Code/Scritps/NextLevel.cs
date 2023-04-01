@@ -8,7 +8,8 @@ namespace IceDEV
     public class NextLevel : MonoBehaviour
     {
         public int nextSceneLoad;
-
+        private bool target1Detected = false;
+        private bool target2Detected = false;
         void Start()
         {
             nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
@@ -16,13 +17,24 @@ namespace IceDEV
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.name == "PlayerCat" && other.gameObject.name == "PlayerRat")
+            if (other.gameObject.name == "PlayerCat")
+            {
+
+                target1Detected = true;
+            }
+            else if (other.gameObject.name == "PlayerRat")
+            {
+
+                target2Detected = true;
+            }
+
+            if(target1Detected && target2Detected)
             {
                 //Final Level
-                if(SceneManager.GetActiveScene().name == "Level3")
+                if(SceneManager.GetActiveScene().name == "G_GameplaySingle-3")
                 {
                     //LoadScene you win
-                    SceneManager.LoadScene("YouWin", LoadSceneMode.Single);
+                    SceneManager.LoadScene("_Completed", LoadSceneMode.Single);
                 }
                 else
                 {
@@ -39,6 +51,19 @@ namespace IceDEV
                
             }
                 
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.name == "PlayerCat")
+            {
+
+                target1Detected = false;
+            }
+            else if (other.gameObject.name == "PlayerRat")
+            {
+
+                target2Detected = false;
+            }
         }
     }
 }

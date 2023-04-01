@@ -22,7 +22,7 @@ namespace IceDEV
                 {
                     UI.SetActive(true);
                     triggered = true;
-                    Destroy(UI, 3f);
+                    Destroy(UI, 5f);
 
                 }
             }
