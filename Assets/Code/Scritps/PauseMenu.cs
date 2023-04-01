@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPause = false;
+    public string PauseSceneName;
     // Start is called before the first frame update
+    public void Awake()
+    {
+        isPause = false;
+    }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P) && !isPause)
+        if(Input.GetKeyDown(KeyCode.Escape) && !isPause)
         {
             Pause();
             
         }
-        else if (Input.GetKeyDown(KeyCode.O) && isPause)
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPause)
         {
             Resume();
            
@@ -22,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        SceneManager.LoadScene("PauseGame", LoadSceneMode.Additive);
+        SceneManager.LoadScene(PauseSceneName, LoadSceneMode.Additive);
         isPause = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

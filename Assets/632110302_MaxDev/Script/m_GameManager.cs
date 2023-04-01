@@ -30,6 +30,10 @@ namespace Max_DEV.Manager
 
         private void Awake()
         {
+            //fix bug from pause system
+            Time.timeScale = 1.0f;
+            
+
             //Debug.Log("Player HP = " + _allPlayerCurrentHealth);
             //Debug.Log("Player Score = " + _playerCurrentScore);
             if (_startPlayerHealth <= 0)
