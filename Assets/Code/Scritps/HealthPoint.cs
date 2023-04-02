@@ -249,7 +249,7 @@ namespace Max_DEV
             };
             PhotonNetwork.CurrentRoom.SetCustomProperties(props);
             Debug.Log("Send-Room-HealthUpdate : " + props[0] + "2 =" + props[1]);
-    }
+        }
         public void Local_HealthChangeProperties(int _amountHPchange)
         {
             Hashtable props = new Hashtable

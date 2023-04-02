@@ -2510,6 +2510,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4122157071390919892, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919892, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0240eeebdbd92c641bd034225c5624e3, type: 3}
@@ -4149,6 +4153,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7146725572281954459, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
   m_PrefabInstance: {fileID: 1079039541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &876582295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5048949637680708281, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
+  m_PrefabInstance: {fileID: 1079039541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876582283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90aa2713b9631fb4a8ce06cea013f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &891854484
 GameObject:
   m_ObjectHideFlags: 0
@@ -5136,6 +5151,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b7d2bb6447e60754d8a4fadf2ae36dff, type: 2}
+    - target: {fileID: 5813818633364420187, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813818633364420187, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558844601519700150, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 876582295}
     - target: {fileID: 7146725572281954459, guid: 2eed90c9fe23d644292a8fd8ed956290, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -7627,7 +7654,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621814413}
-  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
+  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9883,7 +9910,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113397721}
-  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
+  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24051,8 +24078,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8978480757420141300}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07455001, y: -0.0181, z: -0.024}
-  m_LocalScale: {x: 1.2975237, y: 3.1700757, z: 1.5553777}
+  m_LocalPosition: {x: -0.0811, y: -0.0181, z: -0.024}
+  m_LocalScale: {x: 2.768267, y: 3.1700757, z: 1.5553777}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1778360521287536691}
@@ -33908,7 +33935,7 @@ GameObject:
   - component: {fileID: 490140097367367971}
   - component: {fileID: 8579519318774205093}
   - component: {fileID: 2244120849972487457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: iron_box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

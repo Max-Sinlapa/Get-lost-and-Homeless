@@ -89,5 +89,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Main/Gameplay/Multiplayer/G_GameplayMulti-1-BackUp.unity
     guid: 34969f0f4dedfcb42accb607f9a9c31e
+  - enabled: 1
+    path: Assets/Levels/Main/Gameplay/Multiplayer/All_InOneMap/G_GameplayMultiplayer-All.unity
+    guid: b57c68acdb1fb9d439b741e2aa19e7e3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1.0f;
-        SceneManager.UnloadSceneAsync("PauseGame");
+        SceneManager.UnloadSceneAsync("_PauseGame");
         isPause = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using Max_DEV;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
-public class SceneTrigger : MonoBehaviour
+
+public class SceneTrigger : MonoBehaviourPun
 {
 
     public bool _CheckCat;
     public bool _CheckRat;
+    public string _scene;
 
     public UnityEvent cutSceneTrigger;
+
+    public bool multiplayer;
 
     void Start()
     {
@@ -36,17 +41,41 @@ public class SceneTrigger : MonoBehaviour
                 case ObjectType.Cat:
                     if (_CheckCat)
                     {
-                        Debug.Log("SceneTrigger IN-WORK");
-                        cutSceneTrigger.Invoke();
+                        if (multiplayer)
+                        {
+                            this.photonView.RPC("InWokeSceneTrigger", RpcTarget.All, _scene);
+                        }
+                        else
+                        {
+                            Debug.Log("SceneTrigger IN-WORK");
+                            cutSceneTrigger.Invoke();
+                        }
+                        
                     }
                     break;
                 case ObjectType.Mouse:
                     if (_CheckRat)
                     {
-                        cutSceneTrigger.Invoke();
+                        if (multiplayer)
+                        {
+                            this.photonView.RPC("InWokeSceneTrigger", RpcTarget.All, _scene);
+                        }
+                        else
+                        {
+                            Debug.Log("SceneTrigger IN-WORK");
+                            cutSceneTrigger.Invoke();
+                        }
                     }
                     break;
             }
         }
+    }
+    
+    [PunRPC]
+    public void InWokeSceneTrigger(string scene)
+    {
+        PhotonNetwork.LoadLevel(scene);
+        //m_SceneManager.Multiplayer_ChangeScene(scene);
+        Debug.Log("InWokeSceneTrigger WAKE");
     }
 }

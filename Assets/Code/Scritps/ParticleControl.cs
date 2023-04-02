@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleControl : MonoBehaviour
+using Photon.Pun;
+using Tree = BehaviorTree.Tree;
+
+public class ParticleControl : MonoBehaviourPun, IPunObservable
 {
     // Start is called before the first frame update
     public ParticleSystem Move_particle;
@@ -29,6 +32,21 @@ public class ParticleControl : MonoBehaviour
     private void MoveParticleStop()
     {
        // Move_particle.Stop();
-       Move_particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+       Move_particle.Stop();
+       //Move_particle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting) 
+        {
+            stream.SendNext(particIsPlay);
+        }
+        else 
+        {
+            particIsPlay = (bool)stream.ReceiveNext();
+            
+        }
     }
 }

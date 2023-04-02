@@ -230,7 +230,7 @@ namespace Max_DEV.MoveMent
                 }
             }
 
-                #endregion
+            #endregion
             
             
             
@@ -403,6 +403,17 @@ namespace Max_DEV.MoveMent
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            if (_input.sprint)
+            {
+                ParticleControl m_particle = GetComponent<ParticleControl>();
+                m_particle.particIsPlay = true;
+            }
+
+            if (!_input.sprint)
+            {
+                ParticleControl m_particle = GetComponent<ParticleControl>();
+                m_particle.particIsPlay = false;
+            }
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
