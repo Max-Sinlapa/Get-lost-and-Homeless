@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028417, g: 0.22571544, b: 0.30692315, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028414, g: 0.22571547, b: 0.30692315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -682,6 +682,71 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &388482459
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4122157071390919892, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 996e3ea2525876a42a03686ea68694af, type: 3}
+    - target: {fileID: 4122157071390919892, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919893, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_Name
+      value: AudioBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 571.1991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 283.16678
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1089.5021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122157071390919895, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
 --- !u!65 &405148415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2396,8 +2461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227416340}
-  m_LocalRotation: {x: -0, y: -0.0037305255, z: -0, w: 0.9999931}
-  m_LocalPosition: {x: 0.61747694, y: 0.077748656, z: 14.206785}
+  m_LocalRotation: {x: -0, y: 0.06642045, z: -0, w: 0.99779177}
+  m_LocalPosition: {x: -0.028112411, y: 0.2411083, z: -3.2630148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3402,8 +3467,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991892008}
-  m_LocalRotation: {x: -0, y: -0.0037305255, z: -0, w: 0.9999931}
-  m_LocalPosition: {x: 0.53308105, y: 0.08774865, z: 17.476246}
+  m_LocalRotation: {x: -0, y: 0.06642045, z: -0, w: 0.99779177}
+  m_LocalPosition: {x: 0.3458476, y: 0.2511083, z: -0.013914108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3635,7 +3700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc9fa31450367f499c9ff96efee1060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2144898766}
 --- !u!95 &2144898766
 Animator:
   serializedVersion: 4
