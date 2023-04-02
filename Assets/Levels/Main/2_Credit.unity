@@ -1215,6 +1215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+--- !u!82 &797010470 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4122157071390919892, guid: fdd59ba306a77794cb343760a270a21b, type: 3}
+  m_PrefabInstance: {fileID: 797010469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829948251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1834,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332438726}
   m_CullTransparentMesh: 1
+--- !u!1 &1429199360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429199362}
+  - component: {fileID: 1429199361}
+  m_Layer: 0
+  m_Name: Dotween
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1429199361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429199360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9a1ce31971b7844a08d9ea980aa0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 75557063}
+  Paper: {fileID: 1332438728}
+  Member:
+  - {fileID: 829948253}
+  - {fileID: 1021835004}
+  - {fileID: 1805216268}
+  - {fileID: 1553807893}
+  - {fileID: 155228769}
+  button: {fileID: 1882716300}
+  audioSource: {fileID: 797010470}
+  openClip: {fileID: 8300000, guid: 6a8f251695f754436b1e1089d68baff2, type: 3}
+  closeclip: {fileID: 8300000, guid: 543630c66e19549c1a26509f0088820d, type: 3}
+  buttonClip: {fileID: 8300000, guid: 1d7bbe96e4e5a4d1d813600b3f24630b, type: 3}
+--- !u!4 &1429199362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429199360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.499018, y: 21.862576, z: 6.6384196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466161017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,6 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846670938}
   - component: {fileID: 1846670937}
+  - component: {fileID: 1846670939}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2501,6 +2564,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1846670939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846670936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1869135765
 GameObject:
   m_ObjectHideFlags: 0
