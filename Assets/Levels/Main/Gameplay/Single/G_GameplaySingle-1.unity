@@ -2368,6 +2368,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001106500}
     m_Modifications:
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: Enemy_Hp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792573861765628866, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
+      propertyPath: currentHp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792573861765628875, guid: b057c6cca94f23e46aa483aba89aa0a7, type: 3}
       propertyPath: m_Name
       value: EnemyS (1)
@@ -7596,7 +7604,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621814413}
-  m_LocalRotation: {x: 0.002401872, y: 0.9898819, z: -0.14086634, w: 0.016878195}
+  m_LocalRotation: {x: 0.0024018767, y: 0.9898818, z: -0.14086635, w: 0.016878225}
   m_LocalPosition: {x: 30.4, y: 1.81, z: 10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9426,7 +9434,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113397721}
-  m_LocalRotation: {x: 0.002401872, y: 0.9898819, z: -0.14086634, w: 0.016878195}
+  m_LocalRotation: {x: 0.0024018767, y: 0.9898818, z: -0.14086635, w: 0.016878225}
   m_LocalPosition: {x: 30.4, y: 1.81, z: 10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

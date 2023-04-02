@@ -38,13 +38,11 @@ public class TaskPatrol : Node
         _AnimAttack = Animator.StringToHash("Attack");
         
         /// Setup NavMesh
-        if (_thisAgent != null)
-        {
-            _thisAgent = agent;
-            _thisAgent.updateRotation = true;
-            _thisAgent.updatePosition = true;
-            _thisAgent.speed = _petrolSpeed;
-        }
+        _thisAgent = agent;
+        _thisAgent.updateRotation = true;
+        _thisAgent.updatePosition = true;
+        _thisAgent.speed = _petrolSpeed;
+        
 
     }
 

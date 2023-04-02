@@ -2808,6 +2808,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
+      propertyPath: multiplayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: cutSceneTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 295342281}
@@ -2817,7 +2821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: cutSceneTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: G_TutorialMulti
+      value: G_GameplayMultiplayer-All
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678975, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: m_RootOrder

@@ -14095,7 +14095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanRespawn: 0
   spawnPoint: {fileID: 0}
-  currentHp: 3
+  currentHp: 1
   isDead: 0
   playerHP_Text: {fileID: 0}
   onHpChanged:
@@ -15903,7 +15903,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621814413}
-  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
+  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20394,7 +20394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113397721}
-  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
+  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
