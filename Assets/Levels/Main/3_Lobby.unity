@@ -2550,7 +2550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1394863843520963058, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: GamePlayScene
-      value: G_TutorialMulti
+      value: G_GameplayMultiplayer-All
       objectReference: {fileID: 0}
     - target: {fileID: 1394863843520963058, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: _playerHealth
