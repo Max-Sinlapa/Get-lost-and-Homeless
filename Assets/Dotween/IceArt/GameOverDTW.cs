@@ -73,15 +73,7 @@ public class GameOverDTW : MonoBehaviour
                          PlayAudio(buttonClip);
                      }
                  }))
-            .Insert(1.75f, buttons[2].transform.DOScale(Vector3.one, 0.25f).SetEase(Ease.InSine))
-            .Join(buttons[2].transform.DOScale(Vector3.one * 1, 0.25f).SetEase(Ease.InSine)
-                 .OnStart(() =>
-                 {
-                     if (audioSource && buttonClip)
-                     {
-                         PlayAudio(buttonClip);
-                     }
-                 }))
+           
                  .Join(titleText.rectTransform.DOShakeRotation(1, 25, 5, 25, false))
             //--------------------------------------------------------------
             .Insert(0.25f, titleBar.DOFade(1, 0.5f).SetEase(Ease.InQuart))
