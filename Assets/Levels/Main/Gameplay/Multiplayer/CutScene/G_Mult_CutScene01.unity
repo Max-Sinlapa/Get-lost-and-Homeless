@@ -9934,6 +9934,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
+      propertyPath: _scene
+      value: G_Mult_CutScene02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
+      propertyPath: multiplayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: cutSceneTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}

@@ -42,6 +42,10 @@ namespace Max_DEV
         //animator
         Animator animator;
 
+        public List<Material> defaultMaterial;
+        public Material hitMaterial;
+        public float hitTime;
+
         private void Start()
         {
     
@@ -155,6 +159,8 @@ namespace Max_DEV
             /////////
             if (animator != null)
                 animator.SetTrigger("HitReactionTrigger");
+            ////////
+            
             
             onHpChanged?.Invoke(currentHp);
 
@@ -206,6 +212,37 @@ namespace Max_DEV
                 m_GameManager._allPlayerCurrentHealth = currentHp;
 
             GetComponent<CharacterController>().enabled = true;
+        }
+
+        void ChangeMaterail()
+        {
+            if (defaultMaterial != null)
+            {
+                foreach (Material _mate in defaultMaterial)
+                {
+                    _mate.color = hitMaterial.color;
+                }
+                StartCoroutine(MaterialTime());
+            }
+        }
+        
+        private IEnumerator MaterialTime()
+        {
+            foreach (Material _mate in defaultMaterial)
+            {
+                _mate.color = hitMaterial.color;
+            }
+            Debug.Log("");
+            yield return new WaitForSeconds(hitTime);
+            
+            foreach (Material _mate in defaultMaterial)
+            {
+                for (int i = 0; i < defaultMaterial.Count; i++)
+                {
+                    _mate.color = defaultMaterial[i].color;
+                }
+            }
+            
         }
 
         #region MonoPUN

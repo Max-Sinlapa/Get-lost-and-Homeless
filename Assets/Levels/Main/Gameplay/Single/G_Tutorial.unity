@@ -14095,7 +14095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanRespawn: 0
   spawnPoint: {fileID: 0}
-  currentHp: 1
+  currentHp: 10
   isDead: 0
   playerHP_Text: {fileID: 0}
   onHpChanged:
@@ -15903,7 +15903,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621814413}
-  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
+  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16982,7 +16982,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736651009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20394,7 +20394,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113397721}
-  m_LocalRotation: {x: 0.07937206, y: -0.7026379, z: 0.07937205, w: 0.702638}
+  m_LocalRotation: {x: 0.07937206, y: -0.702638, z: 0.07937207, w: 0.7026379}
   m_LocalPosition: {x: 15.320001, y: 1.5, z: -14.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26432,7 +26432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4531583268270749210}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.041672, y: -0.00294, z: 0.03846}
+  m_LocalPosition: {x: 0.041672, y: -0.0007, z: 0.03846}
   m_LocalScale: {x: 0.9606535, y: 0.6856554, z: 0.9606535}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32210,7 +32210,7 @@ GameObject:
   m_TagString: box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!33 &4533860437072778447
 MeshFilter:

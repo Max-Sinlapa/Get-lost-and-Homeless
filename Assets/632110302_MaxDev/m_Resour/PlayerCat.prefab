@@ -3748,6 +3748,10 @@ MonoBehaviour:
   ShereHP_Multiplayer: 0
   Enemy_Hp_Serialization: 0
   Enemy_Hp: 0
+  defaultMaterial:
+  - {fileID: 0}
+  hitMaterial: {fileID: 0}
+  hitTime: 0
 --- !u!114 &8254974444233451190
 MonoBehaviour:
   m_ObjectHideFlags: 0

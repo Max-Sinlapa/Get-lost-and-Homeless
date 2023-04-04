@@ -2808,6 +2808,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
+      propertyPath: _scene
+      value: G_GameplayMultiplayer-All
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489361385624678973, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: multiplayer
       value: 0
       objectReference: {fileID: 0}
@@ -2833,7 +2837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678975, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.128
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 1489361385624678975, guid: 448f54a03b721264facec0354daf8e36, type: 3}
       propertyPath: m_LocalPosition.z
