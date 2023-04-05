@@ -1573,7 +1573,7 @@ MonoBehaviour:
   particle: {fileID: 1563244754949002559}
   m_ActorTriggerHandler: {fileID: 8608599460694934493}
   MultipleJump: 0
-  JumpPower: 10
+  JumpPower: 15
   JumpLimit: 1
   JumpCount: 0
   Climb: 0
@@ -1610,6 +1610,9 @@ MonoBehaviour:
   ShereHP_Multiplayer: 0
   Enemy_Hp_Serialization: 0
   Enemy_Hp: 0
+  defaultMaterial: []
+  hitMaterial: {fileID: 0}
+  hitTime: 0
 --- !u!114 &8608599459102005160
 MonoBehaviour:
   m_ObjectHideFlags: 0

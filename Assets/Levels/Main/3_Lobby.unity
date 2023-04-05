@@ -1168,17 +1168,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe061779786ed7a4f928b2d9cc0fa0ad, type: 3}
---- !u!114 &1550998587 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3977451694249198651, guid: fe061779786ed7a4f928b2d9cc0fa0ad, type: 3}
-  m_PrefabInstance: {fileID: 1550998586}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0967f648e83545c43bf12ad221d9e523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1568715987 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1394863841739651539, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
@@ -1372,19 +1361,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825516226}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1550998587}
-        m_TargetAssemblyTypeName: m_SceneManager, Assembly-CSharp
-        m_MethodName: LoadSingleScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 2_GamePlaySelec
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1825516226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2950,6 +2927,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7820834611338872779, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
+      propertyPath: _cancelScene
+      value: 2_GamePlaySelec
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820834611338872779, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
+      propertyPath: _cancelButton
+      value: 
+      objectReference: {fileID: 1825516225}
     - target: {fileID: 8148088735243824977, guid: abe1d30c99424b04ea7420fc5500b1c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

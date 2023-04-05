@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectionPanel : MonoBehaviour
@@ -9,7 +10,8 @@ public class SelectionPanel : MonoBehaviour
     public Button _joinRandomRoomButton;
     public Button _findMatchButton;
     public Button _RoomListButton;
-    //public Button _cancelButton;
+    public Button _cancelButton;
+    public string _cancelScene;
 
 
     private void Awake()
@@ -33,7 +35,13 @@ public class SelectionPanel : MonoBehaviour
             _RoomListButton.onClick.AddListener(OnRoomListButtonClicked);
         else
             Debug.LogError("Missing Room List Room Button.");
+        
+        if (_cancelButton != null)
+            _cancelButton.onClick.AddListener(CancelButtonClicked);
+        else
+            Debug.LogError("Missing Cancel Button.");
     }
+    
 
     void OnCreateRoomButtonClicked()
     {
@@ -61,6 +69,13 @@ public class SelectionPanel : MonoBehaviour
         }
 
         LobbyPanelManager.instance.SetActivePanel(LobbyPanelManager.panelName.RoomLisPanel);
+    }
+
+    public void CancelButtonClicked()
+    {
+        PhotonNetwork.LocalPlayer.NickName = null;
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene(_cancelScene, LoadSceneMode.Single);
     }
 
 }

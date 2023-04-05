@@ -3748,10 +3748,10 @@ MonoBehaviour:
   ShereHP_Multiplayer: 0
   Enemy_Hp_Serialization: 0
   Enemy_Hp: 0
-  defaultMaterial:
-  - {fileID: 0}
-  hitMaterial: {fileID: 0}
-  hitTime: 0
+  defaultMaterial: {fileID: 2313410373880683727}
+  hitMaterial: {fileID: 2100000, guid: bd79e306e1e1c32489bdebc0d63638ac, type: 2}
+  hitTime: 1
+  _mateCatch: []
 --- !u!114 &8254974444233451190
 MonoBehaviour:
   m_ObjectHideFlags: 0

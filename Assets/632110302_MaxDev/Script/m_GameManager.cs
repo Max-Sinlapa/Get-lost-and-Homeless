@@ -39,7 +39,7 @@ namespace Max_DEV.Manager
             if (_startPlayerHealth <= 0)
             {
                 //_startPlayerHealth = 1;
-                Debug.Log("StartHP is 0");
+                //Debug.Log("StartHP is 0");
             }
             
             if (_HpSlider != null)

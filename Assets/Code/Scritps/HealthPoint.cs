@@ -42,12 +42,32 @@ namespace Max_DEV
         //animator
         Animator animator;
 
-        public List<Material> defaultMaterial;
+        
+        public GameObject defaultMaterial;
         public Material hitMaterial;
         public float hitTime;
+        public Texture[] _mateCatch;
 
         private void Start()
         {
+            /*
+            if (defaultMaterial != null)
+            {
+                Debug.Log("Other rank-1 = " + defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length);
+                Debug.Log("_mateCatch rank-1 = " + _mateCatch.Length);
+                _mateCatch = new Texture[defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length];
+                Debug.Log("Other rank-1 = " + defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length);
+                Debug.Log("_mateCatch rank-1 = " + _mateCatch.Length);
+               
+                for (int i = 0; i < defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
+                {
+                    //_mateCatch.Add(defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials[i]);
+                    _mateCatch[i] = defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials[i].mainTexture;
+                    Debug.Log("Add Mateial----1");
+                }
+                Debug.Log("Add Mateial----2");
+            }
+            */
     
             if (ShereHP_inGameManager)
             {
@@ -163,6 +183,7 @@ namespace Max_DEV
             
             
             onHpChanged?.Invoke(currentHp);
+            //ChangeMaterial();
 
             
             
@@ -214,35 +235,37 @@ namespace Max_DEV
             GetComponent<CharacterController>().enabled = true;
         }
 
-        void ChangeMaterail()
+        void ChangeMaterial()
         {
             if (defaultMaterial != null)
             {
-                foreach (Material _mate in defaultMaterial)
-                {
-                    _mate.color = hitMaterial.color;
-                }
                 StartCoroutine(MaterialTime());
             }
         }
         
         private IEnumerator MaterialTime()
         {
-            foreach (Material _mate in defaultMaterial)
+            //Debug.Log("Restore Material--------1");
+            for (int i = 0; i < defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
             {
-                _mate.color = hitMaterial.color;
+                defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials[i] = hitMaterial;
+                Debug.Log("Change Material--------1");
+                defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials[i].mainTexture = hitMaterial.mainTexture;
             }
-            Debug.Log("");
+            
+            Debug.Log("Change Material");
+            
             yield return new WaitForSeconds(hitTime);
             
-            foreach (Material _mate in defaultMaterial)
+            for (int i = 0; i < defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
             {
-                for (int i = 0; i < defaultMaterial.Count; i++)
-                {
-                    _mate.color = defaultMaterial[i].color;
-                }
+                defaultMaterial.GetComponent<SkinnedMeshRenderer>().materials[i].mainTexture = _mateCatch[i];
+                Debug.Log("Restore Material--------2");
             }
             
+            Debug.Log("Restore Material--------3");
+
+
         }
 
         #region MonoPUN
